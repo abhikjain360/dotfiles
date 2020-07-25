@@ -1,0 +1,1185 @@
+U+002B  +       Plus Sign
+U+003C  <       Less-Than Sign
+U+003D  =       Equals Sign
+U+003E  >       Greater-Than Sign
+U+007C  |       Vertical Line
+U+007E  ~       Tilde
+U+00AC  ¬       Not Sign
+U+00B1  ±       Plus-Minus Sign
+U+00D7  ×       Multiplication Sign
+U+00F7  ÷       Division Sign
+U+03F6  ϶       Greek Reversed Lunate Epsilon Symbol
+U+0606  ؆       Arabic-Indic Cube Root
+U+0607  ؇       Arabic-Indic Fourth Root
+U+0608  ؈       Arabic Ray
+U+2044  ⁄       Fraction Slash
+U+2052  ⁒       Commercial Minus Sign
+U+207A  ⁺       Superscript Plus Sign
+U+207B  ⁻       Superscript Minus
+U+207C  ⁼       Superscript Equals Sign
+U+208A  ₊       Subscript Plus Sign
+U+208B  ₋       Subscript Minus
+U+208C  ₌       Subscript Equals Sign
+U+2118  ℘       Script Capital P
+U+2140  ⅀       Double-Struck N-Ary Summation
+U+2141  ⅁       Turned Sans-Serif Capital G
+U+2142  ⅂       Turned Sans-Serif Capital L
+U+2143  ⅃       Reversed Sans-Serif Capital L
+U+2144  ⅄       Turned Sans-Serif Capital Y
+U+214B  ⅋       Turned Ampersand
+U+2190  ←       Leftwards Arrow
+U+2191  ↑       Upwards Arrow
+U+2192  →       Rightwards Arrow
+U+2193  ↓       Downwards Arrow
+U+2194  ↔       Left Right Arrow
+U+219A  ↚       Leftwards Arrow with Stroke
+U+219B  ↛       Rightwards Arrow with Stroke
+U+21A0  ↠       Rightwards Two Headed Arrow
+U+21A3  ↣       Rightwards Arrow with Tail
+U+21A6  ↦       Rightwards Arrow from Bar
+U+21AE  ↮       Left Right Arrow with Stroke
+U+21CE  ⇎       Left Right Double Arrow with Stroke
+U+21CF  ⇏       Rightwards Double Arrow with Stroke
+U+21D2  ⇒       Rightwards Double Arrow
+U+21D4  ⇔       Left Right Double Arrow
+U+21F4  ⇴       Right Arrow wih Small Circle
+U+21F5  ⇵       Downwards Arrow Leftwards of Upwards Arrow
+U+21F6  ⇶       Three Rightwards Arrows
+U+21F7  ⇷       Leftwards Arrow with Vertical Stroke
+U+21F8  ⇸       Rightwards Arrow with Vertical Stroke
+U+21F9  ⇹       Left Right Arrow with Vertical Stroke
+U+21FA  ⇺       Leftwards Arrow with Double Vertical Stroke
+U+21FB  ⇻       Rightwards Arrow with Double Vertical Stroke
+U+21FC  ⇼       Left Right Arrow with Double Vertical Stroke
+U+21FD  ⇽       Leftwards Open-Headed Arrow
+U+21FE  ⇾       Rightwards Open-Headed Arrow
+U+21FF  ⇿       Left Right Open-Headed Arrow
+U+2200  ∀       For All
+U+2201  ∁       Complement
+U+2202  ∂       Partial Differential
+U+2203  ∃       There Exists
+U+2204  ∄       There Does Not Exist
+U+2205  ∅       Empty Set
+U+2206  ∆       Increment
+U+2207  ∇       Nabla
+U+2208  ∈       Element Of
+U+2209  ∉       Not An Element Of
+U+220A  ∊       Small Element Of
+U+220B  ∋       Contains as Member
+U+220C  ∌       Does Not Contain as Member
+U+220D  ∍       Small Contains as Member
+U+220E  ∎       End of Proof
+U+220F  ∏       N-Ary Product
+U+2210  ∐       N-Ary Coproduct
+U+2211  ∑       N-Ary Summation
+U+2212  −       Minus Sign
+U+2213  ∓       Minus-or-Plus Sign
+U+2214  ∔       Dot Plus
+U+2215  ∕       Division Slash
+U+2216  ∖       Set Minus
+U+2217  ∗       Asterisk Operator
+U+2218  ∘       Ring Operator
+U+2219  ∙       Bullet Operator
+U+221A  √       Square Root
+U+221B  ∛       Cube Root
+U+221C  ∜       Fourth Root
+U+221D  ∝       Proportional To
+U+221E  ∞       Infinity
+U+221F  ∟       Right Angle
+U+2220  ∠       Angle
+U+2221  ∡       Measured Angle
+U+2222  ∢       Spherical Angle
+U+2223  ∣       Divides
+U+2224  ∤       Does Not Divide
+U+2225  ∥       Parallel To
+U+2226  ∦       Not Parallel To
+U+2227  ∧       Logical And
+U+2228  ∨       Logical Or
+U+2229  ∩       Intersection
+U+222A  ∪       Union
+U+222B  ∫       Integral
+U+222C  ∬       Double Integral
+U+222D  ∭       Triple Integral
+U+222E  ∮       Contour Integral
+U+222F  ∯       Surface Integral
+U+2230  ∰       Volume Integral
+U+2231  ∱       Clockwise Integral
+U+2232  ∲       Clockwise Contour Integral
+U+2233  ∳       Anticlockwise Contour Integral
+U+2234  ∴       Therefore
+U+2235  ∵       Because
+U+2236  ∶       Ratio
+U+2237  ∷       Proportion
+U+2238  ∸       Dot Minus
+U+2239  ∹       Excess
+U+223A  ∺       Geometric Proportion
+U+223B  ∻       Homothetic
+U+223C  ∼       Tilde Operator
+U+223D  ∽       Reversed Tilde
+U+223E  ∾       Inverted Lazy S
+U+223F  ∿       Sine Wave
+U+2240  ≀       Wreath Product
+U+2241  ≁       Not Tilde
+U+2242  ≂       Minus Tilde
+U+2243  ≃       Asymptotically Equal To
+U+2244  ≄       Not Asymptotically Equal To
+U+2245  ≅       Approximately Equal To
+U+2246  ≆       Approximately But Not Actually Equal To
+U+2247  ≇       Neither Approximately Nor Actually Equal To
+U+2248  ≈       Almost Equal To
+U+2249  ≉       Not Almost Equal To
+U+224A  ≊       Almost Equal or Equal To
+U+224B  ≋       Triple Tilde
+U+224C  ≌       All Equal To
+U+224D  ≍       Equivalent To
+U+224E  ≎       Geometrically Equivalent To
+U+224F  ≏       Difference Between
+U+2250  ≐       Approaches the Limit
+U+2251  ≑       Geometrically Equal To
+U+2252  ≒       Approximately Equal to or the Image Of
+U+2253  ≓       Image of or Approximately Equal To
+U+2254  ≔       Colon Equals
+U+2255  ≕       Equals Colon
+U+2256  ≖       Ring In Equal To
+U+2257  ≗       Ring Equal To
+U+2258  ≘       Corresponds To
+U+2259  ≙       Estimates
+U+225A  ≚       Equiangular To
+U+225B  ≛       Star Equals
+U+225C  ≜       Delta Equal To
+U+225D  ≝       Equal to By Definition
+U+225E  ≞       Measured By
+U+225F  ≟       Questioned Equal To
+U+2260  ≠       Not Equal To
+U+2261  ≡       Identical To
+U+2262  ≢       Not Identical To
+U+2263  ≣       Strictly Equivalent To
+U+2264  ≤       Less-Than or Equal To
+U+2265  ≥       Greater-Than or Equal To
+U+2266  ≦       Less-Than Over Equal To
+U+2267  ≧       Greater-Than Over Equal To
+U+2268  ≨       Less-Than But Not Equal To
+U+2269  ≩       Greater-Than But Not Equal To
+U+226A  ≪       Much Less-Than
+U+226B  ≫       Much Greater-Than
+U+226C  ≬       Between
+U+226D  ≭       Not Equivalent To
+U+226E  ≮       Not Less-Than
+U+226F  ≯       Not Greater-Than
+U+2270  ≰       Neither Less-Than Nor Equal To
+U+2271  ≱       Neither Greater-Than Nor Equal To
+U+2272  ≲       Less-Than or Equivalent To
+U+2273  ≳       Greater-Than or Equivalent To
+U+2274  ≴       Neither Less-Than Nor Equivalent To
+U+2275  ≵       Neither Greater-Than Nor Equivalent To
+U+2276  ≶       Less-Than or Greater-Than
+U+2277  ≷       Greater-Than or Less-Than
+U+2278  ≸       Neither Less-Than Nor Greater-Than
+U+2279  ≹       Neither Greater-Than Nor Less-Than
+U+227A  ≺       Precedes
+U+227B  ≻       Succeeds
+U+227C  ≼       Precedes or Equal To
+U+227D  ≽       Succeeds or Equal To
+U+227E  ≾       Precedes or Equivalent To
+U+227F  ≿       Succeeds or Equivalent To
+U+2280  ⊀       Does Not Precede
+U+2281  ⊁       Does Not Succeed
+U+2282  ⊂       Subset Of
+U+2283  ⊃       Superset Of
+U+2284  ⊄       Not A Subset Of
+U+2285  ⊅       Not A Superset Of
+U+2286  ⊆       Subset of or Equal To
+U+2287  ⊇       Superset of or Equal To
+U+2288  ⊈       Neither A Subset of Nor Equal To
+U+2289  ⊉       Neither A Superset of Nor Equal To
+U+228A  ⊊       Subset of with Not Equal To
+U+228B  ⊋       Superset of with Not Equal To
+U+228C  ⊌       Multiset
+U+228D  ⊍       Multiset Multiplication
+U+228E  ⊎       Multiset Union
+U+228F  ⊏       Square Image Of
+U+2290  ⊐       Square Original Of
+U+2291  ⊑       Square Image of or Equal To
+U+2292  ⊒       Square Original of or Equal To
+U+2293  ⊓       Square Cap
+U+2294  ⊔       Square Cup
+U+2295  ⊕       Circled Plus
+U+2296  ⊖       Circled Minus
+U+2297  ⊗       Circled Times
+U+2298  ⊘       Circled Division Slash
+U+2299  ⊙       Circled Dot Operator
+U+229A  ⊚       Circled Ring Operator
+U+229B  ⊛       Circled Asterisk Operator
+U+229C  ⊜       Circled Equals
+U+229D  ⊝       Circled Dash
+U+229E  ⊞       Squared Plus
+U+229F  ⊟       Squared Minus
+U+22A0  ⊠       Squared Times
+U+22A1  ⊡       Squared Dot Operator
+U+22A2  ⊢       Right Tack
+U+22A3  ⊣       Left Tack
+U+22A4  ⊤       Down Tack
+U+22A5  ⊥       Up Tack
+U+22A6  ⊦       Assertion
+U+22A7  ⊧       Models
+U+22A8  ⊨       True
+U+22A9  ⊩       Forces
+U+22AA  ⊪       Triple Vertical Bar Right Turnstile
+U+22AB  ⊫       Double Vertical Bar Double Right Turnstile
+U+22AC  ⊬       Does Not Prove
+U+22AD  ⊭       Not True
+U+22AE  ⊮       Does Not Force
+U+22AF  ⊯       Negated Double Vertical Bar Double Right Turnstile
+U+22B0  ⊰       Precedes Under Relation
+U+22B1  ⊱       Succeeds Under Relation
+U+22B2  ⊲       Normal Subgroup Of
+U+22B3  ⊳       Contains as Normal Subgroup
+U+22B4  ⊴       Normal Subgroup of or Equal To
+U+22B5  ⊵       Contains as Normal Subgroup or Equal To
+U+22B6  ⊶       Original Of
+U+22B7  ⊷       Image Of
+U+22B8  ⊸       Multimap
+U+22B9  ⊹       Hermitian Conjugate Matrix
+U+22BA  ⊺       Intercalate
+U+22BB  ⊻       Xor
+U+22BC  ⊼       Nand
+U+22BD  ⊽       Nor
+U+22BE  ⊾       Right Angle with Arc
+U+22BF  ⊿       Right Triangle
+U+22C0  ⋀       N-Ary Logical And
+U+22C1  ⋁       N-Ary Logical Or
+U+22C2  ⋂       N-Ary Intersection
+U+22C3  ⋃       N-Ary Union
+U+22C4  ⋄       Diamond Operator
+U+22C5  ⋅       Dot Operator
+U+22C6  ⋆       Star Operator
+U+22C7  ⋇       Division Times
+U+22C8  ⋈       Bowtie
+U+22C9  ⋉       Left Normal Factor Semidirect Product
+U+22CA  ⋊       Right Normal Factor Semidirect Product
+U+22CB  ⋋       Left Semidirect Product
+U+22CC  ⋌       Right Semidirect Product
+U+22CD  ⋍       Reversed Tilde Equals
+U+22CE  ⋎       Curly Logical Or
+U+22CF  ⋏       Curly Logical And
+U+22D0  ⋐       Double Subset
+U+22D1  ⋑       Double Superset
+U+22D2  ⋒       Double Intersection
+U+22D3  ⋓       Double Union
+U+22D4  ⋔       Pitchfork
+U+22D5  ⋕       Equal and Parallel To
+U+22D6  ⋖       Less-Than with Dot
+U+22D7  ⋗       Greater-Than with Dot
+U+22D8  ⋘       Very Much Less-Than
+U+22D9  ⋙       Very Much Greater-Than
+U+22DA  ⋚       Less-Than Equal to or Greater-Than
+U+22DB  ⋛       Greater-Than Equal to or Less-Than
+U+22DC  ⋜       Equal to or Less-Than
+U+22DD  ⋝       Equal to or Greater-Than
+U+22DE  ⋞       Equal to or Precedes
+U+22DF  ⋟       Equal to or Succeeds
+U+22E0  ⋠       Does Not Precede or Equal
+U+22E1  ⋡       Does Not Succeed or Equal
+U+22E2  ⋢       Not Square Image of or Equal To
+U+22E3  ⋣       Not Square Original of or Equal To
+U+22E4  ⋤       Square Image of or Not Equal To
+U+22E5  ⋥       Square Original of or Not Equal To
+U+22E6  ⋦       Less-Than But Not Equivalent To
+U+22E7  ⋧       Greater-Than But Not Equivalent To
+U+22E8  ⋨       Precedes But Not Equivalent To
+U+22E9  ⋩       Succeeds But Not Equivalent To
+U+22EA  ⋪       Not Normal Subgroup Of
+U+22EB  ⋫       Does Not Contain as Normal Subgroup
+U+22EC  ⋬       Not Normal Subgroup of or Equal To
+U+22ED  ⋭       Does Not Contain as Normal Subgroup or Equal
+U+22EE  ⋮       Vertical Ellipsis
+U+22EF  ⋯       Midline Horizontal Ellipsis
+U+22F0  ⋰       Up Right Diagonal Ellipsis
+U+22F1  ⋱       Down Right Diagonal Ellipsis
+U+22F2  ⋲       Element of with Long Horizontal Stroke
+U+22F3  ⋳       Element of with Vertical Bar at End of Horizontal Stroke
+U+22F4  ⋴       Small Element of with Vertical Bar at End of Horizontal Stroke
+U+22F5  ⋵       Element of with Dot Above
+U+22F6  ⋶       Element of with Overbar
+U+22F7  ⋷       Small Element of with Overbar
+U+22F8  ⋸       Element of with Underbar
+U+22F9  ⋹       Element of with Two Horizontal Strokes
+U+22FA  ⋺       Contains with Long Horizontal Stroke
+U+22FB  ⋻       Contains with Vertical Bar at End of Horizontal Stroke
+U+22FC  ⋼       Small Contains with Vertical Bar at End of Horizontal Stroke
+U+22FD  ⋽       Contains with Overbar
+U+22FE  ⋾       Small Contains with Overbar
+U+22FF  ⋿       Z Notation Bag Membership
+U+2320  ⌠       Top Half Integral
+U+2321  ⌡       Bottom Half Integral
+U+237C  ⍼       Right Angle with Downwards Zigzag Arrow
+U+239B  ⎛       Left Parenthesis Upper Hook
+U+239C  ⎜       Left Parenthesis Extension
+U+239D  ⎝       Left Parenthesis Lower Hook
+U+239E  ⎞       Right Parenthesis Upper Hook
+U+239F  ⎟       Right Parenthesis Extension
+U+23A0  ⎠       Right Parenthesis Lower Hook
+U+23A1  ⎡       Left Square Bracket Upper Corner
+U+23A2  ⎢       Left Square Bracket Extension
+U+23A3  ⎣       Left Square Bracket Lower Corner
+U+23A4  ⎤       Right Square Bracket Upper Corner
+U+23A5  ⎥       Right Square Bracket Extension
+U+23A6  ⎦       Right Square Bracket Lower Corner
+U+23A7  ⎧       Left Curly Bracket Upper Hook
+U+23A8  ⎨       Left Curly Bracket Middle Piece
+U+23A9  ⎩       Left Curly Bracket Lower Hook
+U+23AA  ⎪       Curly Bracket Extension
+U+23AB  ⎫       Right Curly Bracket Upper Hook
+U+23AC  ⎬       Right Curly Bracket Middle Piece
+U+23AD  ⎭       Right Curly Bracket Lower Hook
+U+23AE  ⎮       Integral Extension
+U+23AF  ⎯       Horizontal Line Extension
+U+23B0  ⎰       Upper Left or Lower Right Curly Bracket Section
+U+23B1  ⎱       Upper Right or Lower Left Curly Bracket Section
+U+23B2  ⎲       Summation Top
+U+23B3  ⎳       Summation Bottom
+U+23DC  ⏜       Top Parenthesis
+U+23DD  ⏝       Bottom Parenthesis
+U+23DE  ⏞       Top Curly Bracket
+U+23DF  ⏟       Bottom Curly Bracket
+U+23E0  ⏠       Top Tortoise Shell Bracket
+U+23E1  ⏡       Bottom Tortoise Shell Bracket
+U+25B7  ▷       White Right-Pointing Triangle
+U+25C1  ◁       White Left-Pointing Triangle
+U+25F8  ◸       Upper Left Triangle
+U+25F9  ◹       Upper Right Triangle
+U+25FA  ◺       Lower Left Triangle
+U+25FB  ◻       White Medium Square
+U+25FC  ◼       Black Medium Square
+U+25FD  ◽      White Medium Small Square
+U+25FE  ◾      Black Medium Small Square
+U+25FF  ◿       Lower Right Triangle
+U+266F  ♯       Music Sharp Sign
+U+27C0  ⟀       Three Dimensional Angle
+U+27C1  ⟁       White Triangle Containing Small White Triangle
+U+27C2  ⟂       Perpendicular
+U+27C3  ⟃       Open Subset
+U+27C4  ⟄       Open Superset
+U+27C7  ⟇       or with Dot Inside
+U+27C8  ⟈       Reverse Solidus Preceding Subset
+U+27C9  ⟉       Superset Preceding Solidus
+U+27CA  ⟊       Vertical Bar with Horizontal Stroke
+U+27CB  ⟋       Mathematical Rising Diagonal
+U+27CC  ⟌       Long Division
+U+27CD  ⟍       Mathematical Falling Diagonal
+U+27CE  ⟎       Squared Logical And
+U+27CF  ⟏       Squared Logical Or
+U+27D0  ⟐       White Diamond with Centred Dot
+U+27D1  ⟑       and with Dot
+U+27D2  ⟒       Element of Opening Upwards
+U+27D3  ⟓       Lower Right Corner with Dot
+U+27D4  ⟔       Upper Left Corner with Dot
+U+27D5  ⟕       Left Outer Join
+U+27D6  ⟖       Right Outer Join
+U+27D7  ⟗       Full Outer Join
+U+27D8  ⟘       Large Up Tack
+U+27D9  ⟙       Large Down Tack
+U+27DA  ⟚       Left and Right Double Turnstile
+U+27DB  ⟛       Left and Right Tack
+U+27DC  ⟜       Left Multimap
+U+27DD  ⟝       Long Right Tack
+U+27DE  ⟞       Long Left Tack
+U+27DF  ⟟       Up Tack with Circle Above
+U+27E0  ⟠       Lozenge Divided By Horizontal Rule
+U+27E1  ⟡       White Concave-Sided Diamond
+U+27E2  ⟢       White Concave-Sided Diamond with Leftwards Tick
+U+27E3  ⟣       White Concave-Sided Diamond with Rightwards Tick
+U+27E4  ⟤       White Square with Leftwards Tick
+U+27E5  ⟥       White Square with Rightwards Tick
+U+27F0  ⟰       Upwards Quadruple Arrow
+U+27F1  ⟱       Downwards Quadruple Arrow
+U+27F2  ⟲       Anticlockwise Gapped Circle Arrow
+U+27F3  ⟳       Clockwise Gapped Circle Arrow
+U+27F4  ⟴       Right Arrow with Circled Plus
+U+27F5  ⟵       Long Leftwards Arrow
+U+27F6  ⟶       Long Rightwards Arrow
+U+27F7  ⟷       Long Left Right Arrow
+U+27F8  ⟸       Long Leftwards Double Arrow
+U+27F9  ⟹       Long Rightwards Double Arrow
+U+27FA  ⟺       Long Left Right Double Arrow
+U+27FB  ⟻       Long Leftwards Arrow from Bar
+U+27FC  ⟼       Long Rightwards Arrow from Bar
+U+27FD  ⟽       Long Leftwards Double Arrow from Bar
+U+27FE  ⟾       Long Rightwards Double Arrow from Bar
+U+27FF  ⟿       Long Rightwards Squiggle Arrow
+U+2900  ⤀       Rightwards Two-Headed Arrow with Vertical Stroke
+U+2901  ⤁       Rightwards Two-Headed Arrow with Double Vertical Stroke
+U+2902  ⤂       Leftwards Double Arrow with Vertical Stroke
+U+2903  ⤃       Rightwards Double Arrow with Vertical Stroke
+U+2904  ⤄       Left Right Double Arrow with Vertical Stroke
+U+2905  ⤅       Rightwards Two-Headed Arrow from Bar
+U+2906  ⤆       Leftwards Double Arrow from Bar
+U+2907  ⤇       Rightwards Double Arrow from Bar
+U+2908  ⤈       Downwards Arrow with Horizontal Stroke
+U+2909  ⤉       Upwards Arrow with Horizontal Stroke
+U+290A  ⤊       Upwards Triple Arrow
+U+290B  ⤋       Downwards Triple Arrow
+U+290C  ⤌       Leftwards Double Dash Arrow
+U+290D  ⤍       Rightwards Double Dash Arrow
+U+290E  ⤎       Leftwards Triple Dash Arrow
+U+290F  ⤏       Rightwards Triple Dash Arrow
+U+2910  ⤐       Rightwards Two-Headed Triple Dash Arrow
+U+2911  ⤑       Rightwards Arrow with Dotted Stem
+U+2912  ⤒       Upwards Arrow to Bar
+U+2913  ⤓       Downwards Arrow to Bar
+U+2914  ⤔       Rightwards Arrow with Tail with Vertical Stroke
+U+2915  ⤕       Rightwards Arrow with Tail with Double Vertical Stroke
+U+2916  ⤖       Rightwards Two-Headed Arrow with Tail
+U+2917  ⤗       Rightwards Two-Headed Arrow with Tail with Vertical Stroke
+U+2918  ⤘       Rightwards Two-Headed Arrow with Tail with Double Vertical Stroke
+U+2919  ⤙       Leftwards Arrow-Tail
+U+291A  ⤚       Rightwards Arrow-Tail
+U+291B  ⤛       Leftwards Double Arrow-Tail
+U+291C  ⤜       Rightwards Double Arrow-Tail
+U+291D  ⤝       Leftwards Arrow to Black Diamond
+U+291E  ⤞       Rightwards Arrow to Black Diamond
+U+291F  ⤟       Leftwards Arrow from Bar to Black Diamond
+U+2920  ⤠       Rightwards Arrow from Bar to Black Diamond
+U+2921  ⤡       North West and South East Arrow
+U+2922  ⤢       North East and South West Arrow
+U+2923  ⤣       North West Arrow with Hook
+U+2924  ⤤       North East Arrow with Hook
+U+2925  ⤥       South East Arrow with Hook
+U+2926  ⤦       South West Arrow with Hook
+U+2927  ⤧       North West Arrow and North East Arrow
+U+2928  ⤨       North East Arrow and South East Arrow
+U+2929  ⤩       South East Arrow and South West Arrow
+U+292A  ⤪       South West Arrow and North West Arrow
+U+292B  ⤫       Rising Diagonal Crossing Falling Diagonal
+U+292C  ⤬       Falling Diagonal Crossing Rising Diagonal
+U+292D  ⤭       South East Arrow Crossing North East Arrow
+U+292E  ⤮       North East Arrow Crossing South East Arrow
+U+292F  ⤯       Falling Diagonal Crossing North East Arrow
+U+2930  ⤰       Rising Diagonal Crossing South East Arrow
+U+2931  ⤱       North East Arrow Crossing North West Arrow
+U+2932  ⤲       North West Arrow Crossing North East Arrow
+U+2933  ⤳       Wave Arrow Pointing Directly Right
+U+2934  ⤴       Arrow Pointing Rightwards Then Curving Upwards
+U+2935  ⤵       Arrow Pointing Rightwards Then Curving Downwards
+U+2936  ⤶       Arrow Pointing Downwards Then Curving Leftwards
+U+2937  ⤷       Arrow Pointing Downwards Then Curving Rightwards
+U+2938  ⤸       Right-Side Arc Clockwise Arrow
+U+2939  ⤹       Left-Side Arc Anticlockwise Arrow
+U+293A  ⤺       Top Arc Anticlockwise Arrow
+U+293B  ⤻       Bottom Arc Anticlockwise Arrow
+U+293C  ⤼       Top Arc Clockwise Arrow with Minus
+U+293D  ⤽       Top Arc Anticlockwise Arrow with Plus
+U+293E  ⤾       Lower Right Semicircular Clockwise Arrow
+U+293F  ⤿       Lower Left Semicircular Anticlockwise Arrow
+U+2940  ⥀       Anticlockwise Closed Circle Arrow
+U+2941  ⥁       Clockwise Closed Circle Arrow
+U+2942  ⥂       Rightwards Arrow Above Short Leftwards Arrow
+U+2943  ⥃       Leftwards Arrow Above Short Rightwards Arrow
+U+2944  ⥄       Short Rightwards Arrow Above Leftwards Arrow
+U+2945  ⥅       Rightwards Arrow with Plus Below
+U+2946  ⥆       Leftwards Arrow with Plus Below
+U+2947  ⥇       Rightwards Arrow Through X
+U+2948  ⥈       Left Right Arrow Through Small Circle
+U+2949  ⥉       Upwards Two-Headed Arrow from Small Circle
+U+294A  ⥊       Left Barb Up Right Barb Down Harpoon
+U+294B  ⥋       Left Barb Down Right Barb Up Harpoon
+U+294C  ⥌       Up Barb Right Down Barb Left Harpoon
+U+294D  ⥍       Up Barb Left Down Barb Right Harpoon
+U+294E  ⥎       Left Barb Up Right Barb Up Harpoon
+U+294F  ⥏       Up Barb Right Down Barb Right Harpoon
+U+2950  ⥐       Left Barb Down Right Barb Down Harpoon
+U+2951  ⥑       Up Barb Left Down Barb Left Harpoon
+U+2952  ⥒       Leftwards Harpoon with Barb Up to Bar
+U+2953  ⥓       Rightwards Harpoon with Barb Up to Bar
+U+2954  ⥔       Upwards Harpoon with Barb Right to Bar
+U+2955  ⥕       Downwards Harpoon with Barb Right to Bar
+U+2956  ⥖       Leftwards Harpoon with Barb Down to Bar
+U+2957  ⥗       Rightwards Harpoon with Barb Down to Bar
+U+2958  ⥘       Upwards Harpoon with Barb Left to Bar
+U+2959  ⥙       Downwards Harpoon with Barb Left to Bar
+U+295A  ⥚       Leftwards Harpoon with Barb Up from Bar
+U+295B  ⥛       Rightwards Harpoon with Barb Up from Bar
+U+295C  ⥜       Upwards Harpoon with Barb Right from Bar
+U+295D  ⥝       Downwards Harpoon with Barb Right from Bar
+U+295E  ⥞       Leftwards Harpoon with Barb Down from Bar
+U+295F  ⥟       Rightwards Harpoon with Barb Down from Bar
+U+2960  ⥠       Upwards Harpoon with Barb Left from Bar
+U+2961  ⥡       Downwards Harpoon with Barb Left from Bar
+U+2962  ⥢       Leftwards Harpoon with Barb Up Above Leftwards Harpoon with Barb Down
+U+2963  ⥣       Upwards Harpoon with Barb Left Beside Upwards Harpoon with Barb Right
+U+2964  ⥤       Rightwards Harpoon with Barb Up Above Rightwards Harpoon with Barb Down
+U+2965  ⥥       Downwards Harpoon with Barb Left Beside Downwards Harpoon with Barb Right
+U+2966  ⥦       Leftwards Harpoon with Barb Up Above Rightwards Harpoon with Barb Up
+U+2967  ⥧       Leftwards Harpoon with Barb Down Above Rightwards Harpoon with Barb Down
+U+2968  ⥨       Rightwards Harpoon with Barb Up Above Leftwards Harpoon with Barb Up
+U+2969  ⥩       Rightwards Harpoon with Barb Down Above Leftwards Harpoon with Barb Down
+U+296A  ⥪       Leftwards Harpoon with Barb Up Above Long Dash
+U+296B  ⥫       Leftwards Harpoon with Barb Down Below Long Dash
+U+296C  ⥬       Rightwards Harpoon with Barb Up Above Long Dash
+U+296D  ⥭       Rightwards Harpoon with Barb Down Below Long Dash
+U+296E  ⥮       Upwards Harpoon with Barb Left Beside Downwards Harpoon with Barb Right
+U+296F  ⥯       Downwards Harpoon with Barb Left Beside Upwards Harpoon with Barb Right
+U+2970  ⥰       Right Double Arrow with Rounded Head
+U+2971  ⥱       Equals Sign Above Rightwards Arrow
+U+2972  ⥲       Tilde Operator Above Rightwards Arrow
+U+2973  ⥳       Leftwards Arrow Above Tilde Operator
+U+2974  ⥴       Rightwards Arrow Above Tilde Operator
+U+2975  ⥵       Rightwards Arrow Above Almost Equal To
+U+2976  ⥶       Less-Than Above Leftwards Arrow
+U+2977  ⥷       Leftwards Arrow Through Less-Than
+U+2978  ⥸       Greater-Than Above Rightwards Arrow
+U+2979  ⥹       Subset Above Rightwards Arrow
+U+297A  ⥺       Leftwards Arrow Through Subset
+U+297B  ⥻       Superset Above Leftwards Arrow
+U+297C  ⥼       Left Fish Tail
+U+297D  ⥽       Right Fish Tail
+U+297E  ⥾       Up Fish Tail
+U+297F  ⥿       Down Fish Tail
+U+2980  ⦀       Triple Vertical Bar Delimiter
+U+2981  ⦁       Z Notation Spot
+U+2982  ⦂       Z Notation Type Colon
+U+2999  ⦙       Dotted Fence
+U+299A  ⦚       Vertical Zigzag Line
+U+299B  ⦛       Measured Angle Opening Left
+U+299C  ⦜       Right Angle Variant with Square
+U+299D  ⦝       Measured Right Angle with Dot
+U+299E  ⦞       Angle with S Inside
+U+299F  ⦟       Acute Angle
+U+29A0  ⦠       Spherical Angle Opening Left
+U+29A1  ⦡       Spherical Angle Opening Up
+U+29A2  ⦢       Turned Angle
+U+29A3  ⦣       Reversed Angle
+U+29A4  ⦤       Angle with Underbar
+U+29A5  ⦥       Reversed Angle with Underbar
+U+29A6  ⦦       Oblique Angle Opening Up
+U+29A7  ⦧       Oblique Angle Opening Down
+U+29A8  ⦨       Measured Angle with Open Arm Ending In Arrow Pointing Up and Right
+U+29A9  ⦩       Measured Angle with Open Arm Ending In Arrow Pointing Up and Left
+U+29AA  ⦪       Measured Angle with Open Arm Ending In Arrow Pointing Down and Right
+U+29AB  ⦫       Measured Angle with Open Arm Ending In Arrow Pointing Down and Left
+U+29AC  ⦬       Measured Angle with Open Arm Ending In Arrow Pointing Right and Up
+U+29AD  ⦭       Measured Angle with Open Arm Ending In Arrow Pointing Left and Up
+U+29AE  ⦮       Measured Angle with Open Arm Ending In Arrow Pointing Right and Down
+U+29AF  ⦯       Measured Angle with Open Arm Ending In Arrow Pointing Left and Down
+U+29B0  ⦰       Reversed Empty Set
+U+29B1  ⦱       Empty Set with Overbar
+U+29B2  ⦲       Empty Set with Small Circle Above
+U+29B3  ⦳       Empty Set with Right Arrow Above
+U+29B4  ⦴       Empty Set with Left Arrow Above
+U+29B5  ⦵       Circle with Horizontal Bar
+U+29B6  ⦶       Circled Vertical Bar
+U+29B7  ⦷       Circled Parallel
+U+29B8  ⦸       Circled Reverse Solidus
+U+29B9  ⦹       Circled Perpendicular
+U+29BA  ⦺       Circle Divided By Horizontal Bar and Top Half Divided By Vertical Bar
+U+29BB  ⦻       Circle with Superimposed X
+U+29BC  ⦼       Circled Anticlockwise-Rotated Division Sign
+U+29BD  ⦽       Up Arrow Through Circle
+U+29BE  ⦾       Circled White Bullet
+U+29BF  ⦿       Circled Bullet
+U+29C0  ⧀       Circled Less-Than
+U+29C1  ⧁       Circled Greater-Than
+U+29C2  ⧂       Circle with Small Circle to the Right
+U+29C3  ⧃       Circle with Two Horizontal Strokes to the Right
+U+29C4  ⧄       Squared Rising Diagonal Slash
+U+29C5  ⧅       Squared Falling Diagonal Slash
+U+29C6  ⧆       Squared Asterisk
+U+29C7  ⧇       Squared Small Circle
+U+29C8  ⧈       Squared Square
+U+29C9  ⧉       Two Joined Squares
+U+29CA  ⧊       Triangle with Dot Above
+U+29CB  ⧋       Triangle with Underbar
+U+29CC  ⧌       S In Triangle
+U+29CD  ⧍       Triangle with Serifs at Bottom
+U+29CE  ⧎       Right Triangle Above Left Triangle
+U+29CF  ⧏       Left Triangle Beside Vertical Bar
+U+29D0  ⧐       Vertical Bar Beside Right Triangle
+U+29D1  ⧑       Bowtie with Left Half Black
+U+29D2  ⧒       Bowtie with Right Half Black
+U+29D3  ⧓       Black Bowtie
+U+29D4  ⧔       Times with Left Half Black
+U+29D5  ⧕       Times with Right Half Black
+U+29D6  ⧖       White Hourglass
+U+29D7  ⧗       Black Hourglass
+U+29DC  ⧜       Incomplete Infinity
+U+29DD  ⧝       Tie Over Infinity
+U+29DE  ⧞       Infinity Negated with Vertical Bar
+U+29DF  ⧟       Double-Ended Multimap
+U+29E0  ⧠       Square with Contoured Outline
+U+29E1  ⧡       Increases As
+U+29E2  ⧢       Shuffle Product
+U+29E3  ⧣       Equals Sign and Slanted Parallel
+U+29E4  ⧤       Equals Sign and Slanted Parallel with Tilde Above
+U+29E5  ⧥       Identical to and Slanted Parallel
+U+29E6  ⧦       Gleich Stark
+U+29E7  ⧧       Thermodynamic
+U+29E8  ⧨       Down-Pointing Triangle with Left Half Black
+U+29E9  ⧩       Down-Pointing Triangle with Right Half Black
+U+29EA  ⧪       Black Diamond with Down Arrow
+U+29EB  ⧫       Black Lozenge
+U+29EC  ⧬       White Circle with Down Arrow
+U+29ED  ⧭       Black Circle with Down Arrow
+U+29EE  ⧮       Error-Barred White Square
+U+29EF  ⧯       Error-Barred Black Square
+U+29F0  ⧰       Error-Barred White Diamond
+U+29F1  ⧱       Error-Barred Black Diamond
+U+29F2  ⧲       Error-Barred White Circle
+U+29F3  ⧳       Error-Barred Black Circle
+U+29F4  ⧴       Rule-Delayed
+U+29F5  ⧵       Reverse Solidus Operator
+U+29F6  ⧶       Solidus with Overbar
+U+29F7  ⧷       Reverse Solidus with Horizontal Stroke
+U+29F8  ⧸       Big Solidus
+U+29F9  ⧹       Big Reverse Solidus
+U+29FA  ⧺       Double Plus
+U+29FB  ⧻       Triple Plus
+U+29FE  ⧾       Tiny
+U+29FF  ⧿       Miny
+U+2A00  ⨀       N-Ary Circled Dot Operator
+U+2A01  ⨁       N-Ary Circled Plus Operator
+U+2A02  ⨂       N-Ary Circled Times Operator
+U+2A03  ⨃       N-Ary Union Operator with Dot
+U+2A04  ⨄       N-Ary Union Operator with Plus
+U+2A05  ⨅       N-Ary Square Intersection Operator
+U+2A06  ⨆       N-Ary Square Union Operator
+U+2A07  ⨇       Two Logical and Operator
+U+2A08  ⨈       Two Logical or Operator
+U+2A09  ⨉       N-Ary Times Operator
+U+2A0A  ⨊       Modulo Two Sum
+U+2A0B  ⨋       Summation with Integral
+U+2A0C  ⨌       Quadruple Integral Operator
+U+2A0D  ⨍       Finite Part Integral
+U+2A0E  ⨎       Integral with Double Stroke
+U+2A0F  ⨏       Integral Average with Slash
+U+2A10  ⨐       Circulation Function
+U+2A11  ⨑       Anticlockwise Integration
+U+2A12  ⨒       Line Integration with Rectangular Path Around Pole
+U+2A13  ⨓       Line Integration with Semicircular Path Around Pole
+U+2A14  ⨔       Line Integration Not Including the Pole
+U+2A15  ⨕       Integral Around A Point Operator
+U+2A16  ⨖       Quaternion Integral Operator
+U+2A17  ⨗       Integral with Leftwards Arrow with Hook
+U+2A18  ⨘       Integral with Times Sign
+U+2A19  ⨙       Integral with Intersection
+U+2A1A  ⨚       Integral with Union
+U+2A1B  ⨛       Integral with Overbar
+U+2A1C  ⨜       Integral with Underbar
+U+2A1D  ⨝       Join
+U+2A1E  ⨞       Large Left Triangle Operator
+U+2A1F  ⨟       Z Notation Schema Composition
+U+2A20  ⨠       Z Notation Schema Piping
+U+2A21  ⨡       Z Notation Schema Projection
+U+2A22  ⨢       Plus Sign with Small Circle Above
+U+2A23  ⨣       Plus Sign with Circumflex Accent Above
+U+2A24  ⨤       Plus Sign with Tilde Above
+U+2A25  ⨥       Plus Sign with Dot Below
+U+2A26  ⨦       Plus Sign with Tilde Below
+U+2A27  ⨧       Plus Sign with Subscript Two
+U+2A28  ⨨       Plus Sign with Black Triangle
+U+2A29  ⨩       Minus Sign with Comma Above
+U+2A2A  ⨪       Minus Sign with Dot Below
+U+2A2B  ⨫       Minus Sign with Falling Dots
+U+2A2C  ⨬       Minus Sign with Rising Dots
+U+2A2D  ⨭       Plus Sign In Left Half Circle
+U+2A2E  ⨮       Plus Sign In Right Half Circle
+U+2A2F  ⨯       Vector or Cross Product
+U+2A30  ⨰       Multiplication Sign with Dot Above
+U+2A31  ⨱       Multiplication Sign with Underbar
+U+2A32  ⨲       Semidirect Product with Bottom Closed
+U+2A33  ⨳       Smash Product
+U+2A34  ⨴       Multiplication Sign In Left Half Circle
+U+2A35  ⨵       Multiplication Sign In Right Half Circle
+U+2A36  ⨶       Circled Multiplication Sign with Circumflex Accent
+U+2A37  ⨷       Multiplication Sign In Double Circle
+U+2A38  ⨸       Circled Division Sign
+U+2A39  ⨹       Plus Sign In Triangle
+U+2A3A  ⨺       Minus Sign In Triangle
+U+2A3B  ⨻       Multiplication Sign In Triangle
+U+2A3C  ⨼       Interior Product
+U+2A3D  ⨽       Righthand Interior Product
+U+2A3E  ⨾       Z Notation Relational Composition
+U+2A3F  ⨿       Amalgamation or Coproduct
+U+2A40  ⩀       Intersection with Dot
+U+2A41  ⩁       Union with Minus Sign
+U+2A42  ⩂       Union with Overbar
+U+2A43  ⩃       Intersection with Overbar
+U+2A44  ⩄       Intersection with Logical And
+U+2A45  ⩅       Union with Logical Or
+U+2A46  ⩆       Union Above Intersection
+U+2A47  ⩇       Intersection Above Union
+U+2A48  ⩈       Union Above Bar Above Intersection
+U+2A49  ⩉       Intersection Above Bar Above Union
+U+2A4A  ⩊       Union Beside and Joined with Union
+U+2A4B  ⩋       Intersection Beside and Joined with Intersection
+U+2A4C  ⩌       Closed Union with Serifs
+U+2A4D  ⩍       Closed Intersection with Serifs
+U+2A4E  ⩎       Double Square Intersection
+U+2A4F  ⩏       Double Square Union
+U+2A50  ⩐       Closed Union with Serifs and Smash Product
+U+2A51  ⩑       Logical and with Dot Above
+U+2A52  ⩒       Logical or with Dot Above
+U+2A53  ⩓       Double Logical And
+U+2A54  ⩔       Double Logical Or
+U+2A55  ⩕       Two Intersecting Logical And
+U+2A56  ⩖       Two Intersecting Logical Or
+U+2A57  ⩗       Sloping Large Or
+U+2A58  ⩘       Sloping Large And
+U+2A59  ⩙       Logical or Overlapping Logical And
+U+2A5A  ⩚       Logical and with Middle Stem
+U+2A5B  ⩛       Logical or with Middle Stem
+U+2A5C  ⩜       Logical and with Horizontal Dash
+U+2A5D  ⩝       Logical or with Horizontal Dash
+U+2A5E  ⩞       Logical and with Double Overbar
+U+2A5F  ⩟       Logical and with Underbar
+U+2A60  ⩠       Logical and with Double Underbar
+U+2A61  ⩡       Small Vee with Underbar
+U+2A62  ⩢       Logical or with Double Overbar
+U+2A63  ⩣       Logical or with Double Underbar
+U+2A64  ⩤       Z Notation Domain Antirestriction
+U+2A65  ⩥       Z Notation Range Antirestriction
+U+2A66  ⩦       Equals Sign with Dot Below
+U+2A67  ⩧       Identical with Dot Above
+U+2A68  ⩨       Triple Horizontal Bar with Double Vertical Stroke
+U+2A69  ⩩       Triple Horizontal Bar with Triple Vertical Stroke
+U+2A6A  ⩪       Tilde Operator with Dot Above
+U+2A6B  ⩫       Tilde Operator with Rising Dots
+U+2A6C  ⩬       Similar Minus Similar
+U+2A6D  ⩭       Congruent with Dot Above
+U+2A6E  ⩮       Equals with Asterisk
+U+2A6F  ⩯       Almost Equal to with Circumflex Accent
+U+2A70  ⩰       Approximately Equal or Equal To
+U+2A71  ⩱       Equals Sign Above Plus Sign
+U+2A72  ⩲       Plus Sign Above Equals Sign
+U+2A73  ⩳       Equals Sign Above Tilde Operator
+U+2A74  ⩴       Double Colon Equal
+U+2A75  ⩵       Two Consecutive Equals Signs
+U+2A76  ⩶       Three Consecutive Equals Signs
+U+2A77  ⩷       Equals Sign with Two Dots Above and Two Dots Below
+U+2A78  ⩸       Equivalent with Four Dots Above
+U+2A79  ⩹       Less-Than with Circle Inside
+U+2A7A  ⩺       Greater-Than with Circle Inside
+U+2A7B  ⩻       Less-Than with Question Mark Above
+U+2A7C  ⩼       Greater-Than with Question Mark Above
+U+2A7D  ⩽       Less-Than or Slanted Equal To
+U+2A7E  ⩾       Greater-Than or Slanted Equal To
+U+2A7F  ⩿       Less-Than or Slanted Equal to with Dot Inside
+U+2A80  ⪀       Greater-Than or Slanted Equal to with Dot Inside
+U+2A81  ⪁       Less-Than or Slanted Equal to with Dot Above
+U+2A82  ⪂       Greater-Than or Slanted Equal to with Dot Above
+U+2A83  ⪃       Less-Than or Slanted Equal to with Dot Above Right
+U+2A84  ⪄       Greater-Than or Slanted Equal to with Dot Above Left
+U+2A85  ⪅       Less-Than or Approximate
+U+2A86  ⪆       Greater-Than or Approximate
+U+2A87  ⪇       Less-Than and Single-Line Not Equal To
+U+2A88  ⪈       Greater-Than and Single-Line Not Equal To
+U+2A89  ⪉       Less-Than and Not Approximate
+U+2A8A  ⪊       Greater-Than and Not Approximate
+U+2A8B  ⪋       Less-Than Above Double-Line Equal Above Greater-Than
+U+2A8C  ⪌       Greater-Than Above Double-Line Equal Above Less-Than
+U+2A8D  ⪍       Less-Than Above Similar or Equal
+U+2A8E  ⪎       Greater-Than Above Similar or Equal
+U+2A8F  ⪏       Less-Than Above Similar Above Greater-Than
+U+2A90  ⪐       Greater-Than Above Similar Above Less-Than
+U+2A91  ⪑       Less-Than Above Greater-Than Above Double-Line Equal
+U+2A92  ⪒       Greater-Than Above Less-Than Above Double-Line Equal
+U+2A93  ⪓       Less-Than Above Slanted Equal Above Greater-Than Above Slanted Equal
+U+2A94  ⪔       Greater-Than Above Slanted Equal Above Less-Than Above Slanted Equal
+U+2A95  ⪕       Slanted Equal to or Less-Than
+U+2A96  ⪖       Slanted Equal to or Greater-Than
+U+2A97  ⪗       Slanted Equal to or Less-Than with Dot Inside
+U+2A98  ⪘       Slanted Equal to or Greater-Than with Dot Inside
+U+2A99  ⪙       Double-Line Equal to or Less-Than
+U+2A9A  ⪚       Double-Line Equal to or Greater-Than
+U+2A9B  ⪛       Double-Line Slanted Equal to or Less-Than
+U+2A9C  ⪜       Double-Line Slanted Equal to or Greater-Than
+U+2A9D  ⪝       Similar or Less-Than
+U+2A9E  ⪞       Similar or Greater-Than
+U+2A9F  ⪟       Similar Above Less-Than Above Equals Sign
+U+2AA0  ⪠       Similar Above Greater-Than Above Equals Sign
+U+2AA1  ⪡       Double Nested Less-Than
+U+2AA2  ⪢       Double Nested Greater-Than
+U+2AA3  ⪣       Double Nested Less-Than with Underbar
+U+2AA4  ⪤       Greater-Than Overlapping Less-Than
+U+2AA5  ⪥       Greater-Than Beside Less-Than
+U+2AA6  ⪦       Less-Than Closed By Curve
+U+2AA7  ⪧       Greater-Than Closed By Curve
+U+2AA8  ⪨       Less-Than Closed By Curve Above Slanted Equal
+U+2AA9  ⪩       Greater-Than Closed By Curve Above Slanted Equal
+U+2AAA  ⪪       Smaller Than
+U+2AAB  ⪫       Larger Than
+U+2AAC  ⪬       Smaller Than or Equal To
+U+2AAD  ⪭       Larger Than or Equal To
+U+2AAE  ⪮       Equals Sign with Bumpy Above
+U+2AAF  ⪯       Precedes Above Single-Line Equals Sign
+U+2AB0  ⪰       Succeeds Above Single-Line Equals Sign
+U+2AB1  ⪱       Precedes Above Single-Line Not Equal To
+U+2AB2  ⪲       Succeeds Above Single-Line Not Equal To
+U+2AB3  ⪳       Precedes Above Equals Sign
+U+2AB4  ⪴       Succeeds Above Equals Sign
+U+2AB5  ⪵       Precedes Above Not Equal To
+U+2AB6  ⪶       Succeeds Above Not Equal To
+U+2AB7  ⪷       Precedes Above Almost Equal To
+U+2AB8  ⪸       Succeeds Above Almost Equal To
+U+2AB9  ⪹       Precedes Above Not Almost Equal To
+U+2ABA  ⪺       Succeeds Above Not Almost Equal To
+U+2ABB  ⪻       Double Precedes
+U+2ABC  ⪼       Double Succeeds
+U+2ABD  ⪽       Subset with Dot
+U+2ABE  ⪾       Superset with Dot
+U+2ABF  ⪿       Subset with Plus Sign Below
+U+2AC0  ⫀       Superset with Plus Sign Below
+U+2AC1  ⫁       Subset with Multiplication Sign Below
+U+2AC2  ⫂       Superset with Multiplication Sign Below
+U+2AC3  ⫃       Subset of or Equal to with Dot Above
+U+2AC4  ⫄       Superset of or Equal to with Dot Above
+U+2AC5  ⫅       Subset of Above Equals Sign
+U+2AC6  ⫆       Superset of Above Equals Sign
+U+2AC7  ⫇       Subset of Above Tilde Operator
+U+2AC8  ⫈       Superset of Above Tilde Operator
+U+2AC9  ⫉       Subset of Above Almost Equal To
+U+2ACA  ⫊       Superset of Above Almost Equal To
+U+2ACB  ⫋       Subset of Above Not Equal To
+U+2ACC  ⫌       Superset of Above Not Equal To
+U+2ACD  ⫍       Square Left Open Box Operator
+U+2ACE  ⫎       Square Right Open Box Operator
+U+2ACF  ⫏       Closed Subset
+U+2AD0  ⫐       Closed Superset
+U+2AD1  ⫑       Closed Subset or Equal To
+U+2AD2  ⫒       Closed Superset or Equal To
+U+2AD3  ⫓       Subset Above Superset
+U+2AD4  ⫔       Superset Above Subset
+U+2AD5  ⫕       Subset Above Subset
+U+2AD6  ⫖       Superset Above Superset
+U+2AD7  ⫗       Superset Beside Subset
+U+2AD8  ⫘       Superset Beside and Joined By Dash with Subset
+U+2AD9  ⫙       Element of Opening Downwards
+U+2ADA  ⫚       Pitchfork with Tee Top
+U+2ADB  ⫛       Transversal Intersection
+U+2ADC  ⫝̸       Forking
+U+2ADD  ⫝       Nonforking
+U+2ADE  ⫞       Short Left Tack
+U+2ADF  ⫟       Short Down Tack
+U+2AE0  ⫠       Short Up Tack
+U+2AE1  ⫡       Perpendicular with S
+U+2AE2  ⫢       Vertical Bar Triple Right Turnstile
+U+2AE3  ⫣       Double Vertical Bar Left Turnstile
+U+2AE4  ⫤       Vertical Bar Double Left Turnstile
+U+2AE5  ⫥       Double Vertical Bar Double Left Turnstile
+U+2AE6  ⫦       Long Dash from Left Member of Double Vertical
+U+2AE7  ⫧       Short Down Tack with Overbar
+U+2AE8  ⫨       Short Up Tack with Underbar
+U+2AE9  ⫩       Short Up Tack Above Short Down Tack
+U+2AEA  ⫪       Double Down Tack
+U+2AEB  ⫫       Double Up Tack
+U+2AEC  ⫬       Double Stroke Not Sign
+U+2AED  ⫭       Reversed Double Stroke Not Sign
+U+2AEE  ⫮       Does Not Divide with Reversed Negation Slash
+U+2AEF  ⫯       Vertical Line with Circle Above
+U+2AF0  ⫰       Vertical Line with Circle Below
+U+2AF1  ⫱       Down Tack with Circle Below
+U+2AF2  ⫲       Parallel with Horizontal Stroke
+U+2AF3  ⫳       Parallel with Tilde Operator
+U+2AF4  ⫴       Triple Vertical Bar Binary Relation
+U+2AF5  ⫵       Triple Vertical Bar with Horizontal Stroke
+U+2AF6  ⫶       Triple Colon Operator
+U+2AF7  ⫷       Triple Nested Less-Than
+U+2AF8  ⫸       Triple Nested Greater-Than
+U+2AF9  ⫹       Double-Line Slanted Less-Than or Equal To
+U+2AFA  ⫺       Double-Line Slanted Greater-Than or Equal To
+U+2AFB  ⫻       Triple Solidus Binary Relation
+U+2AFC  ⫼       Large Triple Vertical Bar Operator
+U+2AFD  ⫽       Double Solidus Operator
+U+2AFE  ⫾       White Vertical Bar
+U+2AFF  ⫿       N-Ary White Vertical Bar
+U+2B30  ⬰       Left Arrow with Small Circle
+U+2B31  ⬱       Three Leftwards Arrows
+U+2B32  ⬲       Left Arrow with Circled Plus
+U+2B33  ⬳       Long Leftwards Squiggle Arrow
+U+2B34  ⬴       Leftwards Two-Headed Arrow with Vertical Stroke
+U+2B35  ⬵       Leftwards Two-Headed Arrow with Double Vertical Stroke
+U+2B36  ⬶       Leftwards Two-Headed Arrow from Bar
+U+2B37  ⬷       Leftwards Two-Headed Triple Dash Arrow
+U+2B38  ⬸       Leftwards Arrow with Dotted Stem
+U+2B39  ⬹       Leftwards Arrow with Tail with Vertical Stroke
+U+2B3A  ⬺       Leftwards Arrow with Tail with Double Vertical Stroke
+U+2B3B  ⬻       Leftwards Two-Headed Arrow with Tail
+U+2B3C  ⬼       Leftwards Two-Headed Arrow with Tail with Vertical Stroke
+U+2B3D  ⬽       Leftwards Two-Headed Arrow with Tail with Double Vertical Stroke
+U+2B3E  ⬾       Leftwards Arrow Through X
+U+2B3F  ⬿       Wave Arrow Pointing Directly Left
+U+2B40  ⭀       Equals Sign Above Leftwards Arrow
+U+2B41  ⭁       Reverse Tilde Operator Above Leftwards Arrow
+U+2B42  ⭂       Leftwards Arrow Above Reverse Almost Equal To
+U+2B43  ⭃       Rightwards Arrow Through Greater-Than
+U+2B44  ⭄       Rightwards Arrow Through Superset
+U+2B47  ⭇       Reverse Tilde Operator Above Rightwards Arrow
+U+2B48  ⭈       Rightwards Arrow Above Reverse Almost Equal To
+U+2B49  ⭉       Tilde Operator Above Leftwards Arrow
+U+2B4A  ⭊       Leftwards Arrow Above Almost Equal To
+U+2B4B  ⭋       Leftwards Arrow Above Reverse Tilde Operator
+U+2B4C  ⭌       Rightwards Arrow Above Reverse Tilde Operator
+U+FB29  ﬩       Hebrew Letter Alternative Plus Sign
+U+FE62  ﹢      Small Plus Sign
+U+FE64  ﹤      Small Less-Than Sign
+U+FE65  ﹥      Small Greater-Than Sign
+U+FE66  ﹦      Small Equals Sign
+U+FF0B  ＋      Fullwidth Plus Sign
+U+FF1C  ＜      Fullwidth Less-Than Sign
+U+FF1D  ＝      Fullwidth Equals Sign
+U+FF1E  ＞      Fullwidth Greater-Than Sign
+U+FF5C  ｜      Fullwidth Vertical Line
+U+FF5E  ～      Fullwidth Tilde
+U+FFE2  ￢      Fullwidth Not Sign
+U+FFE9  ￩       Halfwidth Leftwards Arrow
+U+FFEA  ￪       Halfwidth Upwards Arrow
+U+FFEB  ￫       Halfwidth Rightwards Arrow
+U+FFEC  ￬       Halfwidth Downwards Arrow
+U+1D6C1 𝛁       Mathematical Bold Nabla
+U+1D6DB 𝛛       Mathematical Bold Partial Differential
+U+1D6FB 𝛻       Mathematical Italic Nabla
+U+1D715 𝜕       Mathematical Italic Partial Differential
+U+1D735 𝜵       Mathematical Bold Italic Nabla
+U+1D74F 𝝏       Mathematical Bold Italic Partial Differential
+U+1D76F 𝝯       Mathematical Sans-Serif Bold Nabla
+U+1D789 𝞉       Mathematical Sans-Serif Bold Partial Differential
+U+1D7A9 𝞩       Mathematical Sans-Serif Bold Italic Nabla
+U+1D7C3 𝟃       Mathematical Sans-Serif Bold Italic Partial Differential
+U+00A1  ¡       Inverted Exclamation Mark
+U+00A2  ¢       Cent sign
+U+00A3  £       Pound sign
+U+00A4  ¤       Currency sign
+U+00A5  ¥       Yen sign
+U+00A6  ¦       Broken bar
+U+00A7  §       Section sign
+U+00A8  ¨       Diaeresis (Umlaut)
+U+00A9  ©       Copyright sign
+U+00AA  ª       Feminine Ordinal Indicator
+U+00AB  «       Left-pointing double angle quotation mark
+U+00AC  ¬       Not sign
+U+00AE  ®       Registered sign
+U+00AF  ¯       macron
+U+00B0  °       Degree symbol
+U+00B1  ±       Plus-minus sign
+U+00B2  ²       Superscript two
+U+00B3  ³       Superscript three
+U+00B4  ´       Acute accent
+U+00B5  µ       Micro sign
+U+00B6  ¶       Pilcrow sign
+U+00B7  ·       Middle dot
+U+00B8  ¸       Cedilla
+U+00B9  ¹       Superscript one
+U+00BA  º       Masculine ordinal indicator
+U+00BB  »       Right-pointing double angle quotation mark
+U+00BC  ¼       Vulgar fraction one quarter
+U+00BD  ½       Vulgar fraction one half
+U+00BE  ¾       Vulgar fraction three quarters
+U+00BF  ¿       Inverted Question Mark
+U+00D7  ×       Multiplication sign
+U+00D8  Ø       Latin Capital letter O with stroke
+U+00DF  ß       Latin Small Letter sharp S
+U+00F7  ÷       Division sign
+U+00F8  ø       Latin Small Letter O with stroke
+U+0186  Ɔ       Latin Capital Letter Open O
+U+018E  Ǝ       Latin Capital Letter Reversed E
+U+018F  Ə       Latin Capital Letter Schwa
+U+0190  Ɛ       Latin Capital Letter Open E
+U+0191  Ƒ       Latin Capital Letter F with hook
+U+0192  ƒ       Latin Small Letter F with hook
+U+0194  Ɣ       Latin Capital Letter Gamma
+U+0196  Ɩ       Latin Capital Letter Iota
+U+019B  ƛ       Latin Small Letter Lambda with stroke
+U+019C  Ɯ       Latin Capital Letter Turned M
+U+019D  Ɲ       Latin Capital Letter N with left hook
+U+019E  ƞ       Latin Small Letter N with long right leg
+U+019F  Ɵ       Latin Capital Letter O with middle tilde
+U+01A7  Ƨ       Latin Capital Letter Tone Two
+U+01A8  ƨ       Latin Small Letter Tone Two
+U+01A9  Ʃ       Latin Capital Letter Esh
+U+01B5  Ƶ       Latin Capital Letter Z with stroke
+U+01B6  ƶ       Latin Small Letter Z with stroke
+U+01B7  Ʒ       Latin Capital Letter Ezh
+U+01B8  Ƹ       Latin Capital Letter Ezh reversed
+U+01B9  ƹ       Latin Small Letter Ezh reversed
+U+01C0  ǀ       Latin Letter Dental Click
+U+01C1  ǁ       Latin Letter Lateral Click
+U+01DD  ǝ       Latin Small Letter Turned E
+U+021C  Ȝ       Latin Capital Letter Yogh       ·
+U+021D  ȝ       Latin Small Letter Yogh
+U+0220  Ƞ       Latin Capital Letter N with long right leg      ·
+U+0239  ȹ       Latin Small Letter QP Digraph
+U+0245  Ʌ       Latin Capital Letter Turned V
+U+0246  Ɇ       Latin Capital Letter E with stroke
+U+0247  ɇ       Latin Small Letter E with stroke
+U+02E5  ˥       Modifier Letter Extra-High Tone Bar
+U+02E9  ˩       Modifier Letter Extra-Low Tone Bar
+U+0376  Ͷ       Greek Capital Letter Pamphylian Digamma
+U+0377  ͷ       Greek Small Letter Pamphylian Digamma
+U+0391  Α       Greek Capital Letter Alpha
+U+0392  Β       Greek Capital Letter Beta
+U+0393  Γ       Greek Capital Letter Gamma
+U+0394  Δ       Greek Capital Letter Delta
+U+0395  Ε       Greek Capital Letter Epsilon
+U+0396  Ζ       Greek Capital Letter Zeta
+U+0397  Η       Greek Capital Letter Eta
+U+0398  Θ       Greek Capital Letter Theta
+U+0399  Ι       Greek Capital Letter Iota
+U+039A  Κ       Greek Capital Letter Kappa
+U+039B  Λ       Greek Capital Letter Lambda
+U+039C  Μ       Greek Capital Letter Mu 0397
+U+039D  Ν       Greek Capital Letter Nu 0398
+U+039E  Ξ       Greek Capital Letter Xi 0399
+U+039F  Ο       Greek Capital Letter Omicron
+U+03A0  Π       Greek Capital Letter Pi 0401
+U+03A1  Ρ       Greek Capital Letter Rho
+U+03A3  Σ       Greek Capital Letter Sigma
+U+03A4  Τ       Greek Capital Letter Tau
+U+03A5  Υ       Greek Capital Letter Upsilon
+U+03A6  Φ       Greek Capital Letter Phi
+U+03A7  Χ       Greek Capital Letter Chi
+U+03A8  Ψ       Greek Capital Letter Psi
+U+03A9  Ω       Greek Capital Letter Omega
+U+03B1  α       Greek Small Letter Alpha
+U+03B2  β       Greek Small Letter Beta
+U+03B3  γ       Greek Small Letter Gamma
+U+03B4  δ       Greek Small Letter Delta
+U+03B5  ε       Greek Small Letter Epsilon
+U+03B6  ζ       Greek Small Letter Zeta
+U+03B7  η       Greek Small Letter Eta
+U+03B8  θ       Greek Small Letter Theta
+U+03B9  ι       Greek Small Letter Iota
+U+03BA  κ       Greek Small Letter Kappa
+U+03BB  λ       Greek Small Letter Lambda
+U+03BC  μ       Greek Small Letter Mu
+U+03BD  ν       Greek Small Letter Nu
+U+03BE  ξ       Greek Small Letter Xi
+U+03BF  ο       Greek Small Letter Omicron
+U+03C0  π       Greek Small Letter Pi
+U+03C1  ρ       Greek Small Letter Rho
+U+03C2  ς       Greek Small Letter Final Sigma
+U+03C3  σ       Greek Small Letter Sigma
+U+03C4  τ       Greek Small Letter Tau
+U+03C5  υ       Greek Small Letter Upsilon
+U+03C6  φ       Greek Small Letter Phi
+U+03C7  χ       Greek Small Letter Chi
+U+03C8  ψ       Greek Small Letter Psi
+U+03C9  ω       Greek Small Letter Omega
+U+03F4  ϴ       Greek Capital Theta
+U+03F5  ϵ       Greek Lunate Epsilon
+U+03F6  ϶       Greek Reversed Lunate Epsilon
+U+2580  ▀       Upper half block
+U+2581  ▁       Lower one eighth block
+U+2582  ▂       Lower one quarter block
+U+2583  ▃       Lower three eighths block
+U+2584  ▄       Lower half block
+U+2585  ▅       Lower five eighths block
+U+2586  ▆       Lower three quarters block
+U+2587  ▇       Lower seven eighths block
+U+2588  █       Full block
+U+2589  ▉       Left seven eighths block
+U+258A  ▊       Left three quarters block
+U+258B  ▋       Left five eighths block
+U+258C  ▌       Left half block
+U+258D  ▍       Left three eighths block
+U+258E  ▎       Left one quarter block
+U+258F  ▏       Left one eighth block
+U+2595  ▕       Right one eighth block
+U+2596  ▖       Quadrant lower left
+U+2597  ▗       Quadrant lower right
+U+2598  ▘       Quadrant upper left
+U+2599  ▙       Quadrant upper left and lower left and lower right
+U+259A  ▚       Quadrant upper left and lower right
+U+259B  ▛       Quadrant upper left and upper right and lower left
+U+259C  ▜       Quadrant upper left and upper right and lower right
+U+259D  ▝       Quadrant upper right
+U+259E  ▞       Quadrant upper right and lower left
+U+259F  ▟       Quadrant upper right and lower left and lower right
+U+25A0  ■       Black square
+U+25A1  □       White square
+U+25A2  ▢       White square with rounded corners
+U+25A3  ▣       White square containing small black square
+U+25AA  ▪       Black small square
+U+25AB  ▫       White small square
+U+25AC  ▬       Black rectangle
+U+25AD  ▭       White rectangle
+U+25AE  ▮       Black vertical rectangle
+U+25AF  ▯       White vertical rectangle
+U+25B0  ▰       Black parallelogram
+U+25B1  ▱       White parallelogram
+U+25B2  ▲       Black up-pointing triangle
+U+25B3  △       White up-pointing triangle
+U+25B4  ▴       Black up-pointing small triangle
+U+25B5  ▵       White up-pointing small triangle
+U+25B6  ▶       Black right-pointing triangle
+U+25B7  ▷       White right-pointing triangle
+U+25B8  ▸       Black right-pointing small triangle
+U+25B9  ▹       White right-pointing small triangle
+U+25BA  ►       Black right-pointing pointer
+U+25BB  ▻       White right-pointing pointer
+U+25BC  ▼       Black down-pointing triangle
+U+25BD  ▽       White down-pointing triangle
+U+25BE  ▾       Black down-pointing small triangle
+U+25BF  ▿       White down-pointing small triangle
+U+25C0  ◀       Black left-pointing triangle
+U+25C1  ◁       White left-pointing triangle
+U+25C2  ◂       Black left-pointing small triangle
+U+25C3  ◃       White left-pointing small triangle
+U+25C4  ◄       Black left-pointing pointer
+U+25C5  ◅       White left-pointing pointer
+U+25C6  ◆       Black diamond
+U+25C7  ◇       White diamond
+U+25C8  ◈       White diamond containing small black diamond
+U+25C9  ◉       Fisheye
+U+25CA  ◊       Lozenge
+U+25CB  ○       White circle
+U+25CC  ◌       Dotted circle
+U+25CD  ◍       Circle with vertical fill
+U+25CE  ◎       Bullseye
+U+25CF  ●       Black circle
+U+25D0  ◐       Circle with left half black
+U+25D1  ◑       Circle with right half black
+U+25D2  ◒       Circle with lower half black
+U+25D3  ◓       Circle with upper half black
+U+25D4  ◔       Circle with upper right quadrant black
+U+25D5  ◕       Circle with all but upper left quadrant black
+U+25D6  ◖       Left half circle black
+U+25D7  ◗       Right half black circle
+U+25D8  ◘       Inverse bullet
+U+25D9  ◙       Inverse white circle
+U+25DA  ◚       Upper half inverse white circle
+U+25DB  ◛       Lower half inverse white circle
+U+25DC  ◜       Upper left quadrant circular arc
+U+25DD  ◝       Upper right quadrant circular arc
+U+25DE  ◞       Lower right quadrant circular arc
+U+25DF  ◟       Lower left quadrant circular arc
+U+25E0  ◠       Upper half circle
+U+25E1  ◡       Lower half circle
+U+25E2  ◢       Black lower right triangle
+U+25E3  ◣       Black lower left triangle
+U+25E4  ◤       Black upper left triangle
+U+25E5  ◥       Black upper right triangle
+U+25E6  ◦       White bullet
+U+25E7  ◧       Square with left half black
+U+25E8  ◨       Square with right half black
+U+25E9  ◩       Square with upper left diagonal half black
+U+25EA  ◪       Square with lower right diagonal half black
+U+25EB  ◫       White square with vertical bisecting line
+U+25EC  ◬       White up-pointing triangle with dot
+U+25ED  ◭       Up-pointing triangle with left half black
+U+25EE  ◮       Up-pointing triangle with right half black
+U+25EF  ◯       Large circle
+U+25F0  ◰       White square with upper left quadrant
+U+25F1  ◱       White square with lower left quadrant
+U+25F2  ◲       White square with lower right quadrant
+U+25F3  ◳       White square with upper right quadrant
+U+25F4  ◴       White circle with upper left quadrant
+U+25F5  ◵       White circle with lower left quadrant
+U+25F6  ◶       White circle with lower right quadrant
+U+25F7  ◷       White circle with upper right quadrant
+U+25F8  ◸       Upper left triangle
+U+25F9  ◹       Upper right triangle
+U+25FA  ◺       Lower-left triangle
+U+25FB  ◻       White medium square
+U+25FC  ◼       Black medium square
+U+25FD  ◽      White medium small square
+U+25FE  ◾      Black medium small square
+U+25FF  ◿       Lower right triangle
