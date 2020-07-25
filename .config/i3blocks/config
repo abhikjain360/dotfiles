@@ -1,0 +1,61 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+# Global properties
+separator=true
+separator_block_width=15
+
+[filler1]
+command=echo
+interval=once
+
+[cpuusage]
+command=cpuusagei3
+interval=2
+
+[cputemp]
+command=cputempi3
+interval=1
+
+[memory]
+command=memoryi3
+interval=1
+
+[battery]
+command=batteryi3
+interval=5
+
+[vol]
+command=voli3
+interval=1
+
+[wifi]
+command=wifii3
+interval=5
+
+[datetime]
+command=datetimei3
+interval=1
+
+[filler2]
+command=echo
+interval=once
+
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
+#
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+#
+#[time]
+#command=date '+%Y-%m-%d %H:%M:%S'
+#interval=1
