@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# sourced at boot by ~/.xinitrc and most display managers
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export PATH="$HOME/.local/bin:$PATH"
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+gnome-keyring-daemon --start --components=pkcs11 &
+
+#### Things I added ####
+nitrogen --restore 			# restore background
+setsid dwmblocks & 			# set statusbar
+dunst &					# notifications
+unclutter &				# undisplay unused mouse
+xcompmgr &				# transparancy
+remaps &				# remap keys
+xset dpms 600 900 1200			# turn unupdated screen off

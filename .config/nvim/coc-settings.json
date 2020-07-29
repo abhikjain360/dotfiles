@@ -1,0 +1,9 @@
+{
+	"languageserver": {
+		"clangd": {
+			"command": "clangd",
+			"filetypes": ["c", "cpp", "cuda", "h", "hpp"],
+			"rootPatterns":["compile_flags.txt"]
+		}
+	}
+}
