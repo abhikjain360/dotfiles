@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# This script is called on startup to remap keys.
+# Increase key speed via a rate change
+xset r rate 350 50
+# Exchange Super_L and Caps_Lock
+xmodmap -e 'keycode 66 = Super_L'
+xmodmap -e 'keycode 133 = Caps_Lock'
+# When pressed and not hold onto, super is escape
+killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
+# Map the menu button to right super as well.
+xmodmap -e 'keycode 135 = Super_R'
