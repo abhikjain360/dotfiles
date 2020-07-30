@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -e "-std=c$1\n-Wall\n-Wpedantic\n-g" > compile_flags.txt;
+cat > Makefile << EOF
+app:
+	rm -rf code && clang code.c -g -Wall -Wpedantic -std=c$1 -o code && ./code
+
+debug:
+	rm -rf code && clang code.c -g -Wall -Wpedantic -std=c$1 -o code && gdb ./code
+EOF
+cat > code.c << EOF
+#include <stdio.h>
+
+int main() {
+
+	return 0;
+}
+EOF
