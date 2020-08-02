@@ -3,9 +3,9 @@ let mapleader =","
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 	Plug 'tpope/vim-surround'
 	Plug 'bling/vim-airline'
+	"Plug 'dense-analysis/ale'
 	Plug 'ap/vim-css-color'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'dense-analysis/ale'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'sonph/onehalf', {'rtp': 'vim/'}
 	Plug 'dracula/vim',{ 'as': 'dracula' }
@@ -25,6 +25,7 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'junegunn/vim-easy-align'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'ollykel/v-vim', { 'for': 'vlang' }
+	Plug 'mattn/emmet-vim', { 'for': 'html' }
 call plug#end()
 
 " Some settings I prefer
@@ -43,8 +44,8 @@ call plug#end()
 	set nu
 	set rnu
 	" Tab spacing
-	set tabstop=8
-	set shiftwidth=8
+	set tabstop=4
+	set shiftwidth=4
 	filetype on
 	" indent newline to match previous line
 	set autoindent
@@ -162,10 +163,6 @@ call plug#end()
 	" Symbol renaming.
 	nmap <leader>rn <Plug>(coc-rename)
 
-	" Formatting selected code.
-	xmap <leader>f  <Plug>(coc-format-selected)
-	nmap <leader>f  <Plug>(coc-format-selected)
-
 	augroup mygroup
 	  autocmd!
 	  " Setup formatexpr specified filetype(s).
@@ -178,6 +175,10 @@ call plug#end()
 	" Example: `<leader>aap` for current paragraph
 	xmap <leader>a  <Plug>(coc-codeaction-selected)
 	nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+	" Formatting selected code.
+	xmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
 
 	" Remap keys for applying codeAction to the current buffer.
 	nmap <leader>ac  <Plug>(coc-codeaction)
@@ -248,7 +249,7 @@ call plug#end()
 	set termguicolors
 	let g:gruvbox_contrast_dark = 'dark'
 	let g:airline_theme = 'dracula'
-	let g:airline_powerline_fonts = 1
+	"let g:airline_powerline_fonts = 1
 	colorscheme dracula
 
 	function! Tgb()
@@ -266,18 +267,20 @@ call plug#end()
 		let g:airline_theme = 'dracula'
 	endfunction
 
-	nnoremap ,tgb :call Tgb()<CR>
-	nnoremap ,tau :call Tayu()<CR>
-	nnoremap ,tdc :call Tdra()<CR>
+	nnoremap ,tgb  :call Tgb()<CR>:call Tgb()<CR>
+	nnoremap ,tau  :call Tayu()<CR>:call Tayu()<CR>
+	nnoremap ,tdc  :call Tdra()<CR>:call Tdra()<CR>
 
 " quickstart
-	nnoremap ,nvi :edit ~/.config/nvim/init.vim<CR>
-	nnoremap ,zsh :edit ~/.zshrc<CR>
-	nnoremap ,st :edit /home/shared/packages/my_configs/st-0.8.3/config.h<CR>
-	nnoremap ,dwm :edit /home/shared/packages/my_configs/dwm/config.h<CR>
+	nnoremap ,nvi  :edit ~/.config/nvim/init.vim<CR>
+	nnoremap ,zsh  :edit ~/.zshrc<CR>
+	nnoremap ,st   :edit /home/shared/packages/my_configs/st-0.8.3/config.h<CR>
+	nnoremap ,dwm  :edit /home/shared/packages/my_configs/dwm/config.h<CR>
 	nnoremap ,dwmb :edit /home/shared/packages/my_configs/dwmblocks/blocks.h<CR>
-	nnoremap ,vi :edit ~/.vimrc<CR>
-	nnoremap QQ :w\|bd<CR>
+	nnoremap ,i3   :edit ~/.config/i3/config<CR>
+	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
+	nnoremap ,vi   :edit ~/.vimrc<CR>
+	nnoremap QQ    :w\|bd<CR>
 
 " C++ settings
 	"autocmd FileType cpp nnoremap ,cpv maggO#include <vector><Esc>`a
@@ -294,40 +297,16 @@ call plug#end()
 	nnoremap <Down> 	<Nop>
 	nnoremap <Right> 	<Nop>
 	nnoremap <Left> 	<Nop>
-	" Save key
-	nnoremap <C-s> :w<CR>
-	inoremap <C-s> <Esc>:w<CR>i
 	" I don't like pressing shift
 	nnoremap ; :
 	" easy buffer shifts
 	nnoremap <C-Tab> :bn<CR>
 	inoremap <C-Tab> <Esc>:bn<CR>i
 
-" Rust format on save
-	let g:rustfmt_autosave = 1
 
-" Bracket manupulation
-     	nnoremap ,sb ddkA {<Return>}<Esc>P
-     	nnoremap ,db k0f{ma%dd`ax
-
-" formatting command (astyle must be installed, only works for c/c++)
-	" -A2 attached brackets
-	" -s4 indent 4 spaces
-	" -xc attached braces to class declarations
-	" -xj remove braces for single statement ifs and elses
-	" -c convert tabs to spaces in the non-indentation part of the line
-	"  styles available : google,ansi
-	map <C-S-i> :%!astyle -A2 -t --style=stroustrup<CR>
-
-" vimtex settings
-	let g:vimtex_view_method = 'zathura'
-	"let g:vimtex_compiler_progname = 'nvr'
-	au FileType tex set tabstop=4
-	au FileType tex map <C-x> <Esc>:VimtexCompile<CR>
-	au FileType tex map <C-d> <Esc>:VimtexView<CR>
-
-" vim-easy-align configs
-	" Start interactive EasyAlign in visual mode (e.g. vipga)
-	xmap ga <Plug>(EasyAlign)
-	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-	nmap ga <Plug>(EasyAlign)
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://sunaku.github.io/vim-256color-bce.html
+    set t_ut=
+endif
