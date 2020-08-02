@@ -1,0 +1,9 @@
+#!/bin/bash
+source "`ueberzug library`"
+
+[ -z "$5" ] && echo "Usage: $0 <img> <x> <y> <max height> <max width>" && exit
+
+{
+	ImageLayer::add [identifier]="example0" [x]="$3" [y]="$2" [path]="$1" [max_height]="$4" [max_width]="$5"
+	read
+} | ImageLayer
