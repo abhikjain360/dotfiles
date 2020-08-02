@@ -1,0 +1,3 @@
+#!/bin/sh
+
+watch -n0.2 "free -h && sensors && cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq"
