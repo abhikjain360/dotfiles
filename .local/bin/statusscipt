@@ -1,0 +1,44 @@
+#!/bin/sh
+
+datetime()
+{
+	echo "$(date +"%y/%m/%d (%a) %H:%M:%S")"
+}
+
+memory()
+{
+	echo "$(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
+}
+
+vol()
+{
+	echo "♬ $(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')%"
+}
+
+cpuusage()
+{
+	echo "CPU:$(echo "100 - $(mpstat 1 1 | sed -n '5p' | awk '{print $12}')" | bc)"
+}
+
+cputemp()
+{
+	echo "TEMP:$(sensors | awk '/Core 0/ {print $3}')"
+}
+
+wifi()
+{
+ 	ssid="$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | sed -e 's/yes://;')"
+	strength="$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')"
+	echo " $strength at $ssid"
+}
+
+battery()
+{
+	echo "$(acpi -b | cut -f 3-5 -d " " | sed 's/Discharging//;s/Charging//;s/,//g;s/:[^:]*$//')"
+}
+
+# update status
+while true; do
+	xsetroot -name " $(cpuusage) $(cputemp) $(memory) | $(battery) | $(vol) | $(wifi) | $(datetime)"
+	sleep 2s
+done &
