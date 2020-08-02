@@ -1,0 +1,7 @@
+#!/bin/sh
+
+browser="$(awk '{print $1}' ~/.local/share/myfiles-xtra/browsers | dmenu -i -fn "UbuntuMono Nerd Font:size=16" -l 10;) --new-window";
+bookmark_name=$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks | dmenu -i -fn "UbuntuMono Nerd Font:size=16" -l 10;);
+bookmark_url=$(grep $bookmark_name ~/.local/share/myfiles-xtra/bookmarks | awk -F ',' '{print $2}')
+
+exec $browser $bookmark_url;

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+browser="$(cat ~/.local/share/myfiles-xtra/browsers | dmenu -i -fn 'UbuntuMono Nerd Font:size=16' -l 5) --incognito --new-window"
+sitename="$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks2 | dmenu -i -fn 'UbuntuMono Nerd Font:size=16' -l 5)"
+site="$(grep $sitename ~/.local/share/myfiles-xtra/bookmarks2 | awk -F ',' '{print $2}' )"
+
+exec $browser $site;
