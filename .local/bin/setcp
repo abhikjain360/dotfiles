@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# to allow clangd detect all headers
 cat > compile_flags.txt << EOF
 -std=c++$1
 -Wall
@@ -13,12 +14,30 @@ cat > compile_flags.txt << EOF
 -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include
 -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed
 EOF
+
+# formatting I prefer
+cat > .clang-format << EOF
+BasedOnStyle: Google
+IndentWidth: 4
+
+AccessModifierOffset: -4
+AlignConsecutiveAssignments: true
+AlignOperands: true
+AlignTrailingComments: true
+ColumnLimit: 80
+PointerAlignment: Left
+SpacesBeforeTrailingComments: 1
+EOF
+
+# Makefile to use neomake to compile
 cat > Makefile << EOF
 app:
 	rm -rf code && clang++ code.cpp -g -Wall -Wpedantic -std=c++$1 -o code && ./code
 debug:
 	rm -rf code && clang++ code.cpp -g -Wall -Wpedantic -std=c++$1 -o code && gdb ./code
 EOF
+
+# Basic code
 cat > code.cpp << EOF
 #include <iostream>
 
