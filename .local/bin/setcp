@@ -1,6 +1,18 @@
 #!/bin/bash
 
-echo -e "-std=c++$1\n-Wall\n-Wpedantic\n-g" > compile_flags.txt;
+cat > compile_flags.txt << EOF
+-std=c++$1
+-Wall
+-Wpedantic
+-g
+-I/usr/include
+-I/usr/local/include
+-I/usr/lib/gcc/include/c++/10.1.0
+-I/usr/lib/gcc/include/c++/10.1.0/x86_64-pc-linux-gnu
+-I/usr/lib/gcc/include/c++/10.1.0/backward
+-I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include
+-I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed
+EOF
 cat > Makefile << EOF
 app:
 	rm -rf code && clang++ code.cpp -g -Wall -Wpedantic -std=c++$1 -o code && ./code
