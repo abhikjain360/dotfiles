@@ -1,3 +1,9 @@
+# Made By : Abhik Jain
+
+# Automatically joins the classes based on time
+# Just download and add to your path,
+# or run ./joinclass
+
 #!/bin/bash
 
 case $(date +"%a") in
