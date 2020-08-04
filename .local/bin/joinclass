@@ -1,0 +1,137 @@
+#!/bin/bash
+
+case $(date +"%a") in
+	Mon)
+		case $(date +"%H") in
+			09)
+				echo -e "\e[1;44mCommunications Systems"
+				echo -e "Timings: 0930 to 1030"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			10)
+				echo -e "\e[1;43mDS & Algo"
+				echo -e "Timings: 1030 to 1130"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			11)
+				echo -e "\e[1;42mOperating Systems-1"
+				echo -e "Timings: 1130 to 1230"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			14)
+				echo -e "\e[1;102mDatabase Management Systems-1"
+				echo -e "Timings: 1430 to 1530"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			15)
+				echo -e "\e[1;45mRandom Process"
+				echo -e "Timings: 1530 to 1630"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168534765116330100?MTID=m1154551621344e1fe9903aa71d57934b"
+				;;
+			*)
+				echo -e "\e[96;1m No Classes right now!"
+				;;
+		esac
+		;;
+	Tue)
+		case $(date +"%H") in
+			09)
+				echo -e "\e[1;42mOperating Systems-1"
+				echo -e "Timings: 0930 to 1030"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			10)
+				echo -e "\e[1;44mCommunications Systems"
+				echo -e "Timings: 1030 to 1130"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			11)
+				echo -e "\e[1;102mDatabase Management Systems-1"
+				echo -e "Timings: 1130 to 1230"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			14)
+				echo -e "\e[1;43mDS & Algo"
+				echo -e "Timings: 1430 to 1530"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168629062481219931?MTID=m4896975e30b982cb9efd8e112b5a3c2b"
+				;;
+			15)
+				echo -e "\e[1;45mRandom Process"
+				echo -e "Timings: 1530 to 1630"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168534765116330100?MTID=m1154551621344e1fe9903aa71d57934b"
+				;;
+			*)
+				echo -e "\e[96;1m No Classes right now!"
+				;;
+		esac
+		;;
+	Wed)
+		case $(date +"%H") in
+			09)
+				echo -e "\e[1;41mEmbedded Systems-1"
+				echo -e "Timings: 0930 to 1030"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168534971383812703?MTID=mfa7b9573c7146ac6e3f8030738731594"
+				;;
+			10)
+				echo -e "\e[1;103;30mGraph Theory"
+				echo -e "Timings: 1030 to 1130"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168534059698361101?MTID=mc8ba61ff1564df1d4155fd6f7176a5c2"
+				;;
+			11)
+				echo -e "\e[1;100mComputer Organization"
+				echo -e "Timings: 1130 to 1230"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168535196172292877?MTID=m55cc60419a609f505d630deda5c535b5"
+				;;
+			15)
+				echo -e "\e[1;41mObject Oriented Programming-2"
+				echo -e "Timings: 1530 to 1630"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168535276012966487?MTID=m809e91e5f4e385343a50c6a766882822"
+				;;
+			*)
+				echo -e "\e[96;1m No Classes right now!"
+				;;
+		esac
+		;;
+	Thu)
+		case $(date +"%H") in
+			09)
+				echo -e "\e[1;43mDS & Algo"
+				echo -e "Timings: 0930 to 1030"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168533190080729562?MTID=m652274053526391d50238ea8189306ba"
+				;;
+			11)
+				echo -e "\e[1;103;30mGraph Theory"
+				echo -e "Timings: 1130 to 1230"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168534159868825875?MTID=maaf532a04656636485adcee42d820509"
+				;;
+			14)
+				echo -e "\e[1;100mComputer Organization"
+				echo -e "Timings: 1430 to 1530"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168535356734444494?MTID=me33c13274fb9c43d4863267431a523cc"
+				;;
+			15)
+				echo -e "\e[1;41mObject Oriented Programming-2"
+				echo -e "Timings: 1530 to 1630"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168535356734444494?MTID=me33c13274fb9c43d4863267431a523cc"
+				;;
+			*)
+				echo -e "\e[96;1m No Classes right now!"
+				;;
+		esac
+		;;
+	Fri)
+		case $(date +"%a") in
+			10)
+				echo -e "\e[1;41mEmbedded Systems-1"
+				echo -e "Timings: 1030 to 1130"
+				setsid google-chrome-stable "https://iiitnr.webex.com/webappng/sites/iiitnr/meeting/info/168535069390017348?MTID=mfd4d7018ce0605be3936f68f8cba2fa7"
+				;;
+			*)
+				echo -e "\e[96;1m No Classes right now!"
+				;;
+		esac
+		;;
+	*)
+		echo -e "No Classes!"
+		;;
+esac
