@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 if [[ $- != *i* ]]; then
 	return
 fi
@@ -151,6 +158,9 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
 ttyctl -f
 
+# exapnd aliases
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+
 # initialize completion
 compinit -u -d "$compfile"
 
@@ -261,6 +271,11 @@ source ~/.local/share/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plug
 
 #### Prettier view
 alias la='exa -al --color=always --group-directories-first'
+alias lag='exa -al --color=always --group-directories-first | less -r'
+alias mv='mv -v'
+alias mkdir='mkdir -vp'
+alias rm='rm -vr'
+alias cp='cp -rv'
 
 #### Docker aliases
 alias sdk='sudo systemctl start docker.service'
@@ -298,6 +313,7 @@ alias ysd='youtube-dl -f bestaudio'
 
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
+export TERMINAL='/usr/bin/st'
 export VISUAL='/usr/bin/nvim'
 export XDG_CONFIG_HOME='/home/abhik/.config'
 export RUST_SRC_PATH='/home/abhik/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
@@ -305,9 +321,6 @@ export NVM_DIR="/home/abhik/.config/nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="/home/abhik/.config/nvm/versions/node/v14.5.0/bin:/home/abhik/.gem/ruby/2.7.0/bin:/home/abhik/.cargo/bin:/home/abhik/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-
-echo -e "\n"
-cat ~/op;
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
