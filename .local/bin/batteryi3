@@ -7,8 +7,10 @@ echo " BAT: $BAT "
 echo " BAT: $BAT "
 
 # Set urgent flag below 5% or use orange below 20%
-[ ${BAT%?} -ge 30 ] && echo "#000000"  && echo "#50fa7b" && exit 0
-[ ${BAT%?} -ge 20 ] && echo "#ff8000"  && echo "#50fa7b" && notify-send "Battery Low" -u low -t 3000
-[ ${BAT%?} -ge 15 ] && echo "#ff0000"  && echo "#50fa7b" && notify-send "Battery Very Low" -u critical -t 3000
+[ ${BAT%?} -ge 31 ] && echo "#000000" && echo "#50fa7b" && exit 0
+[ ${BAT%?} -e 30  ] && echo "#ff8000" && echo "#50fa7b" && notify-send "Battery Low" -u low -t 3000 && exit 0
+[ ${BAT%?} -ge 21 ] && echo "#ff8000" && echo "#50fa7b" && exit 0
+[ ${BAT%?} == 20  ] && echo "#ff0000" && echo "#50fa7b" && notify-send "Battery Very Low" -u critical -t 3000 && exit 0
+[ ${BAT%?} -ge 15 ] && echo "#ff0000" && echo "#50fa7b" && exit 0
 
 exit 0
