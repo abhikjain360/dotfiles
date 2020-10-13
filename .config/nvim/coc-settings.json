@@ -5,5 +5,9 @@
 			"filetypes": ["c", "cpp", "cuda", "h", "hpp"],
 			"rootPatterns":["compile_flags.txt"]
 		}
+	},
+	"markdownlint.config": {
+		"line_length": false,
+		"no-inline-html": false
 	}
 }
