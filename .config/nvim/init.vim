@@ -3,7 +3,7 @@ let mapleader =","
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 	Plug 'tpope/vim-surround'
 	Plug 'bling/vim-airline'
-	"Plug 'dense-analysis/ale'
+	Plug 'dense-analysis/ale'
 	Plug 'ap/vim-css-color'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -11,21 +11,25 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'dracula/vim',{ 'as': 'dracula' }
 	Plug 'machakann/vim-highlightedyank'
 	Plug 'morhetz/gruvbox'
-	Plug 'tomasr/molokai'
+	Plug 'tomasr/molokai', { 'as': 'molokai' }
 	Plug 'ayu-theme/ayu-vim'
 	Plug 'lervag/vimtex', { 'for': 'tex' }
+	Plug 'sirver/ultisnips', { 'for': 'tex' }
 	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 	Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 	Plug 'tpope/vim-abolish'
 	Plug 'ziglang/zig.vim', { 'for': 'zig' }
 	Plug 'crusoexia/vim-monokai'
-	"Plug 'rust-lang/rust'
+	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mbbill/undotree'
-	Plug 'junegunn/vim-easy-align'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'ollykel/v-vim', { 'for': 'vlang' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
+        Plug 'airblade/vim-gitgutter'
+        Plug 'lifepillar/pgsql.vim', { 'for': ['sql','pgsql'] }
+        Plug 'junegunn/vim-easy-align'
+        Plug 'sakhnik/nvim-gdb' { 'for': ['c','cpp','h','hpp'] }
 call plug#end()
 
 " Some settings I prefer
@@ -62,6 +66,7 @@ call plug#end()
 	set lazyredraw
 	set encoding=utf-8
 	set autochdir
+        set scrolloff=8
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -251,6 +256,7 @@ call plug#end()
 	let g:airline_theme = 'dracula'
 	"let g:airline_powerline_fonts = 1
 	colorscheme dracula
+	hi Normal guibg=NONE ctermbg=NONE
 
 	function! Tgb()
 		colorscheme gruvbox
@@ -281,15 +287,9 @@ call plug#end()
 	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
 	nnoremap ,vi   :edit ~/.vimrc<CR>
 	nnoremap QQ    :w\|bd<CR>
-
-" C++ settings
-	"autocmd FileType cpp nnoremap ,cpv maggO#include <vector><Esc>`a
-	"autocmd FileType cpp nnoremap ,cpa maggO#include <algorithm><Esc>`a
-	"autocmd FileType cpp nnoremap ,cps maggO#include <string><Esc>`a
-	"autocmd FileType cpp nnoremap .cpm maggO#include <cmath><Esc>`a
-	"autocmd FileType cpp colorscheme dracula
-	"autocmd FileType cpp g:airline_theme = 'dracula'
-	"autocmd FileType cpp let g:cpp_member_variable_highlight = 1
+	"nnoremap ,ttet :tabnew|te<CR>
+	"nnoremap ,ev :vs|te<CR>
+	"nnoremap ,es :sp|te<CR>
 
 " remaps
 	" I want to use homekeys only
@@ -300,8 +300,12 @@ call plug#end()
 	" I don't like pressing shift
 	nnoremap ; :
 	" easy buffer shifts
-	nnoremap <C-Tab> :bn<CR>
-	inoremap <C-Tab> <Esc>:bn<CR>i
+	nnoremap <Right> 	:bn<CR>
+	nnoremap <Left> 	:bp<CR>
+
+" special map find and change
+        nnoremap ,m /<++><CR>cf>
+        inoremap ,m <Esc>/<++><CR>cf>
 
 
 if &term =~ '256color'
@@ -310,3 +314,12 @@ if &term =~ '256color'
     " see also http://sunaku.github.io/vim-256color-bce.html
     set t_ut=
 endif
+
+let g:sql_type_default = 'pgsql'
+
+" EasyAlign settings
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
