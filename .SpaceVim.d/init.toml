@@ -54,3 +54,6 @@ default_height = 30
 
 [[custom_plugins]]
   repo = 'ap/vim-css-color'
+
+[[custom_plugins]]
+  repo = 'octol/vim-cpp-enhanced-highlight'
