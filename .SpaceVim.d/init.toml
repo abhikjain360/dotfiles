@@ -23,24 +23,21 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
-    boostrap_after = 'myspacevim'
+    autocomplete_method = "coc"
+    default_indent = 4
+    enable_ale = true
+    filetree_direction = 'left'
 
 # Enable autocomplete layer
 [[layers]]
-name = 'autocomplete'
-auto_completion_return_key_behavior = "complete"
-auto_completion_tab_key_behavior = "smart"
+name = 'lsp'
+#auto_completion_return_key_behavior = "complete"
+#auto_completion_tab_key_behavior = "smart"
 
 [[layers]]
 name = 'shell'
 default_position = 'top'
 default_height = 30
-
-[[layers]]
-  name = 'lang#c'
-  enable_clang_syntax_highlight = true
-  [layer.clang_std]
-    cpp = 'c20'
 
 [[layers]]
   name = 'format'
@@ -51,3 +48,9 @@ default_height = 30
 [[custom_plugins]]
   repo = 'dracula/vim'
   name = 'dracula'
+
+[[custom_plugins]]
+  repo = 'jiangmiao/auto-pairs'
+
+[[custom_plugins]]
+  repo = 'ap/vim-css-color'
