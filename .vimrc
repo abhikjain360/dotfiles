@@ -157,10 +157,6 @@ call plug#end()
 	" Symbol renaming.
 	nmap <leader>rn <Plug>(coc-rename)
 
-	" Formatting selected code.
-	xmap <leader>f  <Plug>(coc-format-selected)
-	nmap <leader>f  <Plug>(coc-format-selected)
-
 	augroup mygroup
 	  autocmd!
 	  " Setup formatexpr specified filetype(s).
@@ -173,6 +169,10 @@ call plug#end()
 	" Example: `<leader>aap` for current paragraph
 	xmap <leader>a  <Plug>(coc-codeaction-selected)
 	nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+	" Formatting selected code.
+	xmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)
 
 	" Remap keys for applying codeAction to the current buffer.
 	nmap <leader>ac  <Plug>(coc-codeaction)
@@ -257,5 +257,5 @@ call plug#end()
 	" I don't like pressing shift
 	nnoremap ; :
 	" easy buffer shifts
-	nnoremap <C-Tab> :bn<CR>
-	inoremap <C-Tab> <Esc>:bn<CR>i
+	nnoremap <Right> 	:bn<CR>
+	nnoremap <Left> 	:bp<CR>

@@ -296,7 +296,7 @@ alias syt='sudo systemctl status'
 
 #### Auto open neovim
 alias -s {cpp,hpp,c,h,py}='nvim'
-alias -s {yaml,js,json}='nvim'
+alias -s {yaml,js,json,sql}='nvim'
 alias -s {txt,markdown,md}='nvim'
 alias -s {README,LICENSE}='nvim'
 alias -s {conf,config,vim}='nvim'
@@ -311,16 +311,13 @@ alias v='nvim'
 #### YouTube songs download
 alias ysd='youtube-dl -f bestaudio'
 
+#### Quick study book find
+alias stub="setsid zathura \"\$(find /home/shared/study | fzf)\""
+
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
 export TERMINAL='/usr/bin/st'
 export VISUAL='/usr/bin/nvim'
-export XDG_CONFIG_HOME='/home/abhik/.config'
-export RUST_SRC_PATH='/home/abhik/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
-export NVM_DIR="/home/abhik/.config/nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PATH="/home/abhik/.config/nvm/versions/node/v14.5.0/bin:/home/abhik/.gem/ruby/2.7.0/bin:/home/abhik/.cargo/bin:/home/abhik/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
