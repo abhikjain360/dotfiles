@@ -15,9 +15,6 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
 	set scrolloff=8
 	set lazyredraw
 
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_gb<CR>
-
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
@@ -173,14 +170,8 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
 	nnoremap ,zsh  :edit ~/.zshrc<CR>
 
 " remaps
-	" I want to use homekeys only
-	nnoremap <Up> 		<Nop>
-	nnoremap <Down> 	<Nop>
 	" I don't like pressing shift
 	nnoremap ; :
-	" easy buffer shifts
-	nnoremap <Right> 	:bn<CR>
-	nnoremap <Left> 	:bp<CR>
 
 " special map find and change
         nnoremap ,m /<++><CR>cf>
