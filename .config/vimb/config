@@ -1,0 +1,11 @@
+set cookie-accept=never
+set dark-mode=true
+set download-path=~/Downloads
+set editor-command=nvim
+set font-size=14
+set geolocation=false
+set monospace-font=UbuntuMono Nerd Font
+set monospace-font-size=14
+set offline-cache=false
+set images=true
+set home-page=duckduckgo.com

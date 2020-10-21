@@ -311,6 +311,9 @@ alias v='nvim'
 #### YouTube songs download
 alias ysd='youtube-dl -f bestaudio'
 
+#### Discord MPD
+alias mpd_discord_richpresence='mpd_discord_richpresence -h=192.168.29.118 -p=6600 --fork -h=192.168.29.118 -p=6600 --fork'
+
 #### Quick study book find
 alias stub="setsid zathura \"\$(find /home/shared/study | fzf)\""
 
@@ -321,3 +324,6 @@ export VISUAL='/usr/bin/nvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# z.lua thing
+#eval "$(lua /home/shared/packages/z.lua/z.lua --init zsh)"

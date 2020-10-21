@@ -10,7 +10,7 @@ separator=true
 separator_block_width=15
 
 [filler1]
-command=echo
+command=echo " "
 interval=once
 
 [cpuusage]
@@ -42,7 +42,7 @@ command=datetimei3
 interval=1
 
 [filler2]
-command=echo
+command=echo ""
 interval=once
 
 #[documentation]

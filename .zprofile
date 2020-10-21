@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME='/home/abhik/.config'
-export RUST_SRC_PATH='/home/abhik/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+export RUST_SRC_PATH='/home/abhik/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library'
 export NVM_DIR="/home/abhik/.config/nvm"
 export LC_ALL=C
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
