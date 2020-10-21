@@ -26,10 +26,10 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'ollykel/v-vim', { 'for': 'vlang' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
-    Plug 'airblade/vim-gitgutter'
-    Plug 'lifepillar/pgsql.vim', { 'for': ['sql','pgsql'] }
-    Plug 'junegunn/vim-easy-align'
-    Plug 'sakhnik/nvim-gdb' { 'for': ['c','cpp','h','hpp'] }
+        Plug 'airblade/vim-gitgutter'
+        Plug 'lifepillar/pgsql.vim', { 'for': ['sql','pgsql'] }
+        Plug 'junegunn/vim-easy-align'
+        Plug 'sakhnik/nvim-gdb', { 'for': ['c','cpp','h','hpp'] }
 call plug#end()
 
 " Some settings I prefer
