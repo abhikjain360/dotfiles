@@ -3,7 +3,7 @@
 # The famous "get a menu of emojis to copy" script.
 
 # Get user selection via dmenu from emoji file.
-chosen=$(sed 's/^.*[0-9A-Z]\ //' ~/.local/share/myfiles-xtra/mathssigns | dmenu -i -l 30 -fn "UbuntuMono Nerd Font:size=16" | sed 's/\ \ .*//' | sed 's/\ //')
+chosen=$(sed 's/^.*[0-9A-Z]\ //' ~/.local/share/myfiles-xtra/mathssigns | dmenu -i -l 30 -fn "Fira Code:size=14" | sed 's/\ \ .*//' | sed 's/\ //')
 
 # Exit if none chosen.
 [ -z "$chosen" ] && exit

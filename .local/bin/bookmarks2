@@ -1,7 +1,6 @@
 #!/bin/sh
 
-browser="$(cat ~/.local/share/myfiles-xtra/browsers | dmenu -i -fn 'UbuntuMono Nerd Font:size=16' -l 5) --incognito --new-window"
-sitename="$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks2 | dmenu -i -fn 'UbuntuMono Nerd Font:size=16' -l 5)"
+sitename="$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks2 | dmenu -i -fn 'Fira Code:size=14' -l 10)"
 site="$(grep $sitename ~/.local/share/myfiles-xtra/bookmarks2 | awk -F ',' '{print $2}' )"
 
-exec $browser $site;
+exec brave --incognito $site;
