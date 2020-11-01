@@ -97,8 +97,8 @@ bindkey -v
 [[ -n ${terminfo[khome]} ]] && bindkey -- "${terminfo[khome]}" beginning-of-line             # home
 [[ -n ${terminfo[kbs]}   ]] && bindkey -- "${terminfo[kbs]}"   backward-delete-char          # backspace
 [[ -n ${terminfo[kcbt]}  ]] && bindkey -- "${terminfo[kcbt]}"  reverse-menu-complete         # shift-tab
-[[ -n ${terminfo[kcuu1]} ]] && bindkey -- "${terminfo[kcuu1]}" up-line-or-beginning-search   # up arrow
-[[ -n ${terminfo[kcud1]} ]] && bindkey -- "${terminfo[kcud1]}" down-line-or-beginning-search # down arrow
+[[ -n ${terminfo[kcuu1]} ]] && bindkey -- "${terminfo[kcuu1]}" up-line-or-search   # up arrow
+[[ -n ${terminfo[kcud1]} ]] && bindkey -- "${terminfo[kcud1]}" down-line-or-search # down arrow
 
 # correction
 zstyle ':completion:*:correct:*' original true
@@ -303,7 +303,7 @@ alias -s {conf,config,vim}='nvim'
 alias -s {toml,lock,rs}='nvim'
 
 #### Auto open zathura
-alias -s {pdf,djvu,epub,mobi}='zathura'
+alias setz='setsid zathura'
 
 #### nvim always
 alias v='nvim'
@@ -315,7 +315,10 @@ alias ysd='youtube-dl -f bestaudio'
 alias mpd_discord_richpresence='mpd_discord_richpresence -h=192.168.29.118 -p=6600 --fork -h=192.168.29.118 -p=6600 --fork'
 
 #### Quick study book find
-alias stub="setsid zathura \"\$(find /home/shared/study | fzf)\""
+#alias stub="setsid zathura \"\$(find $HOME/study | fzf)\""
+
+#### tlmgr package manager for TeX
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
@@ -325,5 +328,6 @@ export VISUAL='/usr/bin/nvim'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# z.lua thing
-#eval "$(lua /home/shared/packages/z.lua/z.lua --init zsh)"
+# zoxide eval for fast folder movement
+eval "$(zoxide init zsh)"
+export _ZO_DATA_DIR="$HOME/.cache/zoxide/"

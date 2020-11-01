@@ -8,12 +8,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 gnome-keyring-daemon --start --components=pkcs11 &
 
 #### Things I added ####
-nitrogen --restore 			# restore background
-setsid dwmblocks & 			# set statusbar
-dunst &					# notifications
-unclutter &				# undisplay unused mouse
-#xcompmgr &				# transparancy
-#compton &				# transparancy + blur
-[ $(date +"%H") -le 06 ] && [ $(date +"%H") -ge 19 ] && redshift & # red light for eye protection
-remaps &				# remap keys
+nitrogen --restore 	            # restore background
+dwmblocks & 		            # set statusbar
+dunst &				            # notifications
+unclutter &			            # undisplay unused mouse
+#xcompmgr &			            # transparancy
+#compton &			            # transparancy + blur
+remaps &			            # remap keys
 xset dpms 600 900 1200			# turn unupdated screen off
+start-pulseaudio-x11 &
+
+[ $(date +"%H") -le 06 ] && [ $(date +"%H") -ge 19 ] && redshift & # red light for eye protection
