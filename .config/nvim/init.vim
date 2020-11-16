@@ -1,36 +1,53 @@
-let mapleader =","
+" VIM PLUG SETTINGS
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+	" brackets
 	Plug 'tpope/vim-surround'
-	Plug 'bling/vim-airline'
-	Plug 'dense-analysis/ale'
-	Plug 'ap/vim-css-color'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+	" themes
 	Plug 'dracula/vim',{ 'as': 'dracula' }
-	Plug 'machakann/vim-highlightedyank'
 	Plug 'morhetz/gruvbox'
-	Plug 'tomasr/molokai', { 'as': 'molokai' }
-	Plug 'ayu-theme/ayu-vim'
-	Plug 'lervag/vimtex', { 'for': 'tex' }
-	Plug 'sirver/ultisnips', { 'for': 'tex' }
+
+	" better syntax highlighting
+	Plug 'ap/vim-css-color'
 	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-	Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+
+	" utility
 	Plug 'tpope/vim-abolish'
-	Plug 'ziglang/zig.vim', { 'for': 'zig' }
-	Plug 'crusoexia/vim-monokai'
-	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mbbill/undotree'
 	Plug 'terryma/vim-multiple-cursors'
-	Plug 'ollykel/v-vim', { 'for': 'vlang' }
+    Plug 'junegunn/vim-easy-align'
+	Plug 'preservim/nerdcommenter'
+
+	" notes management
+	Plug 'vimwiki/vimwiki'
+
+	" git
+    Plug 'airblade/vim-gitgutter'
+
+	" lightline + bufferline
+	Plug 'itchyny/lightline.vim'
+	Plug 'mengelbrecht/lightline-bufferline'
+
+	" file browsing
+	Plug 'lambdalisue/fern.vim'
+	Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+	Plug 'lambdalisue/fern-git-status.vim'
+	Plug 'lambdalisue/nerdfont.vim'
+	" this needed for some problem
+	Plug 'antoinemadec/FixCursorHold.nvim'
+
+	" code completion/linting
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'lervag/vimtex', { 'for': 'tex' }
+	Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
-        Plug 'airblade/vim-gitgutter'
-        Plug 'lifepillar/pgsql.vim', { 'for': ['sql','pgsql'] }
-        Plug 'junegunn/vim-easy-align'
-        Plug 'sakhnik/nvim-gdb', { 'for': ['c','cpp','h','hpp'] }
 call plug#end()
+
+" VANILLA VIM SETTINGS
 
 " Some settings I prefer
 	" Allowing use of mouse to navigate
@@ -66,7 +83,7 @@ call plug#end()
 	set lazyredraw
 	set encoding=utf-8
 	set autochdir
-        set scrolloff=8
+    set scrolloff=8
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -74,20 +91,11 @@ call plug#end()
 	set showcmd
 
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_gb<CR>
+	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow
 	set splitright
-
-" Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -96,31 +104,30 @@ call plug#end()
 	autocmd BufWritePre * %s/\s\+$//e
 	"autocmd BufWritepre * %s/\n\+\%$//e
 
-" Highlighting the yanked likes
-	let g:highlightedyank_highlight_duration = 1000
-	hi HighlightedyankRegion cterm=reverse gui=reverse
-
 " Python location
-	let g:python3_host_prog='/home/abhik/pymaths/bin/python'
+	let g:python3_host_prog='/usr/bin/python'
 
-" Mapping terminal exit to <Esc>
-	tnoremap <Esc> <C-\><C-n>
+" Spell-check set to <leader>o, 'o' for 'orthography':
+	map <leader>o :setlocal spell! spelllang=en_gb<CR>
 
-" code to save folds
-	autocmd BufWinLeave *.* mkview
-	autocmd BufWinEnter *.* silent loadview
-	set foldnestmax=1       "deepest fold level
-	set nofoldenable        "dont fold by default
-	set foldmethod=manual
+" PLUGIN SPECIFIC SETTINGS
+
+" EasyAlign settings
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 
 " COC settings
 	" Use tab for trigger completion with characters ahead and navigate.
 	" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 	" other plugin before putting this into your config.
 	inoremap <silent><expr> <TAB>
-	      \ pumvisible() ? "\<C-n>" :
-	      \ <SID>check_back_space() ? "\<TAB>" :
-	      \ coc#refresh()
+		  \ pumvisible() ? "\<C-n>" :
+		  \ <SID>check_back_space() ? "\<TAB>" :
+		  \ coc#refresh()
 	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 	function! s:check_back_space() abort
@@ -156,9 +163,9 @@ call plug#end()
 
 	function! s:show_documentation()
 	  if (index(['vim','help'], &filetype) >= 0)
-	    execute 'h '.expand('<cword>')
+		execute 'h '.expand('<cword>')
 	  else
-	    call CocAction('doHover')
+		call CocAction('doHover')
 	  endif
 	endfunction
 
@@ -238,88 +245,154 @@ call plug#end()
 	" Resume latest coc list.
 	nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" split resizing bindings
-	nnoremap ,vr :vertical resize
-	nnoremap ,hr :resize
+" lightline/bufferline Settings
 
-" quick spacings
-	nnoremap ,l o<Esc>
-	nnoremap ,L O<Esc>
+" defaults copied from README on GitHub
+let g:lightline#bufferline#show_number      = 1
+let g:lightline#bufferline#shorten_path     = 2
+let g:lightline#bufferline#unnamed          = '[No Name]'
+let g:lightline                             = {'colorscheme': 'dracula'}
+let g:lightline.tabline                     = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand            = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type              = {'buffers': 'tabsel'}
+let g:lightline#bufferline#unicode_symbols  = 1
+let g:lightline#bufferline#enable_nerdfont  = 1
+g:lightline#bufferline#modified             = ' +'
 
-" buffer save and quit
-	nnoremap QQ :w\|bd<CR>
+" mappings
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
-" Theming
-	let ayucolor="dark"
+nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>c4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>c5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>c6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
+
+" tabline won't show without this
+set showtabline=2
+
+" mode info already in lightline, show cmdline shouldn't show it
+set noshowmode
+
+" Fern Settings
+
+" needed for some problem
+let g:cursorhold_updatetime = 100
+" icons
+let g:fern#renderer = "nerdfont"
+
+" configs
+let g:fern#drawer_width = 30
+let g:fern#default_hidden = 1
+let g:fern#disable_drawer_auto_quit = 1
+
+" mapping
+nnoremap <space>ft :Fern . -drawer -toggle <CR>
+function! s:init_fern() abort
+  nmap <buffer> H <Plug>(fern-action-open:split)
+  nmap <buffer> V <Plug>(fern-action-open:vsplit)
+  nmap <buffer> o <Plug>(fern-action-open:select)
+  nmap <buffer> R <Plug>(fern-action-rename)
+  nmap <buffer> M <Plug>(fern-action-move)
+  nmap <buffer> C <Plug>(fern-action-copy)
+  nmap <buffer> N <Plug>(fern-action-new-file)
+  nmap <buffer> D <Plug>(fern-action-new-dir)
+  nmap <buffer> dD <Plug>(fern-action-remove)
+  nmap <buffer> s <Plug>(fern-action-hidden-toggle)
+  nmap <buffer> m <Plug>(fern-action-mark)
+  nmap <buffer> / <Plug>(fern-action-grep)
+  nmap <buffer> yp <Plug>(fern-action-yank:path)
+  nmap <buffer> t <Plug>(fern-action-terminal:select)
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
+" THEME
+
+" fix st coloring issues
+	if &term =~ '256color'
+	    " disable Background Color Erase (BCE) so that color schemes
+	    " render properly when inside 256-color tmux and GNU screen.
+	    " see also https://sunaku.github.io/vim-256color-bce.html
+	    set t_ut=
+	endif
+	set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
+	set t_8b=^[[48;2;%lu;%lu;%lum        " set background color
+	colorscheme dracula
+	set t_Co=256                         " Enable 256 colors
+
+" setting colors
 	set termguicolors
 	let g:gruvbox_contrast_dark = 'dark'
-	let g:airline_theme = 'dracula'
-	"let g:airline_powerline_fonts = 1
 	colorscheme dracula
 	hi Normal guibg=NONE ctermbg=NONE
 
-	function! Tgb()
-		colorscheme gruvbox
-		let g:airline_theme = 'gruvbox'
-	endfunction
 
-	function! Tayu()
-		colorscheme ayu
-		let g:airline_theme = 'ayu'
-	endfunction
+" KEY BINDINGS
+	" I want to use homekeys only
+	nnoremap <Up>		<Nop>
+	nnoremap <Down>		<Nop>
+	nnoremap <Right>	<Nop>
+	nnoremap <Left>		<Nop>
 
-	function! Tdra()
-		colorscheme dracula
-		let g:airline_theme = 'dracula'
-	endfunction
+	" I don't like pressing shift
+	nnoremap ; :
 
-	nnoremap ,tgb  :call Tgb()<CR>:call Tgb()<CR>
-	nnoremap ,tau  :call Tayu()<CR>:call Tayu()<CR>
-	nnoremap ,tdc  :call Tdra()<CR>:call Tdra()<CR>
+	" special map find and change
+    nnoremap ,m /<++><CR>cf>
+    inoremap ,m <Esc>/<++><CR>cf>
 
-" quickstart
+	" Shortcutting split navigation
+	nnoremap <space>wh <C-w>h
+	nnoremap <space>wj <C-w>j
+	nnoremap <space>wk <C-w>k
+	nnoremap <space>wl <C-w>l
+
+	" Shortcutting split navigation
+	nnoremap <space>wH <C-w>H
+	nnoremap <space>wJ <C-w>J
+	nnoremap <space>wK <C-w>K
+	nnoremap <space>wL <C-w>L
+
+	" easy lines space
+	nnoremap [<space> O<Esc>
+	nnoremap ]<space> o<Esc>
+
+	" Shortcut close window
+	map Q <C-w>c
+
+	" Mapping terminal exit to <Esc>
+	tnoremap <Esc> <C-\><C-n>
+
+	" split resizing bindings
+	nnoremap ,vr :vertical resize
+	nnoremap ,hr :resize
+
+	" quickstart
 	nnoremap ,nvi  :edit ~/.config/nvim/init.vim<CR>
 	nnoremap ,zsh  :edit ~/.zshrc<CR>
-	nnoremap ,st   :edit /home/shared/packages/my_configs/st-0.8.3/config.h<CR>
-	nnoremap ,dwm  :edit /home/shared/packages/my_configs/dwm/config.h<CR>
-	nnoremap ,dwmb :edit /home/shared/packages/my_configs/dwmblocks/blocks.h<CR>
 	nnoremap ,i3   :edit ~/.config/i3/config<CR>
 	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
 	nnoremap ,vi   :edit ~/.vimrc<CR>
-	nnoremap QQ    :w\|bd<CR>
-	"nnoremap ,ttet :tabnew|te<CR>
-	"nnoremap ,ev :vs|te<CR>
-	"nnoremap ,es :sp|te<CR>
 
-" remaps
-	" I want to use homekeys only
-	nnoremap <Up> 		<Nop>
-	nnoremap <Down> 	<Nop>
-	nnoremap <Right> 	<Nop>
-	nnoremap <Left> 	<Nop>
-	" I don't like pressing shift
-	nnoremap ; :
-	" easy buffer shifts
-	nnoremap <Right> 	:bn<CR>
-	nnoremap <Left> 	:bp<CR>
+	" terminal
+	nnoremap <space>tg :split<CR>:te<CR>
+	nnoremap <space>tv :vs<CR>:te<CR>
 
-" special map find and change
-        nnoremap ,m /<++><CR>cf>
-        inoremap ,m <Esc>/<++><CR>cf>
-
-
-if &term =~ '256color'
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://sunaku.github.io/vim-256color-bce.html
-    set t_ut=
-endif
-
-let g:sql_type_default = 'pgsql'
-
-" EasyAlign settings
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+	" close buffer
+	nnoremap <space>bd :bd<CR>
