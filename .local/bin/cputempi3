@@ -5,6 +5,6 @@ temp="$(sensors | awk '/Core 0/ {print $3}' | cut -b 2,3)"
 echo " TEMP:$temp°C "
 echo " TEMP:$temp°C "
 
-[ "$usage" -ge 75 ] && echo "#FF0000" && echo "#6272a4" && exit 0
-[ "$usage" -ge 50 ] && echo "#FF8000" && echo "#6272a4" && exit 0
-echo "#ffffff" && echo "#6272a4"&& exit 0
+[ "$temp" -ge 75 ] && echo "#FF0000" && echo "#458588" && exit 0
+[ "$temp" -ge 50 ] && echo "#FF8000" && echo "#458588" && exit 0
+echo "#ebdbb2" && echo "#458588"&& exit 0

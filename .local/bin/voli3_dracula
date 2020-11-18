@@ -3,4 +3,4 @@
 echo " ♬ $(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')% "
 echo " ♬ $(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')% "
 echo "#000000"
-echo "#fe8819"
+echo "#ffb86c"
