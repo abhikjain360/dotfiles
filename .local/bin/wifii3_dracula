@@ -9,4 +9,4 @@ strength="$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%
 echo "   $strength $ssid "
 echo "   $strength $ssid "
 echo "#000000"
-echo "#fabd27"
+echo "#ff89d6"

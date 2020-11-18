@@ -1,0 +1,11 @@
+#!/bin/sh
+
+usage="$(echo "100 -$(mpstat 1 1 | sed -n 5p | awk '{print $12}')" | bc)"
+
+echo " CPU:$usage "
+echo " CPU:$usage "
+
+[ $(echo "$usage > 75" | bc) -ne 0 ] && echo "#FF0000" && echo "#444777" && exit 0
+[ $(echo "$usage > 50" | bc) -ne 0 ] && echo "#FF8000" && echo "#444777" && exit 0
+[ $(echo "$usage > 25" | bc) -ne 0 ] && echo "#FFFF00" && echo "#444777" && exit 0
+echo "#ffffff" && echo "#444777"&& exit 0

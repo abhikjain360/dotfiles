@@ -3,4 +3,4 @@
 echo " $(date +"%y/%m/%d (%a) %H:%M:%S") "
 echo " $(date +"%y/%m/%d (%a) %H:%M:%S") "
 echo "#000000"
-echo "#b16286"
+echo "#bd93f9"
