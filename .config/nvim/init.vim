@@ -185,15 +185,15 @@ nmap ga <Plug>(EasyAlign)
 
 	" Applying codeAction to the selected region.
 	" Example: `<leader>aap` for current paragraph
-	xmap <leader>a  <Plug>(coc-codeaction-selected)
-	nmap <leader>a  <Plug>(coc-codeaction-selected)
+	"xmap <leader>a  <Plug>(coc-codeaction-selected)
+	"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 	" Formatting selected code.
-	xmap <leader>f  <Plug>(coc-format-selected)
-	nmap <leader>f  <Plug>(coc-format-selected)
+	"xmap <leader>f  <Plug>(coc-format-selected)
+	"nmap <leader>f  <Plug>(coc-format-selected)
 
 	" Remap keys for applying codeAction to the current buffer.
-	nmap <leader>ac  <Plug>(coc-codeaction)
+	"nmap <leader>ac  <Plug>(coc-codeaction)
 	" Apply AutoFix to problem on the current line.
 	nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -210,11 +210,13 @@ nmap ga <Plug>(EasyAlign)
 
 	" Use CTRL-S for selections ranges.
 	" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-	nmap <silent> <C-s> <Plug>(coc-range-select)
-	xmap <silent> <C-s> <Plug>(coc-range-select)
+	"nmap <silent> <C-s> <Plug>(coc-range-select)
+	"xmap <silent> <C-s> <Plug>(coc-range-select)
 
 	" Add `:Format` command to format current buffer.
 	command! -nargs=0 Format :call CocAction('format')
+
+	nnoremap <space>bf :Format<CR>
 
 	" Add `:Fold` command to fold current buffer.
 	command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -231,7 +233,7 @@ nmap ga <Plug>(EasyAlign)
 	" Show all diagnostics.
 	nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 	" Manage extensions.
-	nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+	"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 	" Show commands.
 	nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 	" Find symbol of current document.
@@ -248,16 +250,16 @@ nmap ga <Plug>(EasyAlign)
 " lightline/bufferline Settings
 
 " defaults copied from README on GitHub
-let g:lightline#bufferline#show_number      = 1
-let g:lightline#bufferline#shorten_path     = 2
+let g:lightline#bufferline#show_number      = 2
+let g:lightline#bufferline#shorten_path     = 1
 let g:lightline#bufferline#unnamed          = '[No Name]'
-let g:lightline                             = {'colorscheme': 'dracula'}
+let g:lightline                             = {'colorscheme': 'gruvbox'}
 let g:lightline.tabline                     = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand            = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type              = {'buffers': 'tabsel'}
 let g:lightline#bufferline#unicode_symbols  = 1
 let g:lightline#bufferline#enable_nerdfont  = 1
-g:lightline#bufferline#modified             = ' +'
+"g:lightline#bufferline#modified             = ' +'
 
 " mappings
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -296,7 +298,7 @@ let g:fern#renderer = "nerdfont"
 " configs
 let g:fern#drawer_width = 30
 let g:fern#default_hidden = 1
-let g:fern#disable_drawer_auto_quit = 1
+let g:fern#disable_drawer_smart_quit = 1
 
 " mapping
 nnoremap <space>ft :Fern . -drawer -toggle <CR>
@@ -333,13 +335,15 @@ augroup END
 	endif
 	set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
 	set t_8b=^[[48;2;%lu;%lu;%lum        " set background color
-	colorscheme dracula
 	set t_Co=256                         " Enable 256 colors
 
 " setting colors
 	set termguicolors
-	let g:gruvbox_contrast_dark = 'dark'
-	colorscheme dracula
+	let g:gruvbox_contrast_dark = 'hard'
+	let g:gruvbox_italic = 0
+	let g:gruvbox_bold = 1
+	colorscheme gruvbox
+	set background=dark
 	hi Normal guibg=NONE ctermbg=NONE
 
 
@@ -384,7 +388,7 @@ augroup END
 	nnoremap ,hr :resize
 
 	" quickstart
-	nnoremap ,nvi  :edit ~/.config/nvim/init.vim<CR>
+	nnoremap <space>ec  :edit ~/.config/nvim/init.vim<CR>
 	nnoremap ,zsh  :edit ~/.zshrc<CR>
 	nnoremap ,i3   :edit ~/.config/i3/config<CR>
 	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
