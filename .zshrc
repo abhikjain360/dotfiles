@@ -302,8 +302,18 @@ alias -s {README,LICENSE}='nvim'
 alias -s {conf,config,vim}='nvim'
 alias -s {toml,lock,rs}='nvim'
 
-#### Auto open zathura
-alias setz='setsid zathura'
+#### quickly open somethings
+alias sz='setsid zathura'
+alias sm='setsid mpv'
+
+#### fzf + zathura
+alias fz='setsid zathura "$(fzf)" 2> /dev/null'
+
+#### fzf + mpv
+alias fm='setsid mpv "$(fzf)"'
+
+#### fzf + nvim
+alias fv='nvim "$(fzf)"'
 
 #### nvim always
 alias v='nvim'
@@ -324,6 +334,9 @@ alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 export EDITOR='/usr/bin/nvim'
 export TERMINAL='/usr/bin/st'
 export VISUAL='/usr/bin/nvim'
+
+#### gnvim show lightline-bufferline
+export gnvim='gnvim --disable-ext-tabline'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

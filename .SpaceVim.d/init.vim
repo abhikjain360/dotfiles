@@ -8,22 +8,16 @@
 
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
 
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
+
 " Some settings I prefer
 " Tab spacing
-set autoindent
 set scrolloff=8
-set lazyredraw
 set splitbelow
 set splitright
 
 " wrap long lines to next one, doesn't actually increase line numbers
 set wrap
-
-" Shortcutting split navigation, saving a keypress:
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
@@ -108,12 +102,6 @@ augroup end
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
 
-" Remap keys for applying codeAction to the current buffer.
-"nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -207,3 +195,7 @@ nmap ga <Plug>(EasyAlign)
 
 " vimtex settings
 	let g:tex_flavor='latex'
+
+  let g:neomake_open_list = 0
+
+  let g:coc_enable_locationlist = 0
