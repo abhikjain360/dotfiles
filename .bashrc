@@ -17,3 +17,6 @@ alias mv="mv -v"
 alias mkdir="mkdir -vp"
 alias cp="cp -v -ir"
 alias rm="rm -v -ir"
+
+### get Rusty goodness
+# source "$HOME/.cargo/env"

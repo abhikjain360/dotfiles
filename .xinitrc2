@@ -15,7 +15,8 @@ fi
 [ -r ~/.Xresources ] && xrdb -merge ~/.Xresources
 [ -r ~/.xprofile ] && . ~/.xprofile
 
+# for IntelliJ IDEA
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # launch the session, commands below this line will be ignored
-setsid compton &
 exec i3

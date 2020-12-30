@@ -18,7 +18,9 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'mbbill/undotree'
 	Plug 'terryma/vim-multiple-cursors'
     Plug 'junegunn/vim-easy-align'
-	Plug 'preservim/nerdcommenter'
+	Plug 'tpope/vim-commentary'
+	Plug 'Yggdroot/indentLine'
+	Plug 'luochen1990/rainbow'
 
 	" notes management
 	Plug 'vimwiki/vimwiki'
@@ -31,12 +33,12 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'mengelbrecht/lightline-bufferline'
 
 	" file browsing
-	Plug 'lambdalisue/fern.vim'
-	Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-	Plug 'lambdalisue/fern-git-status.vim'
-	Plug 'lambdalisue/nerdfont.vim'
-	" this needed for some problem
-	Plug 'antoinemadec/FixCursorHold.nvim'
+	" Plug 'lambdalisue/fern.vim'
+	" Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+	" Plug 'lambdalisue/fern-git-status.vim'
+	" Plug 'lambdalisue/nerdfont.vim'
+	" " this needed for some problem
+	" Plug 'antoinemadec/FixCursorHold.nvim'
 
 	" code completion/linting
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -45,6 +47,7 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
+	Plug 'junegunn/goyo.vim'
 call plug#end()
 
 " VANILLA VIM SETTINGS
@@ -76,14 +79,14 @@ call plug#end()
 	set modeline
 	set modelines=2
 	set hidden
-	set cmdheight=2
+	set cmdheight=1
 	set updatetime=100
 	set signcolumn=yes
 	" don't redraw screen so often
 	set lazyredraw
 	set encoding=utf-8
 	set autochdir
-    set scrolloff=8
+    set scrolloff=4
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -108,7 +111,25 @@ call plug#end()
 	let g:python3_host_prog='/usr/bin/python'
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
-	map <leader>o :setlocal spell! spelllang=en_gb<CR>
+	map <leader>o :%GrammarousCheck<CR>
+	map <leader>O :setlocal spell! spelllang=en_gb<CR>
+
+" make it so that unfocused split has absolute numbering
+	autocmd WinEnter * set rnu
+	autocmd WinLeave * set rnu!
+
+" save undo history / persistent history
+	set undofile
+
+" remember all the foldings
+	augroup remember_folds
+		autocmd!
+		autocmd BufWinLeave * mkview
+		autocmd BufWinEnter * silent! loadview
+	augroup END
+
+	set list
+	let &listchars="tab:¦ ,nbsp:_,trail:-"
 
 " PLUGIN SPECIFIC SETTINGS
 
@@ -162,11 +183,11 @@ nmap ga <Plug>(EasyAlign)
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 	function! s:show_documentation()
-	  if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	  else
-		call CocAction('doHover')
-	  endif
+		if (index(['vim','help'], &filetype) >= 0)
+			execute 'h '.expand('<cword>')
+		else
+			call CocAction('doHover')
+		endif
 	endfunction
 
 	" Highlight the symbol and its references when holding the cursor.
@@ -176,11 +197,11 @@ nmap ga <Plug>(EasyAlign)
 	nmap <leader>rn <Plug>(coc-rename)
 
 	augroup mygroup
-	  autocmd!
-	  " Setup formatexpr specified filetype(s).
-	  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-	  " Update signature help on jump placeholder.
-	  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+		autocmd!
+		" Setup formatexpr specified filetype(s).
+		autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+		" Update signature help on jump placeholder.
+		autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 	augroup end
 
 	" Applying codeAction to the selected region.
@@ -231,21 +252,23 @@ nmap ga <Plug>(EasyAlign)
 
 	" Mappings for CoCList
 	" Show all diagnostics.
-	nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+	nnoremap <silent><nowait> <space>za  :<C-u>CocList diagnostics<cr>
 	" Manage extensions.
-	"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+	nnoremap <silent><nowait> <space>ze  :<C-u>CocList extensions<cr>
 	" Show commands.
-	nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+	nnoremap <silent><nowait> <space>zc  :<C-u>CocList commands<cr>
 	" Find symbol of current document.
-	nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+	nnoremap <silent><nowait> <space>zo  :<C-u>CocList outline<cr>
 	" Search workspace symbols.
-	nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+	nnoremap <silent><nowait> <space>zs  :<C-u>CocList -I symbols<cr>
 	" Do default action for next item.
-	nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+	nnoremap <silent><nowait> <space>zj  :<C-u>CocNext<CR>
 	" Do default action for previous item.
-	nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+	nnoremap <silent><nowait> <space>zk  :<C-u>CocPrev<CR>
+	" Open coc list
+	nnoremap <silent><nowait> <space>zl :<C-u>CocList<CR>
 	" Resume latest coc list.
-	nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+	nnoremap <silent><nowait> <space>zp  :<C-u>CocListResume<CR>
 
 " lightline/bufferline Settings
 
@@ -288,50 +311,17 @@ set showtabline=2
 " mode info already in lightline, show cmdline shouldn't show it
 set noshowmode
 
-" Fern Settings
-
-" needed for some problem
-let g:cursorhold_updatetime = 100
-" icons
-let g:fern#renderer = "nerdfont"
-
-" configs
-let g:fern#drawer_width = 30
-let g:fern#default_hidden = 1
-let g:fern#disable_drawer_smart_quit = 1
-
-" mapping
-nnoremap <space>ft :Fern . -drawer -toggle <CR>
-function! s:init_fern() abort
-  nmap <buffer> H <Plug>(fern-action-open:split)
-  nmap <buffer> V <Plug>(fern-action-open:vsplit)
-  nmap <buffer> o <Plug>(fern-action-open:select)
-  nmap <buffer> R <Plug>(fern-action-rename)
-  nmap <buffer> M <Plug>(fern-action-move)
-  nmap <buffer> C <Plug>(fern-action-copy)
-  nmap <buffer> N <Plug>(fern-action-new-file)
-  nmap <buffer> D <Plug>(fern-action-new-dir)
-  nmap <buffer> dD <Plug>(fern-action-remove)
-  nmap <buffer> s <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> m <Plug>(fern-action-mark)
-  nmap <buffer> / <Plug>(fern-action-grep)
-  nmap <buffer> yp <Plug>(fern-action-yank:path)
-  nmap <buffer> t <Plug>(fern-action-terminal:select)
-endfunction
-
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-augroup END
+" GOYO settings
+nnoremap <space>g :Goyo<CR>:<CR>
 
 " THEME
 
 " fix st coloring issues
 	if &term =~ '256color'
-	    " disable Background Color Erase (BCE) so that color schemes
-	    " render properly when inside 256-color tmux and GNU screen.
-	    " see also https://sunaku.github.io/vim-256color-bce.html
-	    set t_ut=
+		" disable Background Color Erase (BCE) so that color schemes
+		" render properly when inside 256-color tmux and GNU screen.
+		" see also https://sunaku.github.io/vim-256color-bce.html
+		set t_ut=
 	endif
 	set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
 	set t_8b=^[[48;2;%lu;%lu;%lum        " set background color
@@ -344,7 +334,17 @@ augroup END
 	let g:gruvbox_bold = 1
 	colorscheme gruvbox
 	set background=dark
-	hi Normal guibg=NONE ctermbg=NONE
+	" hi Normal guibg=NONE ctermbg=NONE
+
+" UNDOTREE Settings
+	nnoremap <space>u :UndotreeToggle<CR>
+
+" INDENTLINE Settings
+	let g:indentLine_char = '¦'
+	let g:indentLine_showFirstIndentLevel = 1
+
+" RAINBOW settings
+	let g:rainbow_active = 1
 
 
 " KEY BINDINGS
@@ -358,8 +358,8 @@ augroup END
 	nnoremap ; :
 
 	" special map find and change
-    nnoremap ,m /<++><CR>cf>
-    inoremap ,m <Esc>/<++><CR>cf>
+    nnoremap ,m /<++><CR>ca<
+    inoremap ,m <Esc>/<++><CR>ca<
 
 	" Shortcutting split navigation
 	nnoremap <space>wh <C-w>h
@@ -367,11 +367,10 @@ augroup END
 	nnoremap <space>wk <C-w>k
 	nnoremap <space>wl <C-w>l
 
-	" Shortcutting split navigation
-	nnoremap <space>wH <C-w>H
-	nnoremap <space>wJ <C-w>J
-	nnoremap <space>wK <C-w>K
-	nnoremap <space>wL <C-w>L
+	nnoremap <space>wR <C-w>R
+
+	" Make splits equal
+	nnoremap <space>w= <C-w>=
 
 	" easy lines space
 	nnoremap [<space> O<Esc>
@@ -389,6 +388,8 @@ augroup END
 
 	" quickstart
 	nnoremap <space>ec  :edit ~/.config/nvim/init.vim<CR>
+	nnoremap <space>et  :edit ~/vimwiki/TODO list.wiki<CR>
+	nnoremap <space>ei  :edit ~/vimwiki/Improvement list.wiki<CR>
 	nnoremap ,zsh  :edit ~/.zshrc<CR>
 	nnoremap ,i3   :edit ~/.config/i3/config<CR>
 	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
@@ -400,3 +401,41 @@ augroup END
 
 	" close buffer
 	nnoremap <space>bd :bd<CR>
+
+	" remove annoying highlights
+	nnoremap <leader>n :noh<CR>
+
+	" Y seems wrong
+	nnoremap Y y$
+
+	" vscode-like terminal
+	" Toggle 'default' terminal
+	nnoremap <space>' :call ChooseTerm("term-slider", 1)<CR>
+	" Start terminal in current pane
+	nnoremap <space>" :call ChooseTerm("term-pane", 0)<CR>
+
+	function! ChooseTerm(termname, slider)
+		let pane = bufwinnr(a:termname)
+		let buf = bufexists(a:termname)
+		if pane > 0
+			" pane is visible
+			if a:slider > 0
+				:exe pane . "wincmd c"
+			else
+				:exe "e #"
+			endif
+		elseif buf > 0
+			" buffer is not in pane
+			if a:slider
+				:exe "split"
+			endif
+			:exe "buffer " . a:termname
+		else
+			" buffer is not loaded, create
+			if a:slider
+				:exe "split"
+			endif
+			:terminal
+			:exe "f " a:termname
+		endif
+	endfunction

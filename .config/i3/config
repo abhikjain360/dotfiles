@@ -5,8 +5,8 @@
 set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 5
-default_floating_border pixel 5
+default_border pixel 0
+default_floating_border pixel 0
 
 # Hide borders
 hide_edge_borders none
@@ -30,25 +30,16 @@ bindsym $mod+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id dmenu_run -fn "Fira Code:size=16"
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec st 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+# Applications
+bindsym $mod+m exec st -e 'ncmpcpp'
+bindsym $mod+v exec st -e 'alsamixer'
+bindsym $mod+s exec st -e 'stub'
+bindsym $mod+shift+w exec --no-startup-id bookmarks2
+bindsym $mod+w exec brave
+bindsym $mod+e exec st -e ranger
 
-# Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 bindsym F11 exec "xbacklight -10"
 bindsym F12 exec "xbacklight +10"
-
-# Start Applications
-bindsym $mod+c exec google-chrome-stable
-bindsym $mod+e exec st -e ranger
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
 
@@ -75,11 +66,6 @@ bindsym $mod+t split toggle
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
-
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -87,7 +73,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
-bindsym $mod++s sticky toggle
+bindsym $mod+shift+s sticky toggle
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -139,19 +125,19 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
 #for_window [class="Clipgrab"] floating enable
 #for_window [title="File Transfer*"] floating enable
 #for_window [class="Galculator"] floating enable border pixel 1
 #for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Nitrogen"] floating enable sticky enable border normal
+#for_window [class="Nitrogen"] floating enable sticky enable border normal
 #for_window [class="Oblogout"] fullscreen enable
 #for_window [class="octopi"] floating enable
-for_window [class="Pamac-manager"] floating enable
+#for_window [class="Pamac-manager"] floating enable
 #for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
 #for_window [class="URxvt"] border none
 #for_window [class="st"] border none
+#for_window [title=" "] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -247,7 +233,7 @@ bar {
 }
 
 # hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
+bindsym $mod+b bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
@@ -318,4 +304,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 	bindsym q      mode "default"
 }
-

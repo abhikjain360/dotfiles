@@ -2,12 +2,18 @@
 	"languageserver": {
 		"clangd": {
 			"command": "clangd",
-			"filetypes": ["c", "cpp", "cuda", "h", "hpp"],
-			"rootPatterns":["compile_flags.txt"]
+			"filetypes": [
+				"c",
+				"cpp",
+				"cuda",
+				"h",
+				"hpp"
+			],
+			"rootPatterns": [
+				"compile_flags.txt"
+			]
 		}
 	},
-	"markdownlint.config": {
-		"line_length": false,
-		"no-inline-html": false
-	}
+	"rust-analyzer.updates.prompt": false,
+	"rpc.hideStartupMessage": true
 }
