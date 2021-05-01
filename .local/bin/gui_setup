@@ -1,0 +1,68 @@
+#/bin/sh
+
+# installing some stuff from official repo
+sudo pacman -Syu --noconfirm --needed git curl wget neovim python python-pip xorg xorg-xinit unzip gcc make cmake harfbuzz freetype2 fontconfig
+
+# setting up languages
+pip install -U pynvim pip
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+nvm install node
+npm install -g neovim
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup toolchain install stable
+
+echo $'\n' "Need to manually remove NVM configs from all profiles !!" $'\n'
+
+# getting suckless utilities I use from my github
+mkdir -p -r ~/repos/suckless
+cd suckless
+git clone https://github.com/abhikjain360/dwm
+git clone https://github.com/abhikjain360/st
+git clone https://github.com/abhikjain360/dmenu
+git clone https://github.com/abhikjain360/dwmblocks
+git clone https://github.com/abhikjain360/slock
+
+# compiling & installing all the suckless stuff
+cd dwm
+sudo make install
+cd ../st
+sudo make install
+cd ../dmenu
+sudo make install
+cd ../dwmblocks
+sudo make install
+cd ../slock
+sudo make install
+
+# setting up dotfiles
+cd ~/repos
+git clone https://github.com/abhikjain360/dotfiles
+cd dotfiles
+ln -sf ~/.bashrc .bashrc
+ln -sf ~/.zprofile .zprofile
+ln -sf ~/.profile .profile
+ln -sf ~/.xprofile .xprofile
+ln -sf ~/.zshrc .zshrc
+ln -sf ~/.xinitrc .xinitrc
+mv ~/.local ~/.local_bak
+cp .local ~/.local
+mv ~/.config ~/.config_bak
+cp .config ~/.config
+
+# setting up SpaceVim with neovim
+sh -c `curl https://spacevim.org/install.sh`
+mv ~/.SpaceVim/init.vim ~/.SpaceVim/init.vim.bak
+ln -sf ~/.SpaceVim/init.vim .SpaceVim.d/init.vim
+mkdir ~/.SpaceVim.d
+ln -sf ~/.SpaceVim.d/init.toml .SpaceVim.d/init.toml
+
+# I don't link SpaceVim messing with original vim
+rm -rf ~/.vim
+ln -sf ~/.vimrc .vimrc
+
+# add fonts stuff
+mkdir -p -r ~/.local/share/fonts
+cd ~/.local/share/fonts
+wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
+unzip Fira_Code_v5.2.zip
+fc-cache -f -v

@@ -13,14 +13,21 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'ap/vim-css-color'
 	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 
+	" beautify + readability
+	Plug 'Yggdroot/indentLine'
+	Plug 'luochen1990/rainbow'
+
 	" utility
 	Plug 'tpope/vim-abolish'
 	Plug 'mbbill/undotree'
 	Plug 'terryma/vim-multiple-cursors'
     Plug 'junegunn/vim-easy-align'
 	Plug 'tpope/vim-commentary'
-	Plug 'Yggdroot/indentLine'
-	Plug 'luochen1990/rainbow'
+	Plug 'chrisbra/unicode.vim'
+
+	" fzf
+	Plug 'airblade/vim-rooter'
+	Plug 'junegunn/fzf.vim'
 
 	" notes management
 	Plug 'vimwiki/vimwiki'
@@ -32,7 +39,7 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'itchyny/lightline.vim'
 	Plug 'mengelbrecht/lightline-bufferline'
 
-	" file browsing
+	" " file browsing
 	" Plug 'lambdalisue/fern.vim'
 	" Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 	" Plug 'lambdalisue/fern-git-status.vim'
@@ -43,11 +50,15 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	" code completion/linting
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'lervag/vimtex', { 'for': 'tex' }
-	Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+	" Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+	" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	Plug 'junegunn/goyo.vim'
+	Plug 'cespare/vim-toml', { 'for' : 'toml' }
+	Plug 'SkyLeach/pudb.vim'
+	Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+	Plug 'abhikjain360/wgsl.vim', { 'for': 'wgsl' }
 call plug#end()
 
 " VANILLA VIM SETTINGS
@@ -93,8 +104,8 @@ call plug#end()
 	set wildmenu
 	set showcmd
 
-" Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
+" " Disables automatic commenting on newline:
+" 	autocmd FileType * setlocal formatoptions-=r formatoptions-=o
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow
@@ -121,15 +132,20 @@ call plug#end()
 " save undo history / persistent history
 	set undofile
 
-" remember all the foldings
-	augroup remember_folds
-		autocmd!
-		autocmd BufWinLeave * mkview
-		autocmd BufWinEnter * silent! loadview
-	augroup END
+" " remember all the foldings
+" 	augroup remember_folds
+" 		autocmd!
+" 		autocmd BufWinLeave * mkview
+" 		autocmd BufWinEnter * silent! loadview
+" 	augroup END
 
+" show indentlines and extra trailing whitespaces
 	set list
 	let &listchars="tab:¦ ,nbsp:_,trail:-"
+
+" remove scrolloff in terminal
+	au TermEnter * set scrolloff=0
+	au TermLeave * set scrolloff=4
 
 " PLUGIN SPECIFIC SETTINGS
 
@@ -270,7 +286,10 @@ nmap ga <Plug>(EasyAlign)
 	" Resume latest coc list.
 	nnoremap <silent><nowait> <space>zp  :<C-u>CocListResume<CR>
 
-" lightline/bufferline Settings
+" COC-EXLPLORER SETIINGS
+nnoremap <space>te :CocCommand explorer --toggle<CR>
+
+" LIGHTLINE/BUFFERLINE SETTINGS
 
 " defaults copied from README on GitHub
 let g:lightline#bufferline#show_number      = 2
@@ -282,7 +301,9 @@ let g:lightline.component_expand            = {'buffers': 'lightline#bufferline#
 let g:lightline.component_type              = {'buffers': 'tabsel'}
 let g:lightline#bufferline#unicode_symbols  = 1
 let g:lightline#bufferline#enable_nerdfont  = 1
-"g:lightline#bufferline#modified             = ' +'
+let g:lightline#bufferline#clickable        = 1
+let g:lightline.component_raw               = {'buffers': 1}
+"g:lightline#bufferline#modified            = ' +'
 
 " mappings
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
@@ -334,7 +355,7 @@ nnoremap <space>g :Goyo<CR>:<CR>
 	let g:gruvbox_bold = 1
 	colorscheme gruvbox
 	set background=dark
-	" hi Normal guibg=NONE ctermbg=NONE
+	hi Normal ctermbg=NONE
 
 " UNDOTREE Settings
 	nnoremap <space>u :UndotreeToggle<CR>
@@ -346,13 +367,28 @@ nnoremap <space>g :Goyo<CR>:<CR>
 " RAINBOW settings
 	let g:rainbow_active = 1
 
+" FZF settings + bindings
+	" this command prevents fzf from searching in useless files
+	let $FZF_DEFAULT_COMMAND = "find . -type d \\( -name .git -o -name target -o -name node_modules -o -name vendor \\) -prune -o -type f -printf '%P\n'"
+	let g:fzf_command_prefix = 'Fzf'
+	" let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
+
+	nnoremap <space>f<CR>
+	nnoremap <space>ff :FzfFiles<CR>
+	nnoremap <space>fg :FzfGFiles<CR>
+	nnoremap <space>fb :FzfBuffers<CR>
+	nnoremap <space>fs :FzfRg
+	nnoremap <space>fl :FzfLocate
+	nnoremap <space>ft :FzfFiletypes<CR>
+
 
 " KEY BINDINGS
-	" I want to use homekeys only
+	" I want to use homekeys only ...
 	nnoremap <Up>		<Nop>
 	nnoremap <Down>		<Nop>
-	nnoremap <Right>	<Nop>
-	nnoremap <Left>		<Nop>
+	" ... but map these to change tabs
+	nnoremap <Right>	:tabn<CR>
+	nnoremap <Left>		:tabp<CR>
 
 	" I don't like pressing shift
 	nnoremap ; :
@@ -367,6 +403,11 @@ nnoremap <space>g :Goyo<CR>:<CR>
 	nnoremap <space>wk <C-w>k
 	nnoremap <space>wl <C-w>l
 
+	nnoremap <space>wH <C-w>H
+	nnoremap <space>wJ <C-w>J
+	nnoremap <space>wK <C-w>K
+	nnoremap <space>wL <C-w>L
+
 	nnoremap <space>wR <C-w>R
 
 	" Make splits equal
@@ -375,6 +416,12 @@ nnoremap <space>g :Goyo<CR>:<CR>
 	" easy lines space
 	nnoremap [<space> O<Esc>
 	nnoremap ]<space> o<Esc>
+
+	" easy resizing
+	nnoremap <C-Left>	:vertical resize +5
+	nnoremap <C-Right>	:vertical resize -5
+	nnoremap <C-Up>		:resize +5
+	nnoremap <C-Down>	:resize -5
 
 	" Shortcut close window
 	map Q <C-w>c
@@ -388,12 +435,17 @@ nnoremap <space>g :Goyo<CR>:<CR>
 
 	" quickstart
 	nnoremap <space>ec  :edit ~/.config/nvim/init.vim<CR>
+	nnoremap <space>es  :edit ~/.local/bin/schedule<CR>
 	nnoremap <space>et  :edit ~/vimwiki/TODO list.wiki<CR>
 	nnoremap <space>ei  :edit ~/vimwiki/Improvement list.wiki<CR>
 	nnoremap ,zsh  :edit ~/.zshrc<CR>
 	nnoremap ,i3   :edit ~/.config/i3/config<CR>
 	nnoremap ,i3b  :edit ~/.config/i3blocks/config<CR>
 	nnoremap ,vi   :edit ~/.vimrc<CR>
+
+	" select all
+	nnoremap <M-a> ggvG$
+	inoremap <M-a> <Esc>ggvG$
 
 	" terminal
 	nnoremap <space>tg :split<CR>:te<CR>
@@ -405,10 +457,14 @@ nnoremap <space>g :Goyo<CR>:<CR>
 	" remove annoying highlights
 	nnoremap <leader>n :noh<CR>
 
-	" Y seems wrong
+	" seems wrong, Y?
 	nnoremap Y y$
 
-	" vscode-like terminal
+	" easier navigation when dealing with text not code
+	nnoremap j gj
+	nnoremap k gk
+
+" vscode-like terminal
 	" Toggle 'default' terminal
 	nnoremap <space>' :call ChooseTerm("term-slider", 1)<CR>
 	" Start terminal in current pane
@@ -439,3 +495,24 @@ nnoremap <space>g :Goyo<CR>:<CR>
 			:exe "f " a:termname
 		endif
 	endfunction
+
+" Vim GDB
+let g:termdebug_useFloatingHover = 0
+let g:nvimgdb_config_override = {
+  \ 'key_next': 'n',
+  \ 'key_step': 's',
+  \ 'key_finish': 'f',
+  \ 'key_continue': 'c',
+  \ 'key_until': 'u',
+  \ 'key_breakpoint': 'b',
+  \ 'set_tkeymaps': "NvimGdbNoTKeymaps",
+  \ 'key_eval':       'p',
+  \ 'key_quit':       'q',
+  \ }
+
+" Neovide
+let g:neovide_refresh_rate=60
+set guifont=FiraCode:h18
+
+" Needed to parse header files as C, comment out when not needed
+autocmd BufNewFile,BufRead,BufEnter *.h setfiletype c

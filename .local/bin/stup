@@ -1,0 +1,4 @@
+#!/bin/bash
+
+papers_path="$(find $HOME/study/papers | fzf)";
+setsid --fork zathura "$papers_path" && exit;

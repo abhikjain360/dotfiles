@@ -16,7 +16,7 @@ bindsym $mod+u border none
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:'Fira Code':size=16
+font xft:'Fira Code':size=14
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod

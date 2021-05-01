@@ -147,16 +147,16 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w 
 zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
 zstyle ':completion:*:(vim|nvim|vi|nano):*' ignored-patterns '*.(wav|mp3|flac|ogg|mp4|avi|mkv|iso|so|o|7z|zip|tar|gz|bz2|rar|deb|pkg|gzip|pdf|png|jpeg|jpg|gif)'
 
-# hostnames and addresses
-zstyle ':completion:*:ssh:*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
-zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hosts-ipaddr
-zstyle ':completion:*:(scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
-zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-domain hosts-host hosts-ipaddr
-zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
-zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
-zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
-zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
-ttyctl -f
+# # hostnames and addresses
+# zstyle ':completion:*:ssh:*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+# zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hosts-ipaddr
+# zstyle ':completion:*:(scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+# zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-domain hosts-host hosts-ipaddr
+# zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
+# zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
+# zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
+# zstyle -e ':completion:*:hosts' hosts 'reply=( ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ } ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*} ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}})'
+# ttyctl -f
 
 # exapnd aliases
 zstyle ':completion:*' completer _expand_alias _complete _ignored
@@ -256,25 +256,25 @@ source $HOME/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
 #fpath=(~/.local/share/zsh/zsh-completions/src $fpath)
 
 # zsh-autosuggestions
-source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-history-substring-search
-source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $HOME/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # fast-syntax-highlighting
-source ~/.local/share/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/.local/share/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 
 #### Prettier view
 alias la='exa -al --color=always --group-directories-first'
-alias lag='exa -al --color=always --group-directories-first | less -r'
+alias lal='exa -al --color=always --group-directories-first | less -r'
 alias mv='mv -v'
 alias mkdir='mkdir -vp'
-alias rm='rm -vr'
+alias rm='rm -rv'
 alias cp='cp -rv'
 
 #### Docker aliases
@@ -295,7 +295,7 @@ alias syr='sudo systemctl restart'
 alias syt='sudo systemctl status'
 
 #### Auto open neovim
-alias -s {cpp,hpp,c,h,py}='nvim'
+alias -s {cpp,hpp,c,h}='nvim'
 alias -s {yaml,js,json,sql}='nvim'
 alias -s {txt,markdown,md}='nvim'
 alias -s {README,LICENSE}='nvim'
@@ -321,8 +321,11 @@ alias v='nvim'
 #### YouTube songs download
 alias ysd='youtube-dl -f bestaudio'
 
-#### Discord MPD
-alias mpd_discord_richpresence='mpd_discord_richpresence -h=192.168.29.118 -p=6600 --fork -h=192.168.29.118 -p=6600 --fork'
+#### quickly launch same terminal
+alias samedir='setsid st 2>/dev/null &'
+
+#### schedule
+alias schedule='v ~/.local/bin/schedule'
 
 #### Quick study book find
 #alias stub="setsid zathura \"\$(find $HOME/study | fzf)\""
@@ -330,13 +333,22 @@ alias mpd_discord_richpresence='mpd_discord_richpresence -h=192.168.29.118 -p=66
 #### tlmgr package manager for TeX
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
+#### python aliases
+alias pyai='source $HOME/pyai/bin/activate'
+alias pytg='source $HOME/pytg/bin/activate'
+
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
 export TERMINAL='/usr/bin/st'
 export VISUAL='/usr/bin/nvim'
 
+### Notes
+alias diary='nvim -c VimwikiMakeDiaryNote'
+alias notes='nvim -c VimwikiIndex'
+alias index='nvim $(find $HOME/vimwiki | fzf)'
+
 #### gnvim show lightline-bufferline
-export gnvim='gnvim --disable-ext-tabline'
+alias gnvim='gnvim --disable-ext-tabline'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
