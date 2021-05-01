@@ -18,5 +18,17 @@ fi
 # for IntelliJ IDEA
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+#### Things I added ####
+nitrogen --restore 			# restore background
+dunst &					# notifications
+unclutter &				# undisplay unused mouse
+start-pulseaudio-x11 &  # pulseaudio start
+[ $(date +"%H") -le 06 ] && [ $(date +"%H") -ge 19 ] && redshift & # red light for eye protection
+remaps &				# remap keys
+xset dpms 600 900 1200			# turn unupdated screen off
+dwmblocks & 				# set statusbar
+
+setsid picom &
+
 # launch the session, commands below this line will be ignored
 exec i3

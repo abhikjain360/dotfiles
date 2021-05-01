@@ -15,5 +15,5 @@
 		}
 	},
 	"rust-analyzer.updates.prompt": false,
-	"rpc.hideStartupMessage": true
+	"rust-analyzer.cargo.allFeatures": true
 }

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+book_path="$(find $HOME/study $HOME/books | fzf)";
+setsid --fork zathura "$book_path" && exit;

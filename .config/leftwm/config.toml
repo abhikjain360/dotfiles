@@ -1,6 +1,14 @@
 modkey = "Mod4"
+mousekey = "Mod1"
 workspaces = []
-tags = ["1", "2", "3", "snd", "web", "_>", "meet", "chat", "code"]
+tags = ["I", "II", "III", "4:>_", "5:snd", "6:meet", "7:chat", "8:code", "9:web"]
+
+layouts = [
+	"MainAndVertStack",
+    "MainAndHorizontalStack",
+	"Fibonacci",
+    "Monocle",
+]
 
 [[keybind]]
 command = "Execute"
@@ -22,7 +30,7 @@ key = "w"
 
 [[keybind]]
 command = "Execute"
-value = "stub"
+value = "st -e stub"
 modifier = ["modkey"]
 key = "s"
 
@@ -63,6 +71,30 @@ modifier = ["modkey"]
 key = "e"
 
 [[keybind]]
+command = "Execute"
+value = "st -e ncmpcpp"
+modifier = ["modkey"]
+key = "m"
+
+[[keybind]]
+command = "Execute"
+value = "amixer set Master toggle"
+modifier = ["modkey"]
+key = "XF86XK_AudioMute"
+
+[[keybind]]
+command = "Execute"
+value = "amixer set Master 5%+"
+modifier = ["modkey"]
+key = "XF86XK_AudioRaiseVolume"
+
+[[keybind]]
+command = "Execute"
+value = "amixer set Master 5%-"
+modifier = ["modkey"]
+key = "XF86XK_AudioLowerVolume"
+
+[[keybind]]
 command = "CloseWindow"
 modifier = ["modkey"]
 key = "q"
@@ -80,7 +112,7 @@ key = "q"
 
 [[keybind]]
 command = "Execute"
-value = "slock"
+value = "locker"
 modifier = ["modkey", "Shift"]
 key = "l"
 
@@ -130,6 +162,11 @@ key = "t"
 command = "PreviousLayout"
 modifier = ["modkey", "Shift"]
 key = "t"
+
+[[keybind]]
+command = "ToggleFullScreen"
+modifier = ["modkey"]
+key = "f"
 
 [[keybind]]
 command = "GotoTag"
