@@ -12,8 +12,28 @@
 			"rootPatterns": [
 				"compile_flags.txt"
 			]
+		},
+		"zls": {
+			"command": "$HOME/.local/bin/zls",
+			"filetypes": [
+				"zig"
+			]
+		},
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"]
+		},
+		"elmLS": {
+			"command": "elm-language-server",
+			"filetypes": ["elm"],
+			"rootPatterns": ["elm.json"]
 		}
 	},
 	"rust-analyzer.updates.prompt": false,
-	"rust-analyzer.cargo.allFeatures": true
+	"rust-analyzer.cargo.allFeatures": true,
+	"go.goplsOptions": {
+		"staticcheck": true
+	},
+	"codeLens.enable": true
 }
