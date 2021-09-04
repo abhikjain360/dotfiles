@@ -1,17 +1,18 @@
-" VIM PLUG SETTINGS
+set shell=/bin/zsh
 
+" Vim Plug Settings
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 	" brackets
 	Plug 'tpope/vim-surround'
 	Plug 'jiangmiao/auto-pairs'
 
 	" themes
-	Plug 'dracula/vim',{ 'as': 'dracula' }
 	Plug 'morhetz/gruvbox'
+	Plug 'dracula/vim'
+	Plug 'crusoexia/vim-monokai'
 
 	" better syntax highlighting
 	Plug 'ap/vim-css-color'
-	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 
 	" beautify + readability
 	Plug 'Yggdroot/indentLine'
@@ -23,14 +24,14 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'terryma/vim-multiple-cursors'
     Plug 'junegunn/vim-easy-align'
 	Plug 'tpope/vim-commentary'
-	Plug 'chrisbra/unicode.vim'
+	" Plug 'chrisbra/unicode.vim'
 
 	" fzf
 	Plug 'airblade/vim-rooter'
 	Plug 'junegunn/fzf.vim'
 
-	" notes management
-	Plug 'vimwiki/vimwiki'
+	" autojump
+	Plug 'nanotee/zoxide.vim'
 
 	" git
     Plug 'airblade/vim-gitgutter'
@@ -38,6 +39,10 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	" lightline + bufferline
 	Plug 'itchyny/lightline.vim'
 	Plug 'mengelbrecht/lightline-bufferline'
+
+	" note taking
+	Plug 'vimwiki/vimwiki'
+	Plug 'junegunn/goyo.vim'
 
 	" " file browsing
 	" Plug 'lambdalisue/fern.vim'
@@ -51,14 +56,13 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'lervag/vimtex', { 'for': 'tex' }
 	" Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-	" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+	Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 	Plug 'tikhomirov/vim-glsl', { 'for': 'glsl' }
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
-	Plug 'junegunn/goyo.vim'
 	Plug 'cespare/vim-toml', { 'for' : 'toml' }
-	Plug 'SkyLeach/pudb.vim'
-	Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 	Plug 'abhikjain360/wgsl.vim', { 'for': 'wgsl' }
+	Plug 'ziglang/zig.vim', { 'for': 'zig' }
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " VANILLA VIM SETTINGS
@@ -84,9 +88,6 @@ call plug#end()
 	filetype on
 	" indent newline to match previous line
 	set autoindent
-	" start scrolling with 8 lines gap
-	"set scrolloff=8
-	set shell=/usr/bin/zsh
 	set modeline
 	set modelines=2
 	set hidden
@@ -98,6 +99,7 @@ call plug#end()
 	set encoding=utf-8
 	set autochdir
     set scrolloff=4
+	set conceallevel=0
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -116,7 +118,7 @@ call plug#end()
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
-	"autocmd BufWritepre * %s/\n\+\%$//e
+	autocmd BufWritepre * %s/\n\+\%$//e
 
 " Python location
 	let g:python3_host_prog='/usr/bin/python'
@@ -138,10 +140,6 @@ call plug#end()
 " 		autocmd BufWinLeave * mkview
 " 		autocmd BufWinEnter * silent! loadview
 " 	augroup END
-
-" show indentlines and extra trailing whitespaces
-	set list
-	let &listchars="tab:¦ ,nbsp:_,trail:-"
 
 " remove scrolloff in terminal
 	au TermEnter * set scrolloff=0
@@ -332,8 +330,13 @@ set showtabline=2
 " mode info already in lightline, show cmdline shouldn't show it
 set noshowmode
 
+" VIMWIKI settings
+let g:vimwiki_key_mappings = { 'table_mappings': 0 }
+
 " GOYO settings
 nnoremap <space>g :Goyo<CR>:<CR>
+let g:goyo_width = 120
+let g:goyo_height = '90%'
 
 " THEME
 
@@ -350,19 +353,23 @@ nnoremap <space>g :Goyo<CR>:<CR>
 
 " setting colors
 	set termguicolors
-	let g:gruvbox_contrast_dark = 'hard'
-	let g:gruvbox_italic = 0
-	let g:gruvbox_bold = 1
-	colorscheme gruvbox
 	set background=dark
+	let g:gruvbox_contrast_dark = 'hard'
+	" let g:gruvbox_italic = 0
+	let g:gruvbox_bold = 1
+	let g:gruvbox_underline = 0
+	let ayucolor = 'dark'
+	colorscheme gruvbox
+	hi Normal cterm=bold,reverse,italic,standout
 	hi Normal ctermbg=NONE
 
 " UNDOTREE Settings
 	nnoremap <space>u :UndotreeToggle<CR>
 
 " INDENTLINE Settings
-	let g:indentLine_char = '¦'
-	let g:indentLine_showFirstIndentLevel = 1
+	" let g:indentLine_char = '¦'
+	" let g:indentLine_showFirstIndentLevel = 1
+	" let g:indentLine_conceallevel = 0
 
 " RAINBOW settings
 	let g:rainbow_active = 1
@@ -515,4 +522,13 @@ let g:neovide_refresh_rate=60
 set guifont=FiraCode:h18
 
 " Needed to parse header files as C, comment out when not needed
-autocmd BufNewFile,BufRead,BufEnter *.h setfiletype c
+" autocmd BufNewFile,BufRead,BufEnter *.h setfiletype c
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "rust", "c", "cpp", "toml", "yaml" },
+  highlight = {
+    enable = true,
+  },
+}
+EOF
