@@ -1,0 +1,10 @@
+theme = "gruvbox"
+
+[editor]
+line_numbers = "relative"
+
+[lsp]
+display-messages = true
+
+[keys.normal]
+"semicolon" = "command_mode"

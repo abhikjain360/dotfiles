@@ -1,16 +1,11 @@
-https://aperiodical.com/category/columns/mathsjam/feed/ "Maths"
-https://aperiodical.com/category/columns/puzzlebomb/feed/ "Maths"
-https://aperiodical.com/category/columns/travels-in-a-mathematical-world/feed/ "Maths"
-https://aperiodical.com/feed/podcast/ "Maths"
-
 https://www.scottaaronson.com/blog/?feed=rss2 "CS Stuff"
 https://vorner.github.io/feed.xml "CS Stuff"
 https://changelog.com/podcast/feed "CS Stuff"
+https://probablydance.com/feed "CS Stuff"
+https://matklad.github.io//feed.xml "CS Stuff"
+http://blog.1024cores.net/feeds/posts/default "CS Stuff"
 
-https://www.smbc-comics.com/comic/rss "comics"
-http://feeds.feedburner.com/oatmealfeed "comics"
 https://xkcd.com/atom.xml "comics"
-https://pbfcomics.com/feed/ "comics"
 
 https://feeds.simplecast.com/XA_851k3 "software developement"
 https://stackoverflow.blog/feed/ "software developement"

@@ -1,14 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-if [[ $- != *i* ]]; then
-	return
-fi
-
 # completion cache path setup
 typeset -g comppath="$HOME/.cache"
 typeset -g compfile="$comppath/.zcompdump"
@@ -180,8 +169,6 @@ export LESS=-r
 
 #PROMPT=$'\n'"%F{11}%n%f@%F{13}%m%f:%F{10}%~%f"$'\n'"$%B%F{26}$%f%b%B%F{14}$%f%b "
 
-source $HOME/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
-
 ## for git prompt https://joshdick.net/2012/12/30/my_git_prompt_for_zsh.html
 #setopt prompt_subst
 #autoload -U colors && colors # Enable colors in prompt
@@ -268,6 +255,10 @@ bindkey -M vicmd 'j' history-substring-search-down
 # fast-syntax-highlighting
 source $HOME/.local/share/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# broot because tree sucks
+source /home/kaka/.config/broot/launcher/bash/br
+
+alias v='nvim'
 
 #### Prettier view
 alias la='exa -al --color=always --group-directories-first'
@@ -303,39 +294,34 @@ alias -s {conf,config,vim}='nvim'
 alias -s {toml,lock,rs}='nvim'
 
 #### quickly open somethings
+alias mpv='mpv -af scaletempo'
 alias sz='setsid zathura'
-alias sm='setsid mpv'
+alias sm='setsid mpv -af scaletempo'
 
 #### fzf + zathura
-alias fz='setsid zathura "$(fzf)" 2> /dev/null'
+alias fz='sz "$(fzf)" 2> /dev/null'
 
 #### fzf + mpv
-alias fm='setsid mpv "$(fzf)"'
+alias fm='sm "$(fd | fzf)"'
 
 #### fzf + nvim
-alias fv='nvim "$(fzf)"'
+alias fv='nvim "$(fd | fzf)"'
 
-#### nvim always
-alias v='nvim'
-
-#### YouTube songs download
-alias ysd='youtube-dl -f bestaudio'
+#### youtube-dl
+alias ysd='youtube-dl -f bestaudio $(xclip -o)'
 
 #### quickly launch same terminal
 alias samedir='setsid st 2>/dev/null &'
 
-#### schedule
-alias schedule='v ~/.local/bin/schedule'
-
 #### Quick study book find
 #alias stub="setsid zathura \"\$(find $HOME/study | fzf)\""
 
-#### tlmgr package manager for TeX
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
-
-#### python aliases
-alias pyai='source $HOME/pyai/bin/activate'
-alias pytg='source $HOME/pytg/bin/activate'
+#### git
+alias gm='git commit -sS -m '
+alias gmm='git commit -sS'
+alias ga='git add'
+alias gc='git checkout'
+alias gcb='git checkout -b'
 
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
@@ -350,9 +336,28 @@ alias index='nvim $(find $HOME/vimwiki | fzf)'
 #### gnvim show lightline-bufferline
 alias gnvim='gnvim --disable-ext-tabline'
 
+#### procs - the rust ps
+alias ps='procs'
+alias pm='procs --sortd mem'
+alias pc='procs --sortd cpu'
+alias top='procs -w --sortd cpu'
+
+#### cargo shorts
+alias cr='cargo run'
+alias cb='cargo build'
+alias ct='cargo test'
+alias crr='cargo run --release'
+alias cbr='cargo build --release'
+alias ctr='cargo test release'
+alias cex='cargo expand'
+alias cs='cargo search'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # zoxide eval for fast folder movement
 eval "$(zoxide init zsh)"
 export _ZO_DATA_DIR="$HOME/.cache/zoxide/"
+
+# starship prompt
+eval "$(starship init zsh)"
