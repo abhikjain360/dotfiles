@@ -1,24 +1,49 @@
-sw_volume: 70
+sw_volume: 60
 audio_device_state:1:My Pulse Output
 audio_device_state:1:My HTTP Stream
 audio_device_state:1:Visualizer feed
 state: pause
-current: 7
-time: 21.261000
-random: 0
-repeat: 1
+current: 25
+time: 136.920000
+random: 1
+repeat: 0
 single: 0
 consume: 0
 crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Nea/Nea - Some Say.mp3
-1:NEFFEX/I'm Not Worth It/NEFFEX - I'm Not Worth It.mp3
-2:temp/ARY - Childhood Dreams (Cover by Seraphine).mp3
-3:temp/Stessie - Close To You.mp3
-4:temp/DROELOE - Sunburn.mp3
-5:temp/Jeris Johnson - damn!.mp3
-6:Karmin/Karmin - Acapella.mp3
-7:Karmin/Karmin - Take It Away.mp3
+0:Jammy Beatz/NBA Youngboy Type Beat x Lil Skies - 'Pride' _ Trap Beat Instrumental _ Free Type Beat.mp3
+1:Jammy Beatz/Juice WRLD Type Beat - 'No Pain'.mp3
+2:Jammy Beatz/Juice WRLD Type Beat - 'Pop Off' ft Lil Skies _ Melodic Trap Beat _ Free Type Beat.mp3
+3:Jammy Beatz/Lil Tecca Type Beat - 'Space Jam' _ Free Type Beat _ Rap Instrumental.mp3
+4:Jammy Beatz/Lil Uzi Vert Type Beat - 'Hyperspace' Free Type Beat.mp3
+5:Jammy Beatz/Juice WRLD Type Beat - 'Gave My All' _ Piano Type Beat.mp3
+6:Jammy Beatz/Lil Skies Type Beat - 'Daydream' ft Nav _ Chill Rap Beat _ Trap RnB Instrumental.mp3
+7:Jammy Beatz/Juice WRLD Type Beat - 'Farewell' _ Free Type Beat.mp3
+8:Jammy Beatz/Juice WRLD Type Beat - 'Just Hold On' Guitar Type Beat.mp3
+9:Jammy Beatz/Juice WRLD Type Beat - 'Light It Up' Free Type Beat.mp3
+10:Jammy Beatz/Lil Tecca Type Beat - 'Drippin' ft Juice WRLD _ Piano Type Beat _ Free Trap Instrumental.mp3
+11:Jammy Beatz/Lil Uzi Vert Type Beat 2021 - 'Illusion'.mp3
+12:Jammy Beatz/Lil Tecca Type Beat - 'Racks' _ Melodic Trap Beat _ Free Type Beat.mp3
+13:Jammy Beatz/Gucci Mane Type Beat - 'Better Dayz' ft 21 Savage Dark Trap Beat Trap Instrumental.mp3
+14:Jammy Beatz/Lil Tecca Type Beat - 'Island' _ Melodic Type Beat _ Afrobeat Type Instrumental.mp3
+15:Jammy Beatz/Lil Mosey Type Beat - 'All The Way' ft Lil Tecca _ Melodic Trap Beat _ Free Type Beat.mp3
+16:Jammy Beatz/Lil Tecca Type Beat - 'Tokyo Girl' Free Type Beat.mp3
+17:Jammy Beatz/Lil Tecca Type Beat - 'No Doubts'.mp3
+18:Jammy Beatz/Juice WRLD Type Beat - 'Know Yourself'.mp3
+19:Jammy Beatz/Lil Uzi Vert Type Beat - 'On God' Free Type Beat.mp3
+20:Jammy Beatz/Lil Tecca Type Beat - 'No Love' _ Free Type Beat.mp3
+21:Jammy Beatz/Quavo Type Beat - 'Saucin' _ Lil Baby x Gunna Type Beat _ Guitar Instrumental Beat.mp3
+22:Jammy Beatz/Lil Tecca Type Beat - 'Wild Side' _ Melodic Trap Beat _ Free Type Beat-.mp3
+23:Jammy Beatz/Juice WRLD Type Beat - 'Freedom' Piano Type Beat.mp3
+24:Jammy Beatz/Juice WRLD Type Beat - 'Don't Care'.mp3
+25:Jammy Beatz/Juice WRLD Type Beat - 'Quarantine' _ Guitar Rap_Trap Instrumental.mp3
+26:Jammy Beatz/Juice WRLD Type Beat - 'Can't Stop' Guitar Type Beat.mp3
+27:Jammy Beatz/Kid Ink x T Pain Type Beat - 'Full Speed' (Prod. By Jammy Beatz) _SOLD.mp3
+28:Jammy Beatz/Nav x PnB Rock Type Beat - 'Grind' _ Smooth Trap Instrumental _ Type Beat.mp3
+29:Jammy Beatz/Juice WRLD Type Beat - 'Lemonade'.mp3
+30:Jammy Beatz/Juice WRLD Type Beat - 'Motions'.mp3
+31:Jammy Beatz/Iann Dior Type Beat - 'Meant To Be'.mp3
+32:Jammy Beatz/Juice WRLD Type Beat - 'Paradise'.mp3
 playlist_end

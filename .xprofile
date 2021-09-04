@@ -2,20 +2,16 @@
 
 # sourced at boot by ~/.xinitrc and most display managers
 
-export XDG_CONFIG_HOME="$HOME/.config"
-
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-gnome-keyring-daemon --start --components=pkcs11 &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# gnome-keyring-daemon --start --components=pkcs11 &
 
 #### Things I added ####
-nitrogen --restore 	            # restore background
-dwmblocks & 		            # set statusbar
-dunst &				            # notifications
-unclutter &			            # undisplay unused mouse
-#xcompmgr &			            # transparancy
-#compton &			            # transparancy + blur
+# nitrogen --restore 	            # restore background
+# dunst &				            # notifications
+# unclutter &			            # undisplay unused mouse
+# xcompmgr &			            # transparancy
+# compton &			            # transparancy + blur
 remaps &			            # remap keys
 xset dpms 600 900 1200			# turn unupdated screen off
-start-pulseaudio-x11 &
 
 [ $(date +"%H") -le 06 ] && [ $(date +"%H") -ge 19 ] && redshift & # red light for eye protection

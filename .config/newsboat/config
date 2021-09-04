@@ -1,8 +1,8 @@
 download-retries 4
 download-timeout 30
 
-browser "google-chrome-stable %u"
-external-url-viewer "google-chrome-stable"
+browser "brave %u"
+external-url-viewer "brave"
 
 color info default default reverse
 color listnormal_unread yellow default

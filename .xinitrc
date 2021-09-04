@@ -15,12 +15,10 @@ fi
 [ -r ~/.Xresources ] && xrdb -merge ~/.Xresources
 [ -r ~/.xprofile ] && . ~/.xprofile
 
-
-pkill dwmblocks
-
 # for IntelliJ IDEA
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 
 # launch the session, commands below this line will be ignored
-exec dbus-launch /home/kaka/repos/leftwm/target/release/leftwm
+export DESKTOP_SESSION=plasma
+exec startxfce4

@@ -3,12 +3,22 @@ mousekey = "Mod1"
 workspaces = []
 tags = ["I", "II", "III", "4:>_", "5:snd", "6:meet", "7:chat", "8:code", "9:web"]
 
+focus_behaviour = "Sloppy"
+
 layouts = [
-	"MainAndVertStack",
+    "MainAndVertStack",
     "MainAndHorizontalStack",
-	"Fibonacci",
-    "Monocle",
 ]
+
+[[scratchpad]]
+name = "st"
+value = "st"
+
+[[keybind]]
+command = "ToggleScratchPad"
+value = "st"
+modifier = ["modkey", "Shift"]
+key = "Return"
 
 [[keybind]]
 command = "Execute"
@@ -54,6 +64,12 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
+value = "passmenu --type"
+modifier = ["modkey"]
+key = "p"
+
+[[keybind]]
+command = "Execute"
 value = "pavucontrol"
 modifier = ["modkey", "Shift"]
 key = "v"
@@ -78,20 +94,20 @@ key = "m"
 
 [[keybind]]
 command = "Execute"
-value = "amixer set Master toggle"
-modifier = ["modkey"]
+value = "pulseaudio-ctl mute"
+modifier = []
 key = "XF86XK_AudioMute"
 
 [[keybind]]
 command = "Execute"
-value = "amixer set Master 5%+"
-modifier = ["modkey"]
+value = "pulseaudio-ctl up"
+modifier = []
 key = "XF86XK_AudioRaiseVolume"
 
 [[keybind]]
 command = "Execute"
-value = "amixer set Master 5%-"
-modifier = ["modkey"]
+value = "pulseaudio-ctl down"
+modifier = []
 key = "XF86XK_AudioLowerVolume"
 
 [[keybind]]
