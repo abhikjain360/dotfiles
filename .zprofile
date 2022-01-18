@@ -18,7 +18,7 @@ export _JAVA_AWT_WM_NONREPARENTING="1"
 export _ZO_DATA_DIR="$HOME/.cache/zoxide/"
 export DOTNET_CLI_TELEMETRY_OPTOUT="1"
 export DENO_INSTALL="$HOME/.deno"
-#export LC_ALL=C
+export LC_ALL="en_GB.UTF-8"
 
 #export PATH="$HOME/.config/nvm/versions/node/v15.0.1/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools"
 
@@ -29,6 +29,8 @@ export PATH="$HOME/perl5/bin:$HOME/.config/nvm/versions/node/v16.5.0/bin:$HOME/.
 
 #### This loads nvm
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" &
+
+batsignal -b &
 
 # automatically run startx when logging in on tty1
 [ -z "$DISPLAY" ] && [ $XDG_VTNR -eq 1 ] && startx ~/.xinitrc2

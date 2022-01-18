@@ -255,9 +255,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 # fast-syntax-highlighting
 source $HOME/.local/share/zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# broot because tree sucks
-source /home/kaka/.config/broot/launcher/bash/br
-
 alias v='nvim'
 
 #### Prettier view
@@ -311,7 +308,7 @@ alias fv='nvim "$(fd | fzf)"'
 alias ysd='youtube-dl -f bestaudio $(xclip -o)'
 
 #### quickly launch same terminal
-alias samedir='setsid st 2>/dev/null &'
+alias samedir='setsid $TERMINAL 2>/dev/null &'
 
 #### Quick study book find
 #alias stub="setsid zathura \"\$(find $HOME/study | fzf)\""
@@ -325,7 +322,7 @@ alias gcb='git checkout -b'
 
 #### Required by some packages
 export EDITOR='/usr/bin/nvim'
-export TERMINAL='/usr/bin/st'
+export TERMINAL='/usr/bin/kitty'
 export VISUAL='/usr/bin/nvim'
 
 ### Notes
@@ -351,6 +348,9 @@ alias cbr='cargo build --release'
 alias ctr='cargo test release'
 alias cex='cargo expand'
 alias cs='cargo search'
+
+#### kitty has problems with ssh
+alias ssh="kitty +kitten ssh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

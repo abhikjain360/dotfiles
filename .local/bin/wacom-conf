@@ -1,0 +1,4 @@
+#!/bin/sh
+
+stylus_id=$(xsetwacom --list devices | awk '/STYLUS/ {print $9}')
+xsetwacom --set $stylus_id Rotate half

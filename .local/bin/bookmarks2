@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sitename="$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks2 | dmenu -i -fn 'Fira Code:size=14' -l 10)"
+sitename="$(awk -F ',' '{print $1}' ~/.local/share/myfiles-xtra/bookmarks2 | dmenu_colored -i --font 'FiraCode:size=14' -l 10)"
 site="$(grep $sitename ~/.local/share/myfiles-xtra/bookmarks2 | awk -F ',' '{print $2}' )"
 
-exec brave --incognito $site;
+exec brave --ignore-gpu-blocklist --incognito $site;

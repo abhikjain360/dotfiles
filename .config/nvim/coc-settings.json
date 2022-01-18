@@ -31,9 +31,6 @@
 		}
 	},
 	"rust-analyzer.updates.prompt": false,
-	"rust-analyzer.cargo.allFeatures": true,
-	"go.goplsOptions": {
-		"staticcheck": true
-	},
+	"rust-analyzer.cargo.allFeatures": false,
 	"codeLens.enable": true
 }
