@@ -473,9 +473,9 @@ let g:goyo_height = '90%'
 
 " vscode-like terminal
 	" Toggle 'default' terminal
-	nnoremap <space>' :call ChooseTerm("term-slider", 1)<CR>
+	nnoremap <space>" :call ChooseTerm("term-slider", 1)<CR>
 	" Start terminal in current pane
-	nnoremap <space>" :call ChooseTerm("term-pane", 0)<CR>
+	nnoremap <space>' :call ChooseTerm("term-slider", 0)<CR>
 
 	function! ChooseTerm(termname, slider)
 		let pane = bufwinnr(a:termname)
@@ -491,12 +491,16 @@ let g:goyo_height = '90%'
 			" buffer is not in pane
 			if a:slider
 				:exe "split"
+			else
+				:exe "vertical split"
 			endif
 			:exe "buffer " . a:termname
 		else
 			" buffer is not loaded, create
 			if a:slider
 				:exe "split"
+			else
+				:exe "vertical split"
 			endif
 			:terminal
 			:exe "f " a:termname

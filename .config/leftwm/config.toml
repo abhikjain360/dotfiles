@@ -11,12 +11,12 @@ layouts = [
 ]
 
 [[scratchpad]]
-name = "st"
-value = "st"
+name = "kitty"
+value = "kitty"
 
 [[keybind]]
 command = "ToggleScratchPad"
-value = "st"
+value = "kitty"
 modifier = ["modkey", "Shift"]
 key = "Return"
 
@@ -28,19 +28,19 @@ key = "d"
 
 [[keybind]]
 command = "Execute"
-value = "st"
+value = "kitty"
 modifier = ["modkey"]
 key = "Return"
 
 [[keybind]]
 command = "Execute"
-value = "brave"
+value = "brave --ignore-gpu-blocklist"
 modifier = ["modkey"]
 key = "w"
 
 [[keybind]]
 command = "Execute"
-value = "st -e stub"
+value = "kitty -e stub"
 modifier = ["modkey"]
 key = "s"
 
@@ -76,37 +76,37 @@ key = "v"
 
 [[keybind]]
 command = "Execute"
-value = "st -e alsamixer"
+value = "kitty -e alsamixer"
 modifier = ["modkey"]
 key = "v"
 
 [[keybind]]
 command = "Execute"
-value = "st -e ranger"
+value = "kitty -e ranger"
 modifier = ["modkey"]
 key = "e"
 
 [[keybind]]
 command = "Execute"
-value = "st -e ncmpcpp"
+value = "kitty -e ncmpcpp"
 modifier = ["modkey"]
 key = "m"
 
 [[keybind]]
 command = "Execute"
-value = "pulseaudio-ctl mute"
+value = "pamixer -m"
 modifier = []
 key = "XF86XK_AudioMute"
 
 [[keybind]]
 command = "Execute"
-value = "pulseaudio-ctl up"
+value = "pamixer -i 5"
 modifier = []
 key = "XF86XK_AudioRaiseVolume"
 
 [[keybind]]
 command = "Execute"
-value = "pulseaudio-ctl down"
+value = "pamixer -d 5"
 modifier = []
 key = "XF86XK_AudioLowerVolume"
 
