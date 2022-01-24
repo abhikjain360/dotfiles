@@ -20,6 +20,8 @@ export DOTNET_CLI_TELEMETRY_OPTOUT="1"
 export DENO_INSTALL="$HOME/.deno"
 export LC_ALL="en_GB.UTF-8"
 
+export PGDATA="$HOME/.cache/postgres/data"
+
 #export PATH="$HOME/.config/nvm/versions/node/v15.0.1/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools"
 
 export PATH="$HOME/perl5/bin:$HOME/.config/nvm/versions/node/v16.5.0/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/android-sdk/platform-tools:$HOME/Applications:$HOME/go/bin:$HOME/.deno/bin:$HOME/.local/share/solana/install/active_release/bin"
