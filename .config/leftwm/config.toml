@@ -111,6 +111,30 @@ modifier = []
 key = "XF86XK_AudioLowerVolume"
 
 [[keybind]]
+command = "Execute"
+value = "playerctl play-pause"
+modifier = []
+key = "XF86XK_AudioPlay"
+
+[[keybind]]
+command = "Execute"
+value = "playerctl play-pause"
+modifier = []
+key = "XF86XK_AudioStop"
+
+[[keybind]]
+command = "Execute"
+value = "playerctl next"
+modifier = []
+key = "XF86XK_AudioNext"
+
+[[keybind]]
+command = "Execute"
+value = "playerctl previous"
+modifier = []
+key = "XF86XK_AudioPrev"
+
+[[keybind]]
 command = "CloseWindow"
 modifier = ["modkey"]
 key = "q"

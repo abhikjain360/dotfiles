@@ -1,7 +1,6 @@
 #!/bin/bash
 export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-
 #down the last running theme
 if [ -f "/tmp/leftwm-theme-down" ]; then
     /tmp/leftwm-theme-down
@@ -9,11 +8,8 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
-
-
 # set the theme.toml config
-echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
-
+leftwm command "LoadTheme $SCRIPTPATH/theme.toml"
 
 # # tranparency and blur
 # picom &> /dev/null &
@@ -23,14 +19,15 @@ nitrogen --restore &
 dunst &
 # undisplay unused mouse
 unclutter &
-# pulseaudio start
-start-pulseaudio-x11 &
 # red light for eye protection
 [ $(date +"%H") -le 06 ] && [ $(date +"%H") -ge 19 ] && redshift &
 # remap keys
 remaps &
 # turn unupdated screen off
 xset dpms 600 900 1200
+
+# for IntelliJ IDEA
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 index=0
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
