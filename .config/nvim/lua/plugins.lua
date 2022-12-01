@@ -1,9 +1,5 @@
 -- TODO:
--- 		https://github.com/folke/trouble.nvim
--- 		https://github.com/puremourning/vimspector if possible
--- 		treesitter treeobjects + movements that come with it
---
--- 		example at: https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+--       - file manager
 
 return require('packer').startup(function(use)
 	-- package manager
@@ -40,7 +36,13 @@ return require('packer').startup(function(use)
 
 	-- easily change stuff
 	use 'tpope/vim-abolish'
-	use 'mbbill/undotree'
+	use {
+		'mbbill/undotree',
+		config = function()
+			vim.keymap.set('n', '<space>u', '<cmd>UndotreeToggle<cr>', { noremap = true, silent = true })
+			vim.cmd('let g:undotree_SplitWitdh = 40')
+		end
+	}
 	use 'mg979/vim-visual-multi'
 	use {
 		'numToStr/Comment.nvim',
@@ -65,7 +67,7 @@ return require('packer').startup(function(use)
 	-- Trouble
 	use {
 		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		requires = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("configs.trouble")
 		end
@@ -76,6 +78,14 @@ return require('packer').startup(function(use)
 		'romgrk/barbar.nvim',
 		requires = { { 'nvim-tree/nvim-web-devicons' } },
 		config = function() require('configs.barbar') end,
+	}
+	use {
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		config = function() require('configs.treeobjects') end
+	}
+	use {
+		'nvim-treesitter/nvim-treesitter-context',
+		config = function() require 'treesitter-context'.setup { enable = true } end
 	}
 
 	-- LSP
@@ -112,26 +122,17 @@ return require('packer').startup(function(use)
 		tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
 	}
 
-	-- use 'itchyny/lightline.vim'
-	-- use 'mengelbrecht/lightline-bufferline'
-	--
-	-- -- " file browsing
-	-- -- use 'lambdalisue/fern.vim'
-	-- -- use 'lambdalisue/fern-renderer-nerdfont.vim'
-	-- -- use 'lambdalisue/fern-git-status.vim'
-	-- -- use 'lambdalisue/nerdfont.vim'
-	-- -- " this needed for some problem
-	-- -- use 'antoinemadec/FixCursorHold.nvim'
-	--
-	-- use 'neoclide/coc.nvim', {'branch': 'release'}
-	-- use 'lervag/vimtex', { 'for': 'tex' }
-	-- -- use 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-	-- use 'tikhomirov/vim-glsl', { 'for': 'glsl' }
-	-- use 'mattn/emmet-vim', { 'for': 'html' }
-	-- use 'cespare/vim-toml', { 'for' : 'toml' }
-	-- use 'abhikjain360/wgsl.vim', { 'for': 'wgsl' }
-	-- use 'ziglang/zig.vim', { 'for': 'zig' }
-	-- use 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional, for file icons
+		},
+		config = function() require('configs.nvim_tree') end
+	}
+
+	-- specific syntax highlighting not by default in vim
+	use { 'tikhomirov/vim-glsl', ft = 'glsl' }
+	use { 'abhikjain360/wgsl.vim', ft = 'glsl' }
 	-- use 'p00f/nvim-ts-rainbow'
 
 end)

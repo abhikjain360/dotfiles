@@ -13,14 +13,15 @@ nmap('<space>tb', builtin.buffers)
 
 -- lsp pickers
 nmap('<space>lr', builtin.lsp_references)
+nmap('<space>li', builtin.lsp_implementations)
 nmap('<space>ls', builtin.lsp_document_symbols)
 nmap('<space>lS', builtin.lsp_workspace_symbols)
 nmap('<space>ld', function() builtin.diagnostics { bufnr = 0 } end)
 nmap('<space>lD', builtin.diagnostics)
 
 -- git pickers
-nmap('<space>fgs', builtin.git_status)
-nmap('<space>fgh', builtin.git_stash)
+nmap('<space>gs', builtin.git_status)
+nmap('<space>gh', builtin.git_stash)
 
 -- extensions
 --
