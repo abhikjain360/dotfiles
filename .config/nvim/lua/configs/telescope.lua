@@ -7,11 +7,16 @@ local nmap = function(keys, func)
 end
 
 -- file pickers
-nmap('<space>ff', builtin.find_files)
-nmap('<space>fs', builtin.live_grep)
+nmap('<space>tf', builtin.find_files)
+nmap('<space>ts', builtin.live_grep)
+nmap('<space>tb', builtin.buffers)
 
--- vim pickers
-nmap('<space>fb', builtin.buffers)
+-- lsp pickers
+nmap('<space>lr', builtin.lsp_references)
+nmap('<space>ls', builtin.lsp_document_symbols)
+nmap('<space>lS', builtin.lsp_workspace_symbols)
+nmap('<space>ld', function() builtin.diagnostics { bufnr = 0 } end)
+nmap('<space>lD', builtin.diagnostics)
 
 -- git pickers
 nmap('<space>fgs', builtin.git_status)
@@ -19,9 +24,17 @@ nmap('<space>fgh', builtin.git_stash)
 
 -- extensions
 --
-	-- faster fzf
-	telescope.load_extension('fzf')
+-- faster fzf
+telescope.load_extension('fzf')
 
-	-- harpooning
-	telescope.load_extension('harpoon')
-	nmap('<space>fh', '<cmd>Telescope harpoon marks<cr>')
+
+local trouble = require("trouble.providers.telescope")
+
+telescope.setup {
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
+    },
+  },
+}

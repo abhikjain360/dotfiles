@@ -1,6 +1,7 @@
 set shell=/bin/zsh
 
 lua require('plugins')
+lua require('termslider')
 
 " VANILLA VIM SETTINGS
 
@@ -73,3 +74,7 @@ lua require('plugins')
 	source ~/.config/nvim/mappings.vim
 " undotree (mundo) settings
 	source ~/.config/nvim/undotree.vim
+
+" remove scrolloff in terminal
+	au TermEnter * set scrolloff=0
+	au TermLeave * set scrolloff=4

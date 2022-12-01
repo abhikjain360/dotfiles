@@ -1,10 +1,5 @@
 -- TODO:
--- 		https://github.com/nvim-telescope/telescope.nvim with fzf, rg and anything else i find useful
--- 		https://github.com/ThePrimeagen/harpoon with the corresponding telescope plugin
---
--- 		LSP!!!!!!!!!
 -- 		https://github.com/folke/trouble.nvim
--- 		https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim
 -- 		https://github.com/puremourning/vimspector if possible
 -- 		treesitter treeobjects + movements that come with it
 --
@@ -67,13 +62,20 @@ return require('packer').startup(function(use)
 		run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 	}
 
+	-- Trouble
+	use {
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("configs.trouble")
+		end
+	}
+
 	-- code naviation
 	use {
-		'ThePrimeagen/harpoon',
-		requires = { { 'nvim-lua/plenary.nvim' } },
-		config = function()
-			require('configs.harpoon')
-		end
+		'romgrk/barbar.nvim',
+		requires = { { 'nvim-tree/nvim-web-devicons' } },
+		config = function() require('configs.barbar') end,
 	}
 
 	-- LSP
@@ -85,6 +87,9 @@ return require('packer').startup(function(use)
 		requires = { { 'nvim-lua/plenary.nvim' } },
 	}
 
+	-- typescript
+	use 'jose-elias-alvarez/typescript.nvim'
+
 	-- completions
 	use {
 		'hrsh7th/nvim-cmp',
@@ -95,10 +100,17 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-nvim-lua'
 
 	-- snippets
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
+
+	-- git
+	use {
+		'lewis6991/gitsigns.nvim',
+		tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+	}
 
 	-- use 'itchyny/lightline.vim'
 	-- use 'mengelbrecht/lightline-bufferline'
