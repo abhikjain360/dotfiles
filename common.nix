@@ -40,7 +40,6 @@
         rustup
         sd
         statix
-        wget
         zellij
         uv
       ]
