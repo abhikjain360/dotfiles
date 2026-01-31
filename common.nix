@@ -215,6 +215,11 @@
       enableZshIntegration = true;
     };
 
+    programs.atuin = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     home-manager.enable = true;
 
     direnv = {
