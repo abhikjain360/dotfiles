@@ -48,6 +48,9 @@
         obs-studio
         xournalpp
       ]
+      ++ lib.optionals pkgs.stdenv.isDarwin [
+        choose-gui
+      ]
       ++ lib.optionals isWork [
         k9s
         kubectl
@@ -55,6 +58,7 @@
   };
 
   xdg.configFile = {
-    "ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/ghostty";
+    "ghostty".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/ghostty";
   };
 }

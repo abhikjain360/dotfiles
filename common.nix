@@ -37,7 +37,6 @@
         pkgconf
         podman
         podman-compose
-        python315
         rustup
         sd
         statix
@@ -135,6 +134,7 @@
         gbd = "git branch -D";
         gpl = "git pull";
         gp = "git push";
+        lg = "lazygit";
 
         # docker
         sdk = "sudo systemctl start docker.service";
@@ -180,10 +180,32 @@
 
       keymap = {
         mgr.prepend_keymap = [
-          { on = [ "m" ]; run = "plugin bookmarks save"; desc = "Save current position as a bookmark"; }
-          { on = [ "'" ]; run = "plugin bookmarks jump"; desc = "Jump to a bookmark"; }
-          { on = [ "b" "d" ]; run = "plugin bookmarks delete"; desc = "Delete a bookmark"; }
-          { on = [ "b" "D" ]; run = "plugin bookmarks delete_all"; desc = "Delete all bookmarks"; }
+          {
+            on = [ "m" ];
+            run = "plugin bookmarks save";
+            desc = "Save current position as a bookmark";
+          }
+          {
+            on = [ "'" ];
+            run = "plugin bookmarks jump";
+            desc = "Jump to a bookmark";
+          }
+          {
+            on = [
+              "b"
+              "d"
+            ];
+            run = "plugin bookmarks delete";
+            desc = "Delete a bookmark";
+          }
+          {
+            on = [
+              "b"
+              "D"
+            ];
+            run = "plugin bookmarks delete_all";
+            desc = "Delete all bookmarks";
+          }
         ];
       };
     };
@@ -203,7 +225,9 @@
   };
 
   xdg.configFile = {
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
-    "zellij".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/zellij";
+    "nvim".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
+    "zellij".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/zellij";
   };
 }
