@@ -18,25 +18,25 @@
       with pkgs;
       [
         bat
+        btop
         bun
         curl
         difftastic
-        # needed for nix develop
-        direnv
         dprint
         eza
         fd
-        fnm
         git-lfs
         gnupg
-        htop
+        jujutsu
         jq
         lazygit
         neovim
         nixfmt
+        nodejs_24
         pkgconf
         podman
         podman-compose
+        ripgrep
         rustup
         sd
         statix
@@ -100,10 +100,6 @@
         "notify"
       ];
 
-      initContent = ''
-        eval "$(fnm env --use-on-cd)"
-      '';
-
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
       historySubstringSearch = {
@@ -156,9 +152,9 @@
         # update
         update_all =
           if pkgs.stdenv.isDarwin then
-            "brew update && brew upgrade --greedy && rustup update && fnm install --lts && cargo install-update --all"
+            "brew update && brew upgrade --greedy && rustup update && cargo install-update --all"
           else
-            "rustup update && fnm install --lts && cargo install-update --all";
+            "rustup update && cargo install-update --all";
         dr = lib.mkIf pkgs.stdenv.isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
       }
       // lib.optionalAttrs isArchLinux {
@@ -214,7 +210,7 @@
       enableZshIntegration = true;
     };
 
-    programs.atuin = {
+    atuin = {
       enable = true;
       enableZshIntegration = true;
     };
