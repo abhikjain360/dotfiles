@@ -1,9 +1,0 @@
-#!/bin/sh
-
-
-ssid="$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | sed -e 's/yes://;')"
-strength="$(grep "^\s*w" /proc/net/wireless | awk '{ print int($3 * 100 / 70) "%" }')"
-
-[[ -z "$ssid" ]] && echo "No Connection" && exit;
-
-echo " $strength at $ssid"

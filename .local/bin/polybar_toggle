@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-if [[ $POLYBAR_VISIBLE -eq 1 ]]
-then
-	pkill polybar && $POLYBAR_VISIBLE = 0;
-else
-	setsid polybar bar0 --config=~/.config/leftwm/themes/current/polybar.config && $POLYBAR_VISIBLE = 1;
-fi

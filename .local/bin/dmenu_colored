@@ -1,3 +1,0 @@
-#!/bin/sh
-
-dmenu --font "Fira Code:size=14" --nb '#282828' --nf '#ebdbb2' --sb '#918374' --sf '#000000' $@

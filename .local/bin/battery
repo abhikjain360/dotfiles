@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "$(acpi -b | cut -f 3-5 -d " " | sed 's/Discharging//;s/Charging//;s/,//g;s/:[^:]*$//')"

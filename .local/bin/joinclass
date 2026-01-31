@@ -1,8 +1,0 @@
-#!/bin/bash
-
-link1='https://iiitnayaraipur.webex.com/iiitnayaraipur/j.php?MTID=mfe189d7f4bb5a2461d65647f011b4c71'
-link2='https://iiitnayaraipur.webex.com/iiitnayaraipur/j.php?MTID=m6a2a16b4932922fa61c6794ed594a90c'
-
-day=$(date '+%a')
-hour=$(date '+%H')
-min=$(date '+%M')

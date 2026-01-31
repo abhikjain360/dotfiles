@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "TEMP:$(sensors | awk '/Core 0/ {print $3}')"

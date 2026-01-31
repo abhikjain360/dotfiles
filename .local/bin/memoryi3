@@ -1,8 +1,0 @@
-#!/bin/sh
-
-str="$(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
-echo " $str "
-echo " $str "
-
-echo "#000000"
-echo "#928374"

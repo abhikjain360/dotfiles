@@ -1,2 +1,0 @@
-#!/bin/sh
-dmenu_path | dmenu_colored "$@" | ${SHELL:-"/bin/sh"} &

@@ -1,0 +1,8 @@
+theme = Catppuccin Mocha
+font-family = Fira Code
+font-size = 12
+font-style = Retina
+cursor-style = block
+shell-integration-features = no-cursor
+window-width = 340
+window-height = 92

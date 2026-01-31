@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "$(date +"%y/%m/%d (%a) %H:%M:%S")"

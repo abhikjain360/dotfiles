@@ -1,8 +1,0 @@
----
-direction: Horizontal
-parts:
-  - direction: Vertical
-    split_size:
-      Fixed: 1
-    plugin: tab-bar
-  - direction: Vertical
