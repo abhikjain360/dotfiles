@@ -11,6 +11,10 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bookmarks-yazi = {
+      url = "github:dedukun/bookmarks.yazi";
+      flake = false;
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       nixpkgs,
       home-manager,
       nix-darwin,
+      bookmarks-yazi,
       ...
     }:
     {
@@ -33,6 +38,7 @@
               extraSpecialArgs = {
                 isArchLinux = false;
                 isWork = true;
+                inherit bookmarks-yazi;
               };
               users.abhik = {
                 imports = [
@@ -56,6 +62,7 @@
           extraSpecialArgs = {
             isArchLinux = false;
             isWork = false;
+            inherit bookmarks-yazi;
           };
           modules = [
             ./common.nix
@@ -67,6 +74,7 @@
           pkgs = nixpkgs.legacyPackages.aarch64-linux;
           extraSpecialArgs = {
             isArchLinux = false;
+            inherit bookmarks-yazi;
           };
           modules = [
             ./common.nix
@@ -78,6 +86,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             isArchLinux = true;
+            inherit bookmarks-yazi;
           };
           modules = [
             ./common.nix
