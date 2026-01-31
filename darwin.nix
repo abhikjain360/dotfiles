@@ -7,10 +7,7 @@
   users.users.abhik.home = "/Users/abhik";
   system.primaryUser = "abhik";
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.enable = false;
 
   system.stateVersion = 6;
 

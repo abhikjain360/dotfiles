@@ -18,7 +18,6 @@
       with pkgs;
       [
         bat
-        btop
         bun
         curl
         difftastic
@@ -27,6 +26,8 @@
         fd
         git-lfs
         gnupg
+        htop
+        lazyjj
         jujutsu
         jq
         lazygit
