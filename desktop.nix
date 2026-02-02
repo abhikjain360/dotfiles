@@ -9,9 +9,14 @@
 {
 
   home = {
+    sessionVariables = {
+      PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    };
+
     packages =
       with pkgs;
       [
+        openssl
         go
         nerd-fonts.fira-code
         nerd-fonts._0xproto

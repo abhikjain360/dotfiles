@@ -154,12 +154,12 @@
         zka = "zellij ka";
 
         # update
+        dr = lib.mkIf pkgs.stdenv.isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
         update_all =
           if pkgs.stdenv.isDarwin then
-            "brew update && brew upgrade --greedy && rustup update && cargo install-update --all"
+            "dr && rustup update && cargo install-update --all"
           else
             "rustup update && cargo install-update --all";
-        dr = lib.mkIf pkgs.stdenv.isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
       }
       // lib.optionalAttrs isArchLinux {
         # paru (arch)
