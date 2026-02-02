@@ -4,3 +4,17 @@
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.g.root_spec = { "cwd" }
+
+if os.getenv("SSH_TTY") or os.getenv("SSH_CONNECTION") then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = "",
+      ["*"] = "",
+    },
+  }
+end
