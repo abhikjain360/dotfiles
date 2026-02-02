@@ -91,7 +91,7 @@
       "scroll-reverser"
       "slack"
       "tailscale-app"
-      "xournal-plus-plus"
+      "xournal++"
       "zed"
     ];
   };
