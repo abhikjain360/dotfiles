@@ -82,6 +82,10 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
+      settings = {
+        time.disabled = false;
+        jj.disabled = false;
+      };
     };
 
     zsh = {
