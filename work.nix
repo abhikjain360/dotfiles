@@ -34,15 +34,7 @@
         email = "abhik.jain@luminovo.com";
         name = "Abhik Jain";
       };
-      core = {
-        pager = "delta";
-        compression = 0;
-      };
-      interactive.diffFilter = "delta --color-only";
-      delta = {
-        navigate = true;
-        light = false;
-      };
+      core.compression = 0;
       init.defaultBranch = "master";
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
