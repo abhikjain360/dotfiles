@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -19,5 +20,13 @@
       postgresql
       spicedb-zed
     ];
+  };
+
+  programs = {
+    zsh = {
+      shellAliases = {
+        gcm = lib.mkForce "git checkout master";
+      };
+    };
   };
 }
