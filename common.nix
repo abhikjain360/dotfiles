@@ -28,7 +28,6 @@
         gnupg
         htop
         lazyjj
-        jujutsu
         jq
         lazygit
         neovim
@@ -225,6 +224,21 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Abhik Jain";
+          email = "abhik@abhikjain.xyz";
+        };
+        ui = {
+          pager = "delta";
+          default-command = "log";
+          diff-formatter = ":git";
+        };
+      };
     };
   };
 
