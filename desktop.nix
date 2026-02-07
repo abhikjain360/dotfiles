@@ -11,6 +11,9 @@
   home = {
     sessionVariables = {
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      ANDROID_HOME = "${config.home.homeDirectory}/Library/Android/sdk";
     };
 
     packages =
@@ -54,7 +57,11 @@
         xournalpp
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
+        # for the pass GUI autofill
         choose-gui
+
+        # for android dev
+        jdk17
       ]
       ++ lib.optionals isWork [
         just
