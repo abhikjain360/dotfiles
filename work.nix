@@ -13,6 +13,7 @@
         sqliteSupport = false;
         mysqlSupport = false;
       })
+      just
       k9s
       kubectl
       kubeseal

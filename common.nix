@@ -14,6 +14,10 @@
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/abhik" else "/home/abhik";
     stateVersion = "25.11";
 
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
     packages =
       with pkgs;
       [

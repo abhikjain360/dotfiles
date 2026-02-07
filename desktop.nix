@@ -57,6 +57,7 @@
         choose-gui
       ]
       ++ lib.optionals isWork [
+        just
         k9s
         kubectl
       ];
