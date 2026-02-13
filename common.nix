@@ -16,6 +16,7 @@
 
     sessionPath = [
       "$HOME/.local/bin"
+      "$HOME/.opencode/bin"
     ];
 
     packages =
