@@ -12,7 +12,7 @@
   home = {
     username = "abhik";
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/abhik" else "/home/abhik";
-    stateVersion = "25.11";
+    stateVersion = "26.05";
 
     sessionPath = [
       "$HOME/.local/bin"
