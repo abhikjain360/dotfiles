@@ -15,6 +15,15 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  launchd.user.agents.ssh-load-keys = {
+    command = "/Users/abhik/.ssh/load-keys.sh";
+    serviceConfig = {
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/ssh-load-keys.log";
+      StandardErrorPath = "/tmp/ssh-load-keys.log";
+    };
+  };
+
   system.defaults = {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
