@@ -86,6 +86,7 @@
       "android-studio"
       "battery"
       "brave-browser"
+      "claude"
       "codex"
       "cursor"
       "discord"
