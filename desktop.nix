@@ -19,6 +19,7 @@
     packages =
       with pkgs;
       [
+        deno
         ffmpeg
         go
         nerd-fonts.fira-code
