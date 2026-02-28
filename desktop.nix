@@ -19,10 +19,11 @@
     packages =
       with pkgs;
       [
-        openssl
+        ffmpeg
         go
         nerd-fonts.fira-code
         nerd-fonts._0xproto
+        openssl
         pass
         pdf2svg
         postgresql
