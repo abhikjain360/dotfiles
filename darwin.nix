@@ -79,6 +79,7 @@
       cleanup = "zap";
     };
     brews = [
+      "cocoapods"
       "pinentry-mac"
     ];
     casks = [
@@ -93,6 +94,7 @@
       "cursor"
       "discord"
       "firefox"
+      "flutter"
       "flameshot"
       "ghostty"
       "google-chrome"
