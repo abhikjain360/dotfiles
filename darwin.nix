@@ -105,6 +105,7 @@
       "raycast"
       "scroll-reverser"
       "slack"
+      "steam"
       "tailscale-app"
       "xournal++"
       "zed"
