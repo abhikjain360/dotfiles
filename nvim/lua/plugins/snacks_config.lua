@@ -3,7 +3,10 @@ return {
   opts = {
     bigfile = { enabled = false },
     zen = {
-      toggles = { dim = false },
+      toggles = {
+        dim = false,
+        git_signs = true,
+      },
       win = { width = 180 },
     },
   },
