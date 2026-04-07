@@ -86,7 +86,6 @@
       "adobe-digital-editions"
       "android-platform-tools"
       "android-studio"
-      "battery"
       "brave-browser"
       "calibre"
       "claude"
