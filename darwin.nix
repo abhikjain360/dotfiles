@@ -79,8 +79,13 @@
       cleanup = "zap";
     };
     brews = [
+      "autoconf"
+      "automake"
       "cocoapods"
+      "libtool"
+      "opus"
       "pinentry-mac"
+      "pkg-config"
     ];
     casks = [
       "adobe-digital-editions"

@@ -35,6 +35,8 @@
         lazyjj
         jq
         lazygit
+        libopus
+        libopus.dev
         neovim
         nixfmt
         nodejs_24
