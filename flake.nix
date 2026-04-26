@@ -15,6 +15,7 @@
       url = "github:dedukun/bookmarks.yazi";
       flake = false;
     };
+    nixpkgs-direnv.url = "github:nixos/nixpkgs/nixos-25.05";
   };
 
   outputs =
@@ -23,11 +24,13 @@
       home-manager,
       nix-darwin,
       bookmarks-yazi,
+      nixpkgs-direnv,
       ...
     }:
     {
       darwinConfigurations."Luminerds-Laptop" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit nixpkgs-direnv; };
         modules = [
           ./darwin.nix
           home-manager.darwinModules.home-manager

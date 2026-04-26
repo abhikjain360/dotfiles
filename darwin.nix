@@ -1,5 +1,6 @@
 {
   _,
+  nixpkgs-direnv,
   ...
 }:
 
@@ -12,6 +13,12 @@
   system.stateVersion = 6;
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      direnv = nixpkgs-direnv.legacyPackages.${final.system}.direnv;
+    })
+  ];
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
