@@ -93,6 +93,7 @@
       "opus"
       "pinentry-mac"
       "pkg-config"
+      "mpv"
     ];
     casks = [
       "adobe-digital-editions"
@@ -110,7 +111,6 @@
       "ghostty"
       "google-chrome"
       "monitorcontrol"
-      "mpv"
       "musicbrainz-picard"
       "obs"
       "raycast"
