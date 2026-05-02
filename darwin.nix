@@ -103,7 +103,6 @@
       "calibre"
       "claude"
       "codex"
-      "cursor"
       "discord"
       "firefox"
       "flutter"
