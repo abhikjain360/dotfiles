@@ -1,0 +1,82 @@
+directory: ~/Music/mypasspost2
+library: ~/.local/share/beets/library.db
+
+import:
+  copy: true
+  move: false
+  write: true
+  autotag: true
+  singletons: true
+  resume: true
+  incremental: true
+  detail: true
+  log: ~/.local/share/beets/import.log
+
+match:
+  strong_rec_thresh: 0.90
+
+musicbrainz:
+  genres: true
+  extra_tags:
+    - year
+    - country
+    - label
+    - catalognum
+    - barcode
+    - media
+    - tracks
+
+plugins:
+  - musicbrainz
+  - fetchart
+  - fromfilename
+  - inline
+  - lyrics
+  - lastgenre
+  - mbsync
+  - scrub
+  - chroma
+  - replaygain
+  - duplicates
+  - badfiles
+  - edit
+  - the
+
+fetchart:
+  auto: true
+  cautious: true
+  cover_names: cover front art album folder
+  sources:
+    - coverart
+    - itunes
+    - amazon
+    - albumart
+  minwidth: 300
+
+lastgenre:
+  auto: true
+  canonical: true
+  count: 3
+
+lyrics:
+  auto: true
+
+scrub:
+  auto: true
+
+chroma:
+  auto: true
+
+replaygain:
+  backend: ffmpeg
+  overwrite: true
+
+duplicates:
+  album: false
+
+item_fields:
+  leadartist: ((albumartist or artist) or "").split(", ")[0].split(" & ")[0].split(" feat. ")[0].strip()
+
+paths:
+  default: $leadartist/$album/$track $title
+  singleton: $leadartist/Singles/$title

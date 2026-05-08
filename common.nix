@@ -8,7 +8,6 @@
 }:
 
 {
-
   home = {
     username = "abhik";
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/abhik" else "/home/abhik";
@@ -254,5 +253,7 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
     "zellij".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/zellij";
+    "beets".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/beets";
   };
 }

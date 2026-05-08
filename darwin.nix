@@ -88,6 +88,7 @@
     brews = [
       "autoconf"
       "automake"
+      "chromaprint"
       "cocoapods"
       "libtool"
       "opus"
