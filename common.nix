@@ -33,7 +33,6 @@
         htop
         lazyjj
         jq
-        lazygit
         libopus
         libopus.dev
         neovim
@@ -230,6 +229,27 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    lazygit = {
+      enable = true;
+      settings = {
+        git = {
+          pagers = [
+            {
+              colorArg = "always";
+              pager = "delta --dark --paging=never";
+            }
+            {
+              externalDiffCommand = "difft --color=always";
+            }
+          ];
+        };
+        os = {
+          edit = ''[ -z "$NVIM" ] && nvim -- {{filename}} || nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}}'';
+          editAtLine = ''[ -z "$NVIM" ] && nvim +{{line}} -- {{filename}} || nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>"'';
+        };
+      };
     };
 
     jujutsu = {
