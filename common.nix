@@ -29,6 +29,7 @@
         eza
         fd
         git-lfs
+        go
         gnupg
         htop
         jq

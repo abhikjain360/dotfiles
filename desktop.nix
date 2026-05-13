@@ -21,7 +21,6 @@
       [
         deno
         ffmpeg
-        go
         nerd-fonts._0xproto
         nerd-fonts.fira-code
         openssl
