@@ -50,6 +50,7 @@
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
         coreutils
+        gh
       ];
   };
 
