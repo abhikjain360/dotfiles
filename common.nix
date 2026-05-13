@@ -31,8 +31,8 @@
         git-lfs
         gnupg
         htop
-        lazyjj
         jq
+        lazyjj
         libopus
         libopus.dev
         neovim
@@ -45,8 +45,8 @@
         rustup
         sd
         statix
-        zellij
         uv
+        zellij
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
         coreutils
@@ -269,11 +269,11 @@
   };
 
   xdg.configFile = {
+    "beets".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/beets";
     "nvim".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
     "zellij".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/zellij";
-    "beets".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/beets";
   };
 }

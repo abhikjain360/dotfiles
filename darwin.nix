@@ -91,10 +91,10 @@
       "chromaprint"
       "cocoapods"
       "libtool"
+      "mpv"
       "opus"
       "pinentry-mac"
       "pkg-config"
-      "mpv"
     ];
     casks = [
       "adobe-digital-editions"
@@ -106,8 +106,8 @@
       "codex"
       "discord"
       "firefox"
-      "flutter"
       "flameshot"
+      "flutter"
       "ghostty"
       "google-chrome"
       "monitorcontrol"

@@ -22,8 +22,8 @@
         deno
         ffmpeg
         go
-        nerd-fonts.fira-code
         nerd-fonts._0xproto
+        nerd-fonts.fira-code
         openssl
         pass
         pdf2svg
@@ -31,19 +31,19 @@
         (texliveSmall.withPackages (
           ps: with ps; [
             amsmath
-            tikz-cd
             pgf
+            tikz-cd
             xcolor
           ]
         ))
-        typst
         sarasa-gothic
+        typst
         watch
 
         # cargo tools
-        cargo-nextest
-        cargo-flamegraph
         cargo-expand
+        cargo-flamegraph
+        cargo-nextest
         samply
       ]
       # gui apps: managed by brew casks on macos, nix on linux

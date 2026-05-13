@@ -13,6 +13,7 @@
         sqliteSupport = false;
         mysqlSupport = false;
       })
+      glab
       just
       k9s
       kubectl
