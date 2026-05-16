@@ -8,6 +8,13 @@
   users.users.abhik.home = "/Users/abhik";
   system.primaryUser = "abhik";
 
+  home-manager.users.abhik =
+    { config, ... }:
+    {
+      home.file.".codex/config.toml".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/config.toml";
+    };
+
   nix.enable = false;
 
   system.stateVersion = 6;
@@ -113,6 +120,7 @@
       "monitorcontrol"
       "musicbrainz-picard"
       "obs"
+      "pi-coding-agent"
       "raycast"
       "scroll-reverser"
       "slack"
