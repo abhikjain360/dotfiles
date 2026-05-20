@@ -100,6 +100,7 @@
       "libtool"
       "mpv"
       "opus"
+      "pi-coding-agent"
       "pinentry-mac"
       "pkg-config"
     ];
@@ -120,7 +121,6 @@
       "monitorcontrol"
       "musicbrainz-picard"
       "obs"
-      "pi-coding-agent"
       "raycast"
       "scroll-reverser"
       "slack"
