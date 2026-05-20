@@ -87,6 +87,7 @@
 
   homebrew = {
     enable = true;
+    greedyCasks = true;
     onActivation = {
       autoUpdate = true;
       upgrade = true;
