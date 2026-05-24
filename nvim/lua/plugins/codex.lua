@@ -3,7 +3,7 @@ return {
   dependencies = { "folke/snacks.nvim" },
   config = true,
   opts = {
-    terminal_cmd = "codex",
+    terminal_cmd = "~/.local/bin/codex --yolo",
     keymaps = false,
     status_indicator = {
       enabled = false,

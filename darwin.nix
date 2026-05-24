@@ -11,8 +11,18 @@
   home-manager.users.abhik =
     { config, ... }:
     {
-      home.file.".codex/config.toml".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/config.toml";
+      home.file = {
+        ".codex/config.toml".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/config.toml";
+
+        ".codex/hooks/nix_bash.py".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/hooks/nix_bash.py";
+
+        ".local/bin/codex".source =
+          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/bin/codex";
+      };
+
+      programs.zsh.shellAliases.codex = "$HOME/.local/bin/codex";
     };
 
   nix.enable = false;

@@ -1,2 +1,29 @@
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+service_tier = "fast"
+allow_login_shell = false
+
+[shell_environment_policy]
+inherit = "all"
+experimental_use_profile = false
+ignore_default_excludes = false
+
+[features]
+hooks = true
+
+[[hooks.PreToolUse]]
+matcher = "^(Bash|exec_command)$"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = 'python3 "$HOME/.codex/hooks/nix_bash.py"'
+timeout = 30
+statusMessage = "Routing shell through project Nix environment"
+
+[hooks.state]
+
 [tui.keymap.global]
 open_external_editor = "ctrl-x"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
