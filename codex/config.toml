@@ -22,8 +22,23 @@ statusMessage = "Routing shell through project Nix environment"
 
 [hooks.state]
 
+[hooks.state."/Users/abhik/.codex/config.toml:pre_tool_use:0:0"]
+trusted_hash = "sha256:a622eb0453c91974f1cb3b59e8a61ec746f74f0273930b907eff938cbffc7d3e"
+
 [tui.keymap.global]
 open_external_editor = "ctrl-x"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+
+[projects."/Users/abhik/coding/llms/clipper"]
+trust_level = "trusted"
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
