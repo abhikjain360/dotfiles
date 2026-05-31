@@ -49,6 +49,43 @@
   };
 
   system.defaults = {
+    # Keep cmd+space free for Raycast. macOS owns it via symbolic hotkey 64
+    # ("Show Spotlight search"); disabling that hotkey with a real boolean is
+    # what frees the combo. nix-darwin writes the whole AppleSymbolicHotKeys
+    # dict at once, so every current hotkey is listed here to preserve it.
+    CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys =
+      let
+        off = { enabled = false; };
+        on = { enabled = true; };
+        # [ <key-char> <key-code> <modifier-mask> ]; all of these are disabled.
+        binding = parameters: { enabled = false; value = { inherit parameters; type = "standard"; }; };
+      in
+      {
+        "15" = off; # Mission Control: Application windows
+        "16" = off;
+        "17" = off;
+        "18" = off;
+        "19" = off;
+        "20" = off;
+        "21" = off;
+        "22" = off;
+        "23" = off;
+        "24" = off;
+        "25" = off;
+        "26" = off;
+        "30" = binding [ 52 21 1179648 ]; # Screenshots
+        "31" = binding [ 52 21 1441792 ];
+        "60" = binding [ 32 49 262144 ]; # Select previous/next input source
+        "61" = binding [ 32 49 786432 ];
+        "64" = binding [ 32 49 1048576 ]; # Spotlight search (cmd+space) — DISABLED for Raycast
+        "65" = binding [ 32 49 1572864 ]; # Finder search window (cmd+opt+space) — DISABLED
+        "79" = on; # Move to space left/right etc.
+        "80" = on;
+        "81" = on;
+        "82" = on;
+        "164" = binding [ 65535 65535 0 ];
+      };
+
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 1;

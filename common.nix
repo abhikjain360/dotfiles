@@ -13,6 +13,12 @@
     homeDirectory = if pkgs.stdenv.isDarwin then "/Users/abhik" else "/home/abhik";
     stateVersion = "26.05";
 
+    # We track nixos-unstable for nixpkgs and master for Home Manager. After a
+    # release branches, HM master bumps its version tag ahead of unstable
+    # nixpkgs, so their release strings differ even though both are unstable
+    # builds from the same week. The skew is harmless here, so silence the check.
+    enableNixpkgsReleaseCheck = false;
+
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.opencode/bin"

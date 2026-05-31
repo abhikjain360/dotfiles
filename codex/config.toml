@@ -1,6 +1,6 @@
 model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
-service_tier = "fast"
+service_tier = "default"
 allow_login_shell = false
 
 [shell_environment_policy]
@@ -32,6 +32,15 @@ open_external_editor = "ctrl-x"
 "gpt-5.5" = 4
 
 [projects."/Users/abhik/coding/llms/clipper"]
+trust_level = "trusted"
+
+[projects."/Users/abhik"]
+trust_level = "trusted"
+
+[projects."/Users/abhik/coding/llms/learn-german"]
+trust_level = "trusted"
+
+[projects."/Users/abhik/.config/home-manager"]
 trust_level = "trusted"
 
 [plugins."google-calendar@openai-curated"]
