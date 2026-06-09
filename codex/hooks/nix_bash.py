@@ -62,8 +62,6 @@ def main() -> int:
     inner = f"cd {shlex.quote(str(cwd.resolve()))} && {command}"
     routed_env = (
         f"{HOOK_MARKER}=1 "
-        "DART_SUPPRESS_ANALYTICS=1 "
-        "FLUTTER_SUPPRESS_ANALYTICS=true"
     )
     if (flake_root / ".envrc").is_file():
         routed = (

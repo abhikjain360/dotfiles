@@ -2,61 +2,58 @@
 set -eu
 
 find_real_codex() {
-  if [ -n "${CODEX_REAL:-}" ] && [ -x "$CODEX_REAL" ]; then
-    printf '%s\n' "$CODEX_REAL"
-    return 0
-  fi
-
-  for candidate in \
-    "/opt/homebrew/bin/codex" \
-    "/usr/local/bin/codex"
-  do
-    if [ -x "$candidate" ] && [ "$candidate" != "$HOME/.local/bin/codex" ]; then
-      printf '%s\n' "$candidate"
-      return 0
+    if [ -n "${CODEX_REAL:-}" ] && [ -x "$CODEX_REAL" ]; then
+        printf '%s\n' "$CODEX_REAL"
+        return 0
     fi
-  done
 
-  return 1
+    for candidate in \
+        "/opt/homebrew/bin/codex" \
+        "/usr/local/bin/codex"; do
+        if [ -x "$candidate" ] && [ "$candidate" != "$HOME/.local/bin/codex" ]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+
+    return 1
 }
 
 find_flake_root() {
-  dir="$PWD"
-  while [ "$dir" != "/" ]; do
-    if [ -f "$dir/flake.nix" ]; then
-      printf '%s\n' "$dir"
-      return 0
-    fi
-    dir=$(dirname "$dir")
-  done
-  return 1
+    dir="$PWD"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/flake.nix" ]; then
+            printf '%s\n' "$dir"
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
+    return 1
 }
 
 real_codex=$(find_real_codex) || {
-  echo "codex wrapper: could not find the Homebrew Codex binary" >&2
-  exit 127
+    echo "codex wrapper: could not find the Homebrew Codex binary" >&2
+    exit 127
 }
 
 if [ -n "${CODEX_NO_NIX:-}" ] || [ -n "${IN_NIX_SHELL:-}" ]; then
-  exec "$real_codex" "$@"
+    exec "$real_codex" "$@"
 fi
 
 if flake_root=$(find_flake_root); then
-  if [ -f "$flake_root/.envrc" ] && command -v direnv >/dev/null 2>&1; then
-    exec env \
-      CODEX_NIX_WRAPPER_ACTIVE=1 \
-      DART_SUPPRESS_ANALYTICS=1 \
-      FLUTTER_SUPPRESS_ANALYTICS=true \
-      direnv exec "$flake_root" "$real_codex" "$@"
-  fi
+    if [ -f "$flake_root/.envrc" ] && command -v direnv >/dev/null 2>&1; then
+        exec env \
+            CODEX_NIX_WRAPPER_ACTIVE=1 \
+            FLUTTER_SUPPRESS_ANALYTICS=true \
+            direnv exec "$flake_root" "$real_codex" "$@"
+    fi
 
-  if command -v nix >/dev/null 2>&1; then
-    exec env \
-      CODEX_NIX_WRAPPER_ACTIVE=1 \
-      DART_SUPPRESS_ANALYTICS=1 \
-      FLUTTER_SUPPRESS_ANALYTICS=true \
-      nix develop "$flake_root" --command "$real_codex" "$@"
-  fi
+    if command -v nix >/dev/null 2>&1; then
+        exec env \
+            CODEX_NIX_WRAPPER_ACTIVE=1 \
+            FLUTTER_SUPPRESS_ANALYTICS=true \
+            nix develop "$flake_root" --command "$real_codex" "$@"
+    fi
 fi
 
 exec "$real_codex" "$@"

@@ -139,6 +139,8 @@
       autoUpdate = true;
       upgrade = true;
       cleanup = "zap";
+      # Remove once nix-darwin#1787/#1789 lands and this flake input is updated.
+      extraFlags = [ "--force-cleanup" ];
     };
     brews = [
       "autoconf"
