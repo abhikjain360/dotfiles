@@ -19,9 +19,26 @@
     # builds from the same week. The skew is harmless here, so silence the check.
     enableNixpkgsReleaseCheck = false;
 
+    sessionVariables = {
+      EDITOR = "nvim";
+    }
+    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+      HOMEBREW_PREFIX = "/opt/homebrew";
+      HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
+      HOMEBREW_REPOSITORY = "/opt/homebrew";
+      INFOPATH = "/opt/homebrew/share/info:\${INFOPATH:-}";
+    };
+
     sessionPath = [
       "$HOME/.local/bin"
       "$HOME/.opencode/bin"
+      "$HOME/.cargo/bin"
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      "/opt/homebrew/bin"
+      "/opt/homebrew/sbin"
+      "$HOME/.cabal/bin"
+      "$HOME/.ghcup/bin"
     ];
 
     packages =
@@ -103,6 +120,14 @@
       enable = true;
       autocd = true;
       defaultKeymap = "viins";
+
+      initContent = lib.mkOrder 525 (
+        lib.optionalString pkgs.stdenv.isDarwin ''
+          if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+            fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+          fi
+        ''
+      );
 
       history = {
         path = "$HOME/.zsh_history";
