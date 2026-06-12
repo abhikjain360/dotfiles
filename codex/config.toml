@@ -30,24 +30,3 @@ open_external_editor = "ctrl-x"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-
-[projects."/Users/abhik/coding/llms/clipper"]
-trust_level = "trusted"
-
-[projects."/Users/abhik"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/coding/llms/learn-german"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/.config/home-manager"]
-trust_level = "trusted"
-
-[plugins."google-calendar@openai-curated"]
-enabled = true
-
-[plugins."gmail@openai-curated"]
-enabled = true
-
-[plugins."github@openai-curated"]
-enabled = true
