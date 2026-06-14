@@ -21,6 +21,8 @@
       mirrord
       postgresql
       spicedb-zed
+      valgrind
+      flamegraph
     ];
   };
 
