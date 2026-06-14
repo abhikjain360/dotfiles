@@ -75,6 +75,10 @@
       ++ lib.optionals pkgs.stdenv.isDarwin [
         coreutils
         gh
+      ]
+      ++ lib.optionals pkgs.stdenv.isLinux [
+        valgrind
+        flamegraph
       ];
   };
 
