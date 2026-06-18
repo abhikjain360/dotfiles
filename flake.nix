@@ -96,6 +96,21 @@
             ./work.nix
           ];
         };
+
+        "abhik@runpod" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = {
+            isArchLinux = false;
+            inherit bookmarks-yazi;
+          };
+          modules = [
+            ./common.nix
+            ./runpod.nix
+          ];
+        };
       };
     };
 }
