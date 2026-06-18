@@ -37,16 +37,19 @@ RUN apt-get update \
  && locale-gen en_US.UTF-8 \
  && rm -rf /var/lib/apt/lists/*
 
-# Single-user Nix install (no daemon) -- the simplest, most reliable shape for
-# a container image. Flakes + the new CLI enabled globally.
-RUN curl -L https://nixos.org/nix/install -o /tmp/nix-install.sh \
- && sh /tmp/nix-install.sh --no-daemon \
- && rm /tmp/nix-install.sh \
- && mkdir -p /etc/nix \
- && printf 'experimental-features = nix-command flakes\n' >> /etc/nix/nix.conf
+# Determinate Systems Nix installer -- handles root + containers cleanly
+# (creates the nixbld build users, enables flakes by default). `--init none`
+# because there is no systemd in the image; as root, nix uses the local store
+# directly without a running daemon. `sandbox = false` since the container
+# can't always set up the build sandbox. The trailing `nix --version` asserts
+# the install actually succeeded (the installer's self-test warning under
+# `--init none` is expected and non-fatal).
+RUN curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix \
+      | sh -s -- install linux --init none --no-confirm --extra-conf "sandbox = false" \
+ && /nix/var/nix/profiles/default/bin/nix --version
 
 # Put nix on PATH for the remaining build steps and at runtime.
-ENV PATH=/root/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/nix/var/nix/profiles/default/bin:/root/.nix-profile/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Your home-manager config, at the same path it lives on your Mac so the
 # out-of-store symlinks (nvim/zellij/beets/codex) resolve identically.
