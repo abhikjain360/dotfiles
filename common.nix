@@ -75,6 +75,7 @@
       ++ lib.optionals pkgs.stdenv.isDarwin [
         coreutils
         gh
+        runpodctl
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         valgrind
