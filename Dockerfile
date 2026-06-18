@@ -12,12 +12,12 @@
 # RunPod needs linux/amd64. Easiest host is a cheap RunPod CPU pod (or any x86
 # Linux box / CI runner); build there once, then GPU pods just pull it.
 #
-#   docker build -t ghcr.io/abhik360/runpod-cuda:latest .
-#   echo "$GHCR_PAT" | docker login ghcr.io -u abhik360 --password-stdin
-#   docker push ghcr.io/abhik360/runpod-cuda:latest
+#   docker build -t ghcr.io/abhikjain360/runpod-cuda:latest .
+#   echo "$GHCR_PAT" | docker login ghcr.io -u abhikjain360 --password-stdin
+#   docker push ghcr.io/abhikjain360/runpod-cuda:latest
 #
 # $GHCR_PAT = a GitHub personal access token with the `write:packages` scope.
-# Afterwards mark the package Public at github.com/users/abhik360/packages so
+# Afterwards mark the package Public at github.com/users/abhikjain360/packages so
 # RunPod can pull it with no credentials.
 # ---------------------------------------------------------------------------
 
