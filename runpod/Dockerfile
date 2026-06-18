@@ -83,5 +83,32 @@ RUN printf '%s\n' \
   >> /root/.bashrc
 
 WORKDIR /root
-# Login zsh so home-manager's generated ~/.zshrc loads.
-CMD ["zsh", "-l"]
+
+# --- RunPod SSH access -------------------------------------------------------
+# RunPod's ssh.runpod.io proxy connects to an sshd INSIDE the container and
+# injects your account's public keys as $PUBLIC_KEY at runtime. A bare image has
+# no sshd, so `runpodctl ssh info` reports "pod not ready" and connecting fails.
+# Install sshd, set root's login shell to zsh (so SSH sessions load your
+# home-manager env), and ensure nix is on PATH for those sessions.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends openssh-server \
+ && rm -rf /var/lib/apt/lists/* \
+ && mkdir -p /run/sshd /etc/zsh \
+ && sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config \
+ && usermod -s /usr/bin/zsh root \
+ && printf '%s\n' '. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh 2>/dev/null || true' >> /etc/zsh/zshenv
+
+# Entrypoint: install RunPod's injected key into authorized_keys, then run sshd
+# in the foreground as the container's main process (keeps the pod alive).
+RUN printf '%s\n' \
+  '#!/usr/bin/env bash' \
+  'set -e' \
+  'mkdir -p /root/.ssh /run/sshd' \
+  'chmod 700 /root/.ssh' \
+  'if [ -n "${PUBLIC_KEY:-}" ]; then echo "$PUBLIC_KEY" >> /root/.ssh/authorized_keys; chmod 600 /root/.ssh/authorized_keys; fi' \
+  'ssh-keygen -A >/dev/null 2>&1 || true' \
+  'exec /usr/sbin/sshd -D -e' \
+  > /usr/local/bin/runpod-entrypoint.sh \
+ && chmod +x /usr/local/bin/runpod-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/runpod-entrypoint.sh"]

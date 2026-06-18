@@ -3,6 +3,6 @@ font-family = FiraCode Nerd Font
 font-size = 12
 font-style = Retina
 cursor-style = block
-shell-integration-features = no-cursor
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
 window-width = 340
 window-height = 92
