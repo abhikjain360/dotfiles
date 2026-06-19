@@ -12,8 +12,10 @@
 # RunPod needs linux/amd64. Easiest host is a cheap RunPod CPU pod (or any x86
 # Linux box / CI runner); build there once, then GPU pods just pull it.
 #
-#   docker build -t ghcr.io/abhikjain360/runpod-cuda:latest .
+#   docker build -t ghcr.io/abhikjain360/runpod-cuda:v0.2.1 \
+#                -t ghcr.io/abhikjain360/runpod-cuda:latest .
 #   echo "$GHCR_PAT" | docker login ghcr.io -u abhikjain360 --password-stdin
+#   docker push ghcr.io/abhikjain360/runpod-cuda:v0.2.1
 #   docker push ghcr.io/abhikjain360/runpod-cuda:latest
 #
 # $GHCR_PAT = a GitHub personal access token with the `write:packages` scope.
@@ -69,7 +71,7 @@ RUN cd /root/.config/home-manager \
 # no GPU at build time). `print-dev-env` is exactly what direnv / `nix develop`
 # evaluate, so this is the cache they hit later. Pin a ref so your per-project
 # `nix develop` resolves to the same store paths and stays a cache hit.
-ARG CUDA_OXIDE_REF=v0.2.0
+ARG CUDA_OXIDE_REF=v0.2.1
 RUN nix print-dev-env --accept-flake-config --no-warn-dirty \
       "github:NVlabs/cuda-oxide/${CUDA_OXIDE_REF}" >/dev/null
 
@@ -110,5 +112,9 @@ RUN printf '%s\n' \
   'exec /usr/sbin/sshd -D -e' \
   > /usr/local/bin/runpod-entrypoint.sh \
  && chmod +x /usr/local/bin/runpod-entrypoint.sh
+
+# Document the SSH port. RunPod still requires `--ports "22/tcp"` at pod
+# creation for its proxy / `runpodctl ssh info` to consider the pod reachable.
+EXPOSE 22
 
 ENTRYPOINT ["/usr/local/bin/runpod-entrypoint.sh"]
