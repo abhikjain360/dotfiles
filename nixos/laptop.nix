@@ -135,8 +135,7 @@
       # gles2, NOT vulkan: on NVIDIA 595.x the wlroots vulkan renderer hands
       # wlr-screencopy compressed-modifier buffers that fail to capture
       # ("Couldn't scale frame: Invalid argument"). gles2 fixes capture.
-      WLR_BACKENDS = "libinput,headless";
-      WLR_LIBINPUT_NO_DEVICES = "1"; # headless: don't expect real input devices
+      WLR_BACKENDS = "headless"; # headless ONLY — adding libinput needs a seat/VT we don't have
       WLR_RENDERER = "gles2";
       WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA — capture+NVENC co-located
       WLR_NO_HARDWARE_CURSORS = "1";
