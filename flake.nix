@@ -55,6 +55,25 @@
         ];
       };
 
+      nixosConfigurations."laptop" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/laptop.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                isArchLinux = false;
+                inherit bookmarks-yazi;
+              };
+              users.abhik.imports = [ ./common.nix ];
+            };
+          }
+        ];
+      };
+
       homeConfigurations = {
 
         "abhik@personal" = home-manager.lib.homeManagerConfiguration {
