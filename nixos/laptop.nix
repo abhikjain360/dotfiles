@@ -85,17 +85,20 @@
   # --- Game streaming: Sunshine host, Moonlight client on the Mac ----------
   # The game runs HERE (RTX 3050 renders + NVENC-encodes); the Mac is a thin
   # client. Steam installs games onto this box's NVMe and executes them.
-  # Step 1 (this commit): host services + firewall. The headless gamescope
-  # capture session (pinned to renderD128) is wired in a follow-up.
+  #
+  # Capture surface = a HEADLESS sway session (below). Sunshine needs a wlroots
+  # compositor that exposes xdg_output + wlr-screencopy; gamescope can't be
+  # captured (no xdg_output, and its headless backend has no KMS scanout), so
+  # sway's userspace headless output is the surface. gamescope stays available
+  # as an optional per-game nested layer.
   programs.steam = {
     enable = true; # pulls 32-bit graphics + the full client; games live here
     remotePlay.openFirewall = false; # streaming via Sunshine, not Steam Remote Play
   };
-  programs.gamescope.enable = true; # micro-compositor for the headless session
+  programs.gamescope.enable = true; # optional per-game nesting (not the capture surface)
 
-  # gamescope exports its frames over PipeWire for Sunshine to capture, and
-  # PipeWire also carries the streamed game audio. Without it gamescope logs
-  # "failed to setup PipeWire, screen capture won't be available".
+  # PipeWire carries the streamed game audio (Sunshine creates a virtual sink
+  # and captures its monitor — no speakers needed on this headless box).
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -107,10 +110,38 @@
     enable = true;
     openFirewall = true; # 47984-48010 TCP/UDP + the 47990 web UI
     capSysAdmin = true; # required for KMS / virtual-input capture
-    autoStart = true;
+    autoStart = false; # started from inside the sway session so it inherits WAYLAND_DISPLAY
   };
+
+  # Headless capture session: sway with the userspace headless backend creates a
+  # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
+  # (renderD128) so capture and NVENC stay on one GPU. Once up it imports its
+  # WAYLAND_DISPLAY into the user manager and starts the (NVENC-capable) Sunshine
+  # service. Steam Big Picture gets exec'd here in the next step.
+  systemd.user.services.sway-stream = {
+    description = "Headless sway session — Sunshine capture surface";
+    wantedBy = [ "default.target" ]; # user lingers, so this comes up at boot
+    path = [ pkgs.systemd ];
+    environment = {
+      WLR_BACKENDS = "headless";
+      WLR_RENDERER = "vulkan";
+      WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA
+      WLR_NO_HARDWARE_CURSORS = "1";
+      XDG_CURRENT_DESKTOP = "sway";
+    };
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${lib.getExe pkgs.sway} -c ${pkgs.writeText "sway-stream.conf" ''
+        output HEADLESS-1 mode 1920x1080@60Hz
+        exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
+      ''}";
+      Restart = "on-failure";
+      RestartSec = "3s";
+    };
+  };
+
   # Run the user systemd manager at boot even with nobody logged in, so the
-  # Sunshine user service (and later the gamescope session) come up headless.
+  # sway-stream + Sunshine services come up headless.
   users.users.abhik.linger = true;
 
   # UEFI boot-entry management (handy for cleaning stale entries / boot order).
