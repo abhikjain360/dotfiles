@@ -210,6 +210,7 @@
       "raycast"
       "scroll-reverser"
       "slack"
+      "steam"
       "syncthing-app"
       "tailscale-app"
       "xournal++"
