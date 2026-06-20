@@ -121,7 +121,10 @@
   systemd.user.services.sway-stream = {
     description = "Headless sway session — Sunshine capture surface";
     wantedBy = [ "default.target" ]; # user lingers, so this comes up at boot
-    path = [ pkgs.systemd ];
+    path = [
+      pkgs.bash
+      pkgs.systemd
+    ]; # sway's `exec` runs via sh -c → needs a shell + systemctl in PATH
     environment = {
       WLR_BACKENDS = "headless";
       WLR_RENDERER = "vulkan";
