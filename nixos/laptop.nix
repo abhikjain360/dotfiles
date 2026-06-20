@@ -93,6 +93,16 @@
   };
   programs.gamescope.enable = true; # micro-compositor for the headless session
 
+  # gamescope exports its frames over PipeWire for Sunshine to capture, and
+  # PipeWire also carries the streamed game audio. Without it gamescope logs
+  # "failed to setup PipeWire, screen capture won't be available".
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
   services.sunshine = {
     enable = true;
     openFirewall = true; # 47984-48010 TCP/UDP + the 47990 web UI
