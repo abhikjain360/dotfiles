@@ -206,6 +206,7 @@
       "ghostty"
       "google-chrome"
       "monitorcontrol"
+      "moonlight" # Moonlight client — streams games from the laptop's Sunshine host
       "obs"
       "raycast"
       "scroll-reverser"
