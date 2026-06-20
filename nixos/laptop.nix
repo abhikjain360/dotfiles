@@ -97,6 +97,11 @@
   };
   programs.gamescope.enable = true; # optional per-game nesting (not the capture surface)
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ ];
+  };
+
   # PipeWire carries the streamed game audio (Sunshine creates a virtual sink
   # and captures its monitor — no speakers needed on this headless box).
   security.rtkit.enable = true;
