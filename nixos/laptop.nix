@@ -112,6 +112,13 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      # Streaming: Sunshine runs as this user's service. uinput = create the
+      # virtual gamepad/kbd/mouse Moonlight forwards into; video/render = GPU
+      # render-node access for the headless gamescope session (no seat means no
+      # automatic device ACLs).
+      "uinput"
+      "video"
+      "render"
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
