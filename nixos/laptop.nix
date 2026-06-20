@@ -124,6 +124,10 @@
     LD_LIBRARY_PATH = "/run/opengl-driver/lib"; # so any GPU encoder can dlopen its libs
     LIBVA_DRIVER_NAME = "radeonsi"; # AMD VCN encoder, not nvidia's decode-only VAAPI
   };
+  # Hardware-encode on the Renoir VCN (same iGPU as the capture) instead of the
+  # CPU. vainfo confirms H.264/HEVC VAEntrypointEncSlice on renderD129; Sunshine
+  # was defaulting to the wrong adapter, so pin it explicitly.
+  services.sunshine.settings.adapter_name = "/dev/dri/renderD129";
 
   # Headless capture session: sway with the userspace headless backend creates a
   # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
