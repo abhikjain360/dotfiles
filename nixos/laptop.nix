@@ -1,7 +1,8 @@
 # Headless NixOS test box: Ryzen 7 4800U + RTX 3050 Ti laptop, run lid-closed and
 # SSH-only as a disposable dry run for the desktop. No desktop environment. The
-# RTX 3050 Ti has no job yet (streaming/CUDA come later) — this is the minimal
-# "boots + reachable" system layer. CLI tooling comes from ./common.nix via the flake.
+# RTX 3050 Ti now has the NVIDIA driver loaded (PRIME offload over the AMD Renoir
+# iGPU) so nvidia-smi/CUDA/NVENC work; the streaming (Steam/gamescope) layer comes
+# later. CLI tooling comes from ./common.nix via the flake.
 {
   config,
   pkgs,
@@ -23,6 +24,37 @@
   # Firmware for the WiFi card (and GPUs). Without this the wireless NIC may not
   # come up — which would strand a headless box with no way back in.
   hardware.enableRedistributableFirmware = true;
+
+  # --- GPU: AMD Renoir iGPU + NVIDIA RTX 3050 Mobile (hybrid) ---------------
+  # Mesa/Vulkan/VA-API userspace for both GPUs (NVENC/CUDA use this too).
+  hardware.graphics.enable = true;
+
+  # Canonical NVIDIA switch. On a headless box this just loads the kmod +
+  # userspace; it does NOT start an X server (no DM/DE is enabled).
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    # GA107 is Ampere → use the open kernel modules (recommended for Turing+).
+    open = true;
+    # Headless: no nvidia-settings GUI tool.
+    nvidiaSettings = false;
+    # Keep the GPU initialized without an X server (headless compute/stream).
+    nvidiaPersistenced = true;
+    powerManagement.enable = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Hybrid laptop: PRIME offload. iGPU is the nominal primary (low power);
+    # the dGPU spins up on demand (nvidia-smi, or apps launched via the
+    # `nvidia-offload` wrapper / __NV_PRIME_RENDER_OFFLOAD). Bus IDs are
+    # per-machine, read off this box with `lspci -D` (decimal B:D:F).
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true; # provides the `nvidia-offload` wrapper
+      nvidiaBusId = "PCI:1:0:0"; # 0000:01:00.0 GA107M
+      amdgpuBusId = "PCI:5:0:0"; # 0000:05:00.0 Renoir
+    };
+  };
 
   # Always-on headless box: closing the lid must not suspend it.
   services.logind.settings.Login = {
