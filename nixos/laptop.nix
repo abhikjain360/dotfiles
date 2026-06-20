@@ -106,6 +106,10 @@
     pulse.enable = true;
   };
 
+  # Seat provider so sway's libinput backend can open input devices headlessly
+  # (no logind graphical session, no VT).
+  services.seatd.enable = true;
+
   services.sunshine = {
     enable = true;
     openFirewall = true; # 47984-48010 TCP/UDP + the 47990 web UI
@@ -138,7 +142,12 @@
       # gles2, NOT vulkan: on NVIDIA 595.x the wlroots vulkan renderer hands
       # wlr-screencopy compressed-modifier buffers that fail to capture
       # ("Couldn't scale frame: Invalid argument"). gles2 fixes capture.
-      WLR_BACKENDS = "headless"; # headless ONLY — adding libinput needs a seat/VT we don't have
+      # libinput backend so sway reads Sunshine's uinput devices (without it,
+      # headless has NO input → controller/kbd/mouse do nothing). libinput needs
+      # a seat: seatd (below) provides one without a VT.
+      WLR_BACKENDS = "libinput,headless";
+      WLR_LIBINPUT_NO_DEVICES = "1"; # start the backend with no devices; hotplug uinput later
+      LIBSEAT_BACKEND = "seatd"; # use seatd, not the VT-requiring builtin backend
       WLR_RENDERER = "gles2";
       WLR_DRM_NO_MODIFIERS = "1"; # linear buffers (belt-and-suspenders for clean capture)
       # Composite + capture on the AMD iGPU (renderD129). NVIDIA's wlr-screencopy
@@ -183,6 +192,7 @@
       "uinput"
       "video"
       "render"
+      "seat" # access /run/seatd.sock (owned root:seat) so sway's libinput backend can open input devices
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
