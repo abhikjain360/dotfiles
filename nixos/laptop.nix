@@ -82,6 +82,27 @@
 
   programs.zsh.enable = true;
 
+  # --- Game streaming: Sunshine host, Moonlight client on the Mac ----------
+  # The game runs HERE (RTX 3050 renders + NVENC-encodes); the Mac is a thin
+  # client. Steam installs games onto this box's NVMe and executes them.
+  # Step 1 (this commit): host services + firewall. The headless gamescope
+  # capture session (pinned to renderD128) is wired in a follow-up.
+  programs.steam = {
+    enable = true; # pulls 32-bit graphics + the full client; games live here
+    remotePlay.openFirewall = false; # streaming via Sunshine, not Steam Remote Play
+  };
+  programs.gamescope.enable = true; # micro-compositor for the headless session
+
+  services.sunshine = {
+    enable = true;
+    openFirewall = true; # 47984-48010 TCP/UDP + the 47990 web UI
+    capSysAdmin = true; # required for KMS / virtual-input capture
+    autoStart = true;
+  };
+  # Run the user systemd manager at boot even with nobody logged in, so the
+  # Sunshine user service (and later the gamescope session) come up headless.
+  users.users.abhik.linger = true;
+
   # UEFI boot-entry management (handy for cleaning stale entries / boot order).
   environment.systemPackages = [ pkgs.efibootmgr ];
 
