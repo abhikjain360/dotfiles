@@ -116,8 +116,10 @@
     capSysAdmin = false;
     autoStart = false; # started from inside the sway session so it inherits WAYLAND_DISPLAY
   };
-  # Without setcap, expose the NVIDIA driver libs so NVENC can dlopen libcuda.
-  systemd.user.services.sunshine.environment.LD_LIBRARY_PATH = "/run/opengl-driver/lib";
+  systemd.user.services.sunshine.environment = {
+    LD_LIBRARY_PATH = "/run/opengl-driver/lib"; # so any GPU encoder can dlopen its libs
+    LIBVA_DRIVER_NAME = "radeonsi"; # AMD VCN encoder, not nvidia's decode-only VAAPI
+  };
 
   # Headless capture session: sway with the userspace headless backend creates a
   # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
@@ -138,11 +140,12 @@
       # ("Couldn't scale frame: Invalid argument"). gles2 fixes capture.
       WLR_BACKENDS = "headless"; # headless ONLY — adding libinput needs a seat/VT we don't have
       WLR_RENDERER = "gles2";
-      # Force linear (un-tiled, no-modifier) buffers. NVIDIA's tiled gles2 buffers
-      # corrupt wlr-screencopy capture (garbled horizontal bands in software, and
-      # NVENC "Couldn't scale frame"); linear buffers fix both.
-      WLR_DRM_NO_MODIFIERS = "1";
-      WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA — capture+NVENC co-located
+      WLR_DRM_NO_MODIFIERS = "1"; # linear buffers (belt-and-suspenders for clean capture)
+      # Composite + capture on the AMD iGPU (renderD129). NVIDIA's wlr-screencopy
+      # buffers corrupt under Sunshine (garble + NVENC scale-fail); radeonsi is
+      # well-behaved and the Renoir VCN encodes via VAAPI on the SAME GPU as the
+      # capture (no cross-GPU). The RTX 3050 still renders games via PRIME offload.
+      WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD129"; # AMD Renoir iGPU
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_CURRENT_DESKTOP = "sway";
       XDG_SESSION_TYPE = "wayland";
