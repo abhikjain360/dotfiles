@@ -165,8 +165,12 @@
       ExecStart = "${lib.getExe pkgs.sway} --unsupported-gpu -c ${pkgs.writeText "sway-stream.conf" ''
         output HEADLESS-1 mode 1920x1080@60Hz
         exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
-        exec steam -gamepadui
+        exec __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
       ''}";
+      # ^ PRIME offload on the Steam launch: Steam + every game it spawns render
+      # on the RTX 3050 (dGPU), presenting frames back to the iGPU-composited
+      # session. sway itself stays on the iGPU (clean capture); only rendering
+      # moves to the dGPU. Per-game override still possible via Steam launch opts.
       Restart = "on-failure";
       RestartSec = "3s";
     };
@@ -193,6 +197,10 @@
       "video"
       "render"
       "seat" # access /run/seatd.sock (owned root:seat) so sway's libinput backend can open input devices
+      # Read /dev/input/event* directly: games/Steam read gamepads from evdev (no
+      # Wayland gamepad protocol), so without this the virtual Xbox pad is unreadable
+      # even though kbd/mouse work (those come through sway over Wayland).
+      "input"
     ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
