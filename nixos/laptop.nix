@@ -132,15 +132,21 @@
       pkgs.systemd
     ]; # sway's `exec` runs via sh -c → needs a shell + systemctl in PATH
     environment = {
-      WLR_BACKENDS = "headless";
-      WLR_RENDERER = "vulkan";
-      WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA
+      # gles2, NOT vulkan: on NVIDIA 595.x the wlroots vulkan renderer hands
+      # wlr-screencopy compressed-modifier buffers that fail to capture
+      # ("Couldn't scale frame: Invalid argument"). gles2 fixes capture.
+      WLR_BACKENDS = "libinput,headless";
+      WLR_LIBINPUT_NO_DEVICES = "1"; # headless: don't expect real input devices
+      WLR_RENDERER = "gles2";
+      WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA — capture+NVENC co-located
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_TYPE = "wayland";
     };
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${lib.getExe pkgs.sway} -c ${pkgs.writeText "sway-stream.conf" ''
+      # --unsupported-gpu: wlroots refuses the NVIDIA proprietary driver without it.
+      ExecStart = "${lib.getExe pkgs.sway} --unsupported-gpu -c ${pkgs.writeText "sway-stream.conf" ''
         output HEADLESS-1 mode 1920x1080@60Hz
         exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
       ''}";
