@@ -134,6 +134,27 @@
   # was defaulting to the wrong adapter, so pin it explicitly.
   services.sunshine.settings.adapter_name = "/dev/dri/renderD129";
 
+  # Resolution follows whatever you pick in Moonlight: on stream start Sunshine
+  # runs this to resize the headless output to the client's request, reverting to
+  # 1080p on disconnect. (Not auto-detection — it applies YOUR Moonlight choice.)
+  # swaymsg needs SWAYSOCK, which the sway session imports into the Sunshine env.
+  services.sunshine.settings.global_prep_cmd =
+    let
+      swaymsg = lib.getExe' pkgs.sway "swaymsg";
+      # Find the LIVE sway IPC socket (a snapshotted SWAYSOCK goes stale if sway
+      # restarts) and apply the mode to the headless output.
+      setMode = mode:
+        pkgs.writeShellScript "sunshine-setmode" ''
+          for s in "$XDG_RUNTIME_DIR"/sway-ipc.*.sock; do
+            ${swaymsg} -s "$s" -t get_version >/dev/null 2>&1 || continue
+            exec ${swaymsg} -s "$s" output HEADLESS-1 mode "${mode}"
+          done
+        '';
+      resize = setMode "\${SUNSHINE_CLIENT_WIDTH}x\${SUNSHINE_CLIENT_HEIGHT}@\${SUNSHINE_CLIENT_FPS}Hz";
+      reset = setMode "1920x1080@60Hz";
+    in
+    ''[{"do":"${resize}","undo":"${reset}","elevated":"false"}]'';
+
   # Headless capture session: sway with the userspace headless backend creates a
   # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
   # (renderD128) so capture and NVENC stay on one GPU. Once up it imports its
@@ -173,7 +194,7 @@
       # --unsupported-gpu: wlroots refuses the NVIDIA proprietary driver without it.
       ExecStart = "${lib.getExe pkgs.sway} --unsupported-gpu -c ${pkgs.writeText "sway-stream.conf" ''
         output HEADLESS-1 mode 1920x1080@60Hz
-        exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
+        exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
         exec __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia steam -gamepadui
       ''}";
       # ^ PRIME offload on the Steam launch: Steam + every game it spawns render
