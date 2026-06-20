@@ -138,6 +138,10 @@
       # ("Couldn't scale frame: Invalid argument"). gles2 fixes capture.
       WLR_BACKENDS = "headless"; # headless ONLY — adding libinput needs a seat/VT we don't have
       WLR_RENDERER = "gles2";
+      # Force linear (un-tiled, no-modifier) buffers. NVIDIA's tiled gles2 buffers
+      # corrupt wlr-screencopy capture (garbled horizontal bands in software, and
+      # NVENC "Couldn't scale frame"); linear buffers fix both.
+      WLR_DRM_NO_MODIFIERS = "1";
       WLR_RENDER_DRM_DEVICE = "/dev/dri/renderD128"; # NVIDIA — capture+NVENC co-located
       WLR_NO_HARDWARE_CURSORS = "1";
       XDG_CURRENT_DESKTOP = "sway";
