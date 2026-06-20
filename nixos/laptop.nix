@@ -109,9 +109,15 @@
   services.sunshine = {
     enable = true;
     openFirewall = true; # 47984-48010 TCP/UDP + the 47990 web UI
-    capSysAdmin = true; # required for KMS / virtual-input capture
+    # capSysAdmin is ONLY for KMS capture on non-wlroots compositors. We capture
+    # sway via wlr-screencopy (no KMS), and the controller's uinput works via the
+    # group, not cap_sys_admin. Crucially, setcap makes ld.so ignore library
+    # paths → NVENC can't find libcuda.so.1. So keep it OFF.
+    capSysAdmin = false;
     autoStart = false; # started from inside the sway session so it inherits WAYLAND_DISPLAY
   };
+  # Without setcap, expose the NVIDIA driver libs so NVENC can dlopen libcuda.
+  systemd.user.services.sunshine.environment.LD_LIBRARY_PATH = "/run/opengl-driver/lib";
 
   # Headless capture session: sway with the userspace headless backend creates a
   # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
