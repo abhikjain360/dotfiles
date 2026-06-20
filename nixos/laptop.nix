@@ -130,6 +130,7 @@
     path = [
       pkgs.bash
       pkgs.systemd
+      config.programs.steam.package # `steam` for the Big Picture exec below
     ]; # sway's `exec` runs via sh -c → needs a shell + systemctl in PATH
     environment = {
       # gles2, NOT vulkan: on NVIDIA 595.x the wlroots vulkan renderer hands
@@ -148,6 +149,7 @@
       ExecStart = "${lib.getExe pkgs.sway} --unsupported-gpu -c ${pkgs.writeText "sway-stream.conf" ''
         output HEADLESS-1 mode 1920x1080@60Hz
         exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && systemctl --user start sunshine.service
+        exec steam -gamepadui
       ''}";
       Restart = "on-failure";
       RestartSec = "3s";
