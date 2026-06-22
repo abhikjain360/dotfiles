@@ -62,6 +62,14 @@
     HandleLidSwitchExternalPower = "ignore";
   };
 
+  # Cap battery charge at 80% (ASUS supports only the stop threshold).
+  services.tlp = {
+    enable = true;
+    settings = {
+      STOP_CHARGE_THRESH_BAT1 = 80;
+    };
+  };
+
   time.timeZone = "Europe/Berlin"; # matches the Mac
   i18n.defaultLocale = "en_US.UTF-8";
 
