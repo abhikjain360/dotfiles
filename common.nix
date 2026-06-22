@@ -329,16 +329,6 @@
     };
   };
 
-  # On the laptop (Linux + signing enabled) keep a user gpg-agent running so the
-  # socket dir /run/user/<uid>/gnupg exists at boot (it lives on tmpfs). When the
-  # Mac connects, its forwarded socket replaces this agent's socket (thanks to
-  # sshd's StreamLocalBindUnlink), so signing actually runs on the Mac. The Mac
-  # itself uses its own native gpg-agent, so this stays off there (isLinux guard).
-  services.gpg-agent = lib.mkIf (gpgSign && pkgs.stdenv.isLinux) {
-    enable = true;
-    pinentry.package = pkgs.pinentry-curses;
-  };
-
   xdg.configFile = {
     "beets".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/beets";
