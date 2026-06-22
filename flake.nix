@@ -41,6 +41,7 @@
               extraSpecialArgs = {
                 isArchLinux = false;
                 isWork = true;
+                gpgSign = true;
                 inherit bookmarks-yazi;
               };
               users.abhik = {
@@ -66,6 +67,7 @@
               useUserPackages = true;
               extraSpecialArgs = {
                 isArchLinux = false;
+                gpgSign = true;
                 inherit bookmarks-yazi;
               };
               users.abhik.imports = [ ./common.nix ];
@@ -84,6 +86,7 @@
           extraSpecialArgs = {
             isArchLinux = false;
             isWork = false;
+            gpgSign = false;
             inherit bookmarks-yazi;
           };
           modules = [
@@ -96,6 +99,7 @@
           pkgs = nixpkgs.legacyPackages.aarch64-linux;
           extraSpecialArgs = {
             isArchLinux = false;
+            gpgSign = false;
             inherit bookmarks-yazi;
           };
           modules = [
@@ -108,6 +112,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             isArchLinux = true;
+            gpgSign = false;
             inherit bookmarks-yazi;
           };
           modules = [
@@ -123,6 +128,7 @@
           };
           extraSpecialArgs = {
             isArchLinux = false;
+            gpgSign = false;
             inherit bookmarks-yazi;
           };
           modules = [

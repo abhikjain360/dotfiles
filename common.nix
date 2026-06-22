@@ -4,6 +4,12 @@
   lib,
   isArchLinux,
   bookmarks-yazi,
+  # Enable GPG commit/tag signing on this host. Only hosts where the key is
+  # reachable set this true: the Mac (native key) and the laptop (key forwarded
+  # over SSH from the Mac). Keyless hosts pass false so their commits don't fail.
+  # (Passed by every host, like isArchLinux — a module-arg default isn't honored
+  # by the module system when the arg is simply omitted.)
+  gpgSign,
   ...
 }:
 
@@ -88,14 +94,24 @@
       enable = true;
       lfs.enable = true;
       settings = {
-        user.name = "Abhik Jain";
-        user.email = "abhik@abhikjain.xyz";
+        user = {
+          name = "Abhik Jain";
+          email = "abhik@abhikjain.xyz";
+        }
+        // lib.optionalAttrs gpgSign {
+          signingkey = "81521AB49BF9D100AEAB66DD74BF75B80750FD6B";
+        };
         init.defaultBranch = "main";
         core.compression = 0;
         merge.conflictstyle = "diff3";
         diff.colorMoved = "default";
         pack.windowsMemory = "256m";
         http.postBuffer = 524288000;
+      }
+      // lib.optionalAttrs gpgSign {
+        commit.gpgsign = true;
+        tag.gpgSign = true;
+        gpg.program = "${pkgs.gnupg}/bin/gpg";
       };
     };
 
@@ -302,8 +318,25 @@
           default-command = "log";
           diff-formatter = ":git";
         };
+      }
+      // lib.optionalAttrs gpgSign {
+        signing = {
+          behavior = "own"; # sign commits I author; "force" = all, "drop" = off
+          backend = "gpg";
+          key = "81521AB49BF9D100AEAB66DD74BF75B80750FD6B";
+        };
       };
     };
+  };
+
+  # On the laptop (Linux + signing enabled) keep a user gpg-agent running so the
+  # socket dir /run/user/<uid>/gnupg exists at boot (it lives on tmpfs). When the
+  # Mac connects, its forwarded socket replaces this agent's socket (thanks to
+  # sshd's StreamLocalBindUnlink), so signing actually runs on the Mac. The Mac
+  # itself uses its own native gpg-agent, so this stays off there (isLinux guard).
+  services.gpg-agent = lib.mkIf (gpgSign && pkgs.stdenv.isLinux) {
+    enable = true;
+    pinentry.package = pkgs.pinentry-curses;
   };
 
   xdg.configFile = {

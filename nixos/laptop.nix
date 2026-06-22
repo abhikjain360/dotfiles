@@ -77,6 +77,11 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false; # truly key-only (block the PAM password path)
+      # Allow an incoming RemoteForward to replace a stale gpg-agent socket at
+      # /run/user/<uid>/gnupg/S.gpg-agent instead of failing to bind. Required
+      # for forwarding the Mac's gpg-agent here (commit signing without copying
+      # private keys to this box).
+      StreamLocalBindUnlink = true;
     };
   };
 
