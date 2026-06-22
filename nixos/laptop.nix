@@ -15,7 +15,7 @@
 
   # Boot: UEFI + systemd-boot.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "laptop";
