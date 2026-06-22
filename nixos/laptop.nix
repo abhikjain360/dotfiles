@@ -85,6 +85,14 @@
     };
   };
 
+  # The Mac forwards its gpg-agent "extra" socket onto /run/user/<uid>/gnupg/
+  # S.gpg-agent here (RemoteForward in the Mac's ~/.ssh/config) so commits sign
+  # with keys that never leave the Mac. Create that gnupg socket dir so sshd can
+  # bind the socket, and deliberately run NO local gpg-agent — a local agent would
+  # own this socket and shadow the forward (signing then fails "No secret key").
+  # %t expands to the user's /run/user/<uid> runtime dir.
+  systemd.user.tmpfiles.rules = [ "d %t/gnupg 0700 - - -" ];
+
   programs.zsh.enable = true;
 
   # --- Game streaming: Sunshine host, Moonlight client on the Mac ----------
