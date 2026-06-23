@@ -10,6 +10,13 @@
   ...
 }:
 
+let
+  # Single-zone ASUS Aura backlight, exposed as the asus::kbd_backlight LED
+  # (brightness 0–3). Writing 0 powers the LEDs off entirely — no glow, no color.
+  kbdBacklightOff = pkgs.writeShellScript "kbd-backlight-off" ''
+    echo 0 > /sys/class/leds/asus::kbd_backlight/brightness
+  '';
+in
 {
   imports = [ ./laptop-hardware.nix ];
 
@@ -69,6 +76,21 @@
       STOP_CHARGE_THRESH_BAT1 = 80;
     };
   };
+
+  # --- Keyboard backlight: keep it off (no Aura RGB glow) -------------------
+  # Pin the LED to 0 at boot. Ordered AFTER systemd-backlight@…, which restores
+  # the saved brightness, so our 0 wins the race instead of being overwritten.
+  # Also re-apply on resume in case the EC relights the keyboard after a sleep.
+  systemd.services.kbd-backlight-off = {
+    description = "Force ASUS keyboard backlight off";
+    after = [ "systemd-backlight@leds:asus::kbd_backlight.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${kbdBacklightOff}";
+    };
+  };
+  powerManagement.resumeCommands = "${kbdBacklightOff}";
 
   time.timeZone = "Europe/Berlin"; # matches the Mac
   i18n.defaultLocale = "en_US.UTF-8";
