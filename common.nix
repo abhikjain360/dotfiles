@@ -13,6 +13,39 @@
   ...
 }:
 
+let
+  # A clang/cc/clang++/c++ that link with mold by default, so *every* C/C++ build
+  # on this user's Linux hosts uses mold — not just Rust (which the cargo config
+  # below also covers). Each driver execs the real nixpkgs clang wrapper (so all
+  # the include/libc/startfile setup is untouched), only adding the linker:
+  #   --ld-path=<mold>  pin mold by absolute path (PATH-independent, unambiguous)
+  #   -Wno-unused-...   keep compile-only (-c) runs quiet, since the linker flag
+  #                     is unused when not linking.
+  # Nix builds and their sandboxed stdenv are deliberately NOT touched (they pin
+  # their own toolchains); this only affects compilers *you* invoke. CUDA/nvcc
+  # linking is pinned per-project instead.
+  moldClang = pkgs.runCommand "clang-mold-${pkgs.clang.version}" { } ''
+    mkdir -p $out/bin
+    for f in ${pkgs.clang}/bin/*; do
+      ln -s "$f" "$out/bin/$(basename "$f")"
+    done
+    rm -f $out/bin/clang $out/bin/cc $out/bin/clang++ $out/bin/c++
+    for c in clang cc; do
+      cat > "$out/bin/$c" <<'EOF'
+#!${pkgs.runtimeShell}
+exec ${pkgs.clang}/bin/clang --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
+EOF
+      chmod +x "$out/bin/$c"
+    done
+    for cxx in clang++ c++; do
+      cat > "$out/bin/$cxx" <<'EOF'
+#!${pkgs.runtimeShell}
+exec ${pkgs.clang}/bin/clang++ --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
+EOF
+      chmod +x "$out/bin/$cxx"
+    done
+  '';
+in
 {
   home = {
     username = "abhik";
@@ -84,9 +117,26 @@
         runpodctl
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
-        valgrind
+        moldClang # clang/cc/clang++/c++ that default to linking with mold (see `let` above)
         flamegraph
+        mold # the fast linker itself + CLI; used by moldClang and by the cargo config below
+        valgrind
       ];
+
+    # Build Rust with clang as the link driver and mold as the actual linker
+    # (Linux only — macOS ships its own toolchain and mold isn't for Darwin).
+    # Scoped to this host's own target triple so cross-compiles are untouched;
+    # the triple is taken from nixpkgs so it's correct on x86_64 and aarch64
+    # alike. The moldClang from home.packages already defaults to mold, so the
+    # -fuse-ld below is redundant — kept so Rust's linker choice is explicit and
+    # self-documenting in cargo's own config.
+    file = lib.mkIf pkgs.stdenv.isLinux {
+      ".cargo/config.toml".text = ''
+        [target.${pkgs.stdenv.hostPlatform.config}]
+        linker = "clang"
+        rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+      '';
+    };
   };
 
   programs = {
