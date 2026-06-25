@@ -99,7 +99,7 @@
           pkgs = nixpkgs.legacyPackages.aarch64-linux;
           extraSpecialArgs = {
             isArchLinux = false;
-            gpgSign = false;
+            gpgSign = true;
             inherit bookmarks-yazi;
           };
           modules = [
