@@ -73,6 +73,19 @@ in
       "$HOME/.opencode/bin"
       "$HOME/.cargo/bin"
     ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      # Standalone Home Manager installs land in ~/.nix-profile, but Nix's own
+      # profile script only adds it to PATH for *login* shells. A non-interactive
+      # SSH command (`ssh host cmd`) runs a non-login shell — which is exactly how
+      # rsync/git/etc. invoke their remote helper (`ssh host rsync --server …`).
+      # Without this entry the remote tool isn't found ("command not found", child
+      # exits 127), so `rsync laptop:… host:…` dies with io_read/EOF errors even
+      # though `rsync` works in an interactive shell. Threading it through
+      # sessionPath puts it in hm-session-vars.sh, which the HM-managed .zshenv
+      # sources for non-login shells. No-op on NixOS (useUserPackages has no
+      # ~/.nix-profile, and the system already sets a full non-login PATH).
+      "$HOME/.nix-profile/bin"
+    ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
@@ -118,6 +131,7 @@ in
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         moldClang # clang/cc/clang++/c++ that default to linking with mold (see `let` above)
+        clang-tools # clangd language server (+ clang-format/clang-tidy) for C/C++ editing
         flamegraph
         mold # the fast linker itself + CLI; used by moldClang and by the cargo config below
         valgrind
