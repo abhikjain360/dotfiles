@@ -34,6 +34,39 @@
   nixpkgs.overlays = [
     (final: prev: {
       direnv = nixpkgs-direnv.legacyPackages.${final.system}.direnv;
+
+      # Route pass's clipboard copy through a shim that tags the macOS pasteboard
+      # with the nspasteboard.org "concealed" type, so Clipper (and other
+      # clipboard history/sync tools) skip copied passwords. Upstream pass's
+      # Darwin clip() does a plain `pbcopy`, which carries no such marker, so the
+      # password otherwise looks like ordinary text and gets captured/synced.
+      pass =
+        let
+          conceal-copy-js = prev.writeText "conceal-copy.js" ''
+            ObjC.import("AppKit");
+            function run() {
+              var d = $.NSFileHandle.fileHandleWithStandardInput.readDataToEndOfFile;
+              var s = $.NSString.alloc.initWithDataEncoding(d, $.NSUTF8StringEncoding);
+              if (!s || s.isNil()) s = $("");
+              var pb = $.NSPasteboard.generalPasteboard;
+              var concealed = $("org.nspasteboard.ConcealedType");
+              pb.clearContents;
+              pb.declareTypesOwner($([concealed, $.NSPasteboardTypeString]), $());
+              pb.setStringForType(s, $.NSPasteboardTypeString);
+              pb.setStringForType(s, concealed);
+            }
+          '';
+          # pass's Darwin clip() calls a bare `pbcopy`; shadow it on pass's PATH.
+          conceal-pbcopy = prev.writeShellScriptBin "pbcopy" ''
+            exec /usr/bin/osascript -l JavaScript ${conceal-copy-js}
+          '';
+        in
+        prev.symlinkJoin {
+          name = "pass-conceal";
+          paths = [ prev.pass ];
+          nativeBuildInputs = [ prev.makeWrapper ];
+          postBuild = "wrapProgram $out/bin/pass --prefix PATH : ${conceal-pbcopy}/bin";
+        };
     })
   ];
 
