@@ -21,6 +21,7 @@
       mirrord
       postgresql
       spicedb-zed
+      yarn
     ];
   };
 
