@@ -334,6 +334,12 @@ in
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      # Atuin owns Ctrl-R. Its zsh integration is sourced after fzf's and already
+      # overrides this key, so drop fzf's Ctrl-R history widget to make that
+      # explicit and silence home-manager's conflict warning. fzf keeps Ctrl-T
+      # (files) and Alt-C (cd). To flip ownership to fzf instead, remove this line
+      # and set `programs.atuin.flags = [ "--disable-ctrl-r" ];`.
+      historyWidget.command = "";
     };
 
     atuin = {
