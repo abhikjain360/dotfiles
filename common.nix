@@ -25,25 +25,25 @@ let
   # their own toolchains); this only affects compilers *you* invoke. CUDA/nvcc
   # linking is pinned per-project instead.
   moldClang = pkgs.runCommand "clang-mold-${pkgs.clang.version}" { } ''
-    mkdir -p $out/bin
-    for f in ${pkgs.clang}/bin/*; do
-      ln -s "$f" "$out/bin/$(basename "$f")"
-    done
-    rm -f $out/bin/clang $out/bin/cc $out/bin/clang++ $out/bin/c++
-    for c in clang cc; do
-      cat > "$out/bin/$c" <<'EOF'
-#!${pkgs.runtimeShell}
-exec ${pkgs.clang}/bin/clang --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
-EOF
-      chmod +x "$out/bin/$c"
-    done
-    for cxx in clang++ c++; do
-      cat > "$out/bin/$cxx" <<'EOF'
-#!${pkgs.runtimeShell}
-exec ${pkgs.clang}/bin/clang++ --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
-EOF
-      chmod +x "$out/bin/$cxx"
-    done
+        mkdir -p $out/bin
+        for f in ${pkgs.clang}/bin/*; do
+          ln -s "$f" "$out/bin/$(basename "$f")"
+        done
+        rm -f $out/bin/clang $out/bin/cc $out/bin/clang++ $out/bin/c++
+        for c in clang cc; do
+          cat > "$out/bin/$c" <<'EOF'
+    #!${pkgs.runtimeShell}
+    exec ${pkgs.clang}/bin/clang --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
+    EOF
+          chmod +x "$out/bin/$c"
+        done
+        for cxx in clang++ c++; do
+          cat > "$out/bin/$cxx" <<'EOF'
+    #!${pkgs.runtimeShell}
+    exec ${pkgs.clang}/bin/clang++ --ld-path=${pkgs.mold}/bin/ld.mold -Wno-unused-command-line-argument "$@"
+    EOF
+          chmod +x "$out/bin/$cxx"
+        done
   '';
 in
 {
@@ -126,6 +126,7 @@ in
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
         coreutils
+        en-croissant
         gh
         runpodctl
       ]
