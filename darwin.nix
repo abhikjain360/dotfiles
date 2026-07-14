@@ -1,6 +1,7 @@
 {
   _,
   nixpkgs-direnv,
+  nixpkgs-choose,
   ...
 }:
 
@@ -34,6 +35,8 @@
   nixpkgs.overlays = [
     (final: prev: {
       direnv = nixpkgs-direnv.legacyPackages.${final.system}.direnv;
+
+      choose-gui = nixpkgs-choose.legacyPackages.${final.system}.choose-gui;
 
       # Route pass's clipboard copy through a shim that tags the macOS pasteboard
       # with the nspasteboard.org "concealed" type, so Clipper (and other
@@ -82,10 +85,6 @@
   };
 
   system.defaults = {
-    # Keep cmd+space free for Raycast. macOS owns it via symbolic hotkey 64
-    # ("Show Spotlight search"); disabling that hotkey with a real boolean is
-    # what frees the combo. nix-darwin writes the whole AppleSymbolicHotKeys
-    # dict at once, so every current hotkey is listed here to preserve it.
     CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys =
       let
         off = {

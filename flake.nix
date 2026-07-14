@@ -16,6 +16,7 @@
       flake = false;
     };
     nixpkgs-direnv.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-choose.url = "github:nixos/nixpkgs/d407951447dcd00442e97087bf374aad70c04cea";
   };
 
   outputs =
@@ -25,12 +26,13 @@
       nix-darwin,
       bookmarks-yazi,
       nixpkgs-direnv,
+      nixpkgs-choose,
       ...
     }:
     {
       darwinConfigurations."Luminerds-Laptop" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { inherit nixpkgs-direnv; };
+        specialArgs = { inherit nixpkgs-direnv nixpkgs-choose; };
         modules = [
           ./darwin.nix
           home-manager.darwinModules.home-manager
