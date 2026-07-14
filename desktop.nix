@@ -58,9 +58,6 @@
         xournalpp
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
-        # for the pass GUI autofill
-        choose-gui
-
         # for android dev
         jdk17
       ]

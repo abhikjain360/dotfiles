@@ -1,7 +1,6 @@
 {
   _,
   nixpkgs-direnv,
-  nixpkgs-choose,
   ...
 }:
 
@@ -35,8 +34,6 @@
   nixpkgs.overlays = [
     (final: prev: {
       direnv = nixpkgs-direnv.legacyPackages.${final.system}.direnv;
-
-      choose-gui = nixpkgs-choose.legacyPackages.${final.system}.choose-gui;
 
       # Route pass's clipboard copy through a shim that tags the macOS pasteboard
       # with the nspasteboard.org "concealed" type, so Clipper (and other
@@ -215,6 +212,7 @@
     brews = [
       "autoconf"
       "automake"
+      "choose-gui"
       "chromaprint"
       "cocoapods"
       "libtool"
