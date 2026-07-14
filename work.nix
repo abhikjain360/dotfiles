@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
@@ -29,6 +30,8 @@
     zsh = {
       shellAliases = {
         gcm = lib.mkForce "git checkout master";
+        # The work's flake.nix + direnv uses it's own outdated claude package
+        claude = "${config.home.homeDirectory}/.local/bin/claude";
       };
     };
 
