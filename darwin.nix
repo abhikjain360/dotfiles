@@ -235,6 +235,7 @@
       "flutter"
       "ghostty"
       "google-chrome"
+      "kimi"
       "monitorcontrol"
       "moonlight" # Moonlight client — streams games from the laptop's Sunshine host
       "obs"
