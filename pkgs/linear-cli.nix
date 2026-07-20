@@ -2,8 +2,6 @@
   lib,
   stdenv,
   fetchurl,
-  autoPatchelfHook,
-  glibc,
 }:
 
 let
@@ -46,18 +44,15 @@ stdenv.mkDerivation {
   # The tarball unpacks into linear-<triple>/; descend straight into it.
   sourceRoot = "linear-${target.triple}";
 
-  # On Linux the deno-compiled binary is dynamically linked against glibc
-  # (libc/libm/libdl/librt/libpthread/ld-linux) and libgcc_s; patch it to use
-  # the Nix store's copies so it doesn't depend on the host's libc. macOS
-  # binaries only need libSystem, which is always present, so no patching there.
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ];
-  buildInputs = lib.optionals stdenv.isLinux [
-    glibc
-    stdenv.cc.cc.lib
-  ];
-
+  # The binary is produced by `deno compile`, which embeds the JS bundle in a
+  # binary section that both patchelf and strip drop, leaving a binary that
+  # fails at startup with "Could not find standalone binary section." So
+  # install it untouched: no autoPatchelfHook, no strip. It stays dynamically
+  # linked against the host's glibc, which is fine since this is only used on
+  # non-NixOS machines.
   dontConfigure = true;
   dontBuild = true;
+  dontStrip = true;
 
   installPhase = ''
     runHook preInstall
