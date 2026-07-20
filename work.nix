@@ -34,6 +34,10 @@
         # The work's flake.nix + direnv uses it's own outdated claude package
         claude = "${config.home.homeDirectory}/.local/bin/claude";
       };
+
+      envExtra = ''
+        [[ -r ~/.config/linear/api-key.zsh ]] && source ~/.config/linear/api-key.zsh
+      '';
     };
 
     git.settings = lib.mkForce {
