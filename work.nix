@@ -19,6 +19,7 @@
       k9s
       kubectl
       kubeseal
+      (pkgs.callPackage ./pkgs/linear-cli.nix { })
       mirrord
       postgresql
       spicedb-zed
