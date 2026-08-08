@@ -109,8 +109,6 @@ in
         htop
         jq
         lazyjj
-        libopus
-        libopus.dev
         neovim
         nixfmt
         nodejs_24
