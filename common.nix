@@ -360,13 +360,14 @@ in
       enable = true;
       settings = {
         git = {
-          pagers = [
+          diffRenderers = [
             {
               colorArg = "always";
-              pager = "delta --dark --paging=never";
+              command = "delta --dark --paging=never";
             }
             {
-              externalDiffCommand = "difft --color=always";
+              type = "extDiff";
+              command = "difft --color=always";
             }
           ];
         };
