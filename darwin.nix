@@ -228,6 +228,7 @@
       "ghostty"
       "google-chrome"
       "kimi"
+      "kitlangton-hex"
       "monitorcontrol"
       "moonlight" # Moonlight client — streams games from the laptop's Sunshine host
       "obs"
