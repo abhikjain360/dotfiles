@@ -25,6 +25,16 @@
       bookmarks-yazi,
       ...
     }:
+    let
+      # Special args every Home Manager entry point shares; each host below
+      # overrides only the flags that differ.
+      hmArgs = {
+        isArchLinux = false;
+        isServer = false;
+        isWork = false;
+        inherit bookmarks-yazi;
+      };
+    in
     {
       darwinConfigurations."Luminerds-Laptop" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -35,11 +45,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {
-                isArchLinux = false;
-                isWork = true;
+              extraSpecialArgs = hmArgs // {
                 gpgSign = true;
-                inherit bookmarks-yazi;
+                isWork = true;
               };
               users.abhik = {
                 imports = [
@@ -62,10 +70,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {
-                isArchLinux = false;
+              extraSpecialArgs = hmArgs // {
                 gpgSign = true;
-                inherit bookmarks-yazi;
               };
               users.abhik.imports = [ ./common.nix ];
             };
@@ -80,11 +86,8 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          extraSpecialArgs = {
-            isArchLinux = false;
-            isWork = false;
+          extraSpecialArgs = hmArgs // {
             gpgSign = false;
-            inherit bookmarks-yazi;
           };
           modules = [
             ./common.nix
@@ -94,10 +97,9 @@
 
         "abhik@server" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-linux;
-          extraSpecialArgs = {
-            isArchLinux = false;
+          extraSpecialArgs = hmArgs // {
             gpgSign = true;
-            inherit bookmarks-yazi;
+            isServer = true;
           };
           modules = [
             ./common.nix
@@ -107,10 +109,10 @@
 
         "abhik@workserver" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            isArchLinux = true;
+          extraSpecialArgs = hmArgs // {
             gpgSign = false;
-            inherit bookmarks-yazi;
+            isArchLinux = true;
+            isServer = true;
           };
           modules = [
             ./common.nix
@@ -123,10 +125,9 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
-          extraSpecialArgs = {
-            isArchLinux = false;
+          extraSpecialArgs = hmArgs // {
             gpgSign = false;
-            inherit bookmarks-yazi;
+            isServer = true;
           };
           modules = [
             ./common.nix

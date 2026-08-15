@@ -3,6 +3,9 @@
   pkgs,
   lib,
   isArchLinux,
+  # Headless boxes (server, workserver, runpod) pass true to skip
+  # interactive-host extras like podman. Passed by every host, like isArchLinux.
+  isServer,
   bookmarks-yazi,
   # Enable GPG commit/tag signing on this host. Only hosts where the key is
   # reachable set this true: the Mac (native key) and the laptop (key forwarded
@@ -14,6 +17,13 @@
 }:
 
 let
+  # This repo — the base for the out-of-store config symlinks below.
+  dotfiles = "${config.home.homeDirectory}/.config/home-manager";
+
+  # Platform checks; stdenv.isDarwin/isLinux are deprecated on modern nixpkgs.
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+
   # A clang/cc/clang++/c++ that link with mold by default, so *every* C/C++ build
   # on this user's Linux hosts uses mold — not just Rust (which the cargo config
   # below also covers). Each driver execs the real nixpkgs clang wrapper (so all
@@ -49,7 +59,7 @@ in
 {
   home = {
     username = "abhik";
-    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/abhik" else "/home/abhik";
+    homeDirectory = if isDarwin then "/Users/abhik" else "/home/abhik";
     stateVersion = "26.05";
 
     # We track nixos-unstable for nixpkgs and master for Home Manager. After a
@@ -61,7 +71,7 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    // lib.optionalAttrs isDarwin {
       HOMEBREW_PREFIX = "/opt/homebrew";
       HOMEBREW_CELLAR = "/opt/homebrew/Cellar";
       HOMEBREW_REPOSITORY = "/opt/homebrew";
@@ -73,7 +83,7 @@ in
       "$HOME/.opencode/bin"
       "$HOME/.cargo/bin"
     ]
-    ++ lib.optionals pkgs.stdenv.isLinux [
+    ++ lib.optionals isLinux [
       # Standalone Home Manager installs land in ~/.nix-profile, but Nix's own
       # profile script only adds it to PATH for *login* shells. A non-interactive
       # SSH command (`ssh host cmd`) runs a non-login shell — which is exactly how
@@ -86,7 +96,7 @@ in
       # ~/.nix-profile, and the system already sets a full non-login PATH).
       "$HOME/.nix-profile/bin"
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [
+    ++ lib.optionals isDarwin [
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
       "$HOME/.cabal/bin"
@@ -113,8 +123,6 @@ in
         nixfmt
         nodejs_24
         pkgconf
-        podman
-        podman-compose
         ripgrep
         rustup
         sd
@@ -122,19 +130,24 @@ in
         uv
         zellij
       ]
-      ++ lib.optionals pkgs.stdenv.isDarwin [
+      ++ lib.optionals isDarwin [
         coreutils
         en-croissant
         gh
         koodo-reader
         runpodctl
       ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
+      ++ lib.optionals isLinux [
         moldClang # clang/cc/clang++/c++ that default to linking with mold (see `let` above)
         clang-tools # clangd language server (+ clang-format/clang-tidy) for C/C++ editing
         flamegraph
         mold # the fast linker itself + CLI; used by moldClang and by the cargo config below
         valgrind
+      ]
+      # Container tooling for interactive hosts; headless boxes skip it.
+      ++ lib.optionals (!isServer) [
+        podman
+        podman-compose
       ];
 
     # Build Rust with clang as the link driver and mold as the actual linker
@@ -144,7 +157,7 @@ in
     # alike. The moldClang from home.packages already defaults to mold, so the
     # -fuse-ld below is redundant — kept so Rust's linker choice is explicit and
     # self-documenting in cargo's own config.
-    file = lib.mkIf pkgs.stdenv.isLinux {
+    file = lib.mkIf isLinux {
       ".cargo/config.toml".text = ''
         [target.${pkgs.stdenv.hostPlatform.config}]
         linker = "clang"
@@ -207,7 +220,7 @@ in
       defaultKeymap = "viins";
 
       initContent = lib.mkOrder 525 (
-        lib.optionalString pkgs.stdenv.isDarwin ''
+        lib.optionalString isDarwin ''
           if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
             fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
           fi
@@ -257,9 +270,6 @@ in
         gp = "git push";
         lg = "lazygit";
 
-        # docker
-        sdk = "sudo systemctl start docker.service";
-        qdk = "sudo systemctl stop docker.service";
         dks = "docker start";
         dkq = "docker stop";
         dki = "docker images";
@@ -276,12 +286,18 @@ in
         zka = "zellij ka";
 
         # update
-        dr = lib.mkIf pkgs.stdenv.isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
+        dr = lib.mkIf isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
         update_all =
-          if pkgs.stdenv.isDarwin then
+          if isDarwin then
             "dr && rustup update && cargo install-update --all"
           else
             "rustup update && cargo install-update --all";
+      }
+      # docker daemon control — only meaningful where systemd runs (no
+      # systemctl on macOS or inside the runpod container)
+      // lib.optionalAttrs (isLinux && !isServer) {
+        sdk = "sudo systemctl start docker.service";
+        qdk = "sudo systemctl stop docker.service";
       }
       // lib.optionalAttrs isArchLinux {
         # paru (arch)
@@ -400,12 +416,15 @@ in
     };
   };
 
+  # The default manpages build forces home-manager's options.json
+  # (nixosOptionsDoc), which on current nix emits the "references the store
+  # path ... without a proper context" warning on every eval. Docs are online
+  # instead; delete this line to restore `man home-configuration`.
+  manual.manpages.enable = false;
+
   xdg.configFile = {
-    "beets".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/beets";
-    "nvim".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/nvim";
-    "zellij".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/zellij";
+    beets.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/beets";
+    nvim.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
+    zellij.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/zellij";
   };
 }

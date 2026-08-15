@@ -40,17 +40,11 @@
       '';
     };
 
-    git.settings = lib.mkForce {
-      user = {
-        email = "abhik.jain@luminovo.com";
-        name = "Abhik Jain";
-      };
-      core.compression = 0;
-      init.defaultBranch = "master";
-      merge.conflictstyle = "diff3";
-      diff.colorMoved = "default";
-      pack.windowsMemory = "256m";
-      http.postBuffer = 524288000;
+    # Only the deltas from common.nix — the shared settings
+    # (compression, postBuffer, name, ...) merge through untouched.
+    git.settings = {
+      user.email = lib.mkForce "abhik.jain@luminovo.com";
+      init.defaultBranch = lib.mkForce "master";
     };
   };
 }

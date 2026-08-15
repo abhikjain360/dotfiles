@@ -1,29 +1,27 @@
-{ ... }:
+_:
 
 {
   users.users.abhik.home = "/Users/abhik";
-  system.primaryUser = "abhik";
 
   home-manager.users.abhik =
     { config, ... }:
+    let
+      dotfiles = "${config.home.homeDirectory}/.config/home-manager";
+    in
     {
       home.file = {
-        ".codex/config.toml".source =
-          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/config.toml";
+        ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/config.toml";
 
         ".codex/hooks/nix_bash.py".source =
-          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/hooks/nix_bash.py";
+          config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/hooks/nix_bash.py";
 
-        ".local/bin/codex".source =
-          config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/codex/bin/codex";
+        ".local/bin/codex".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/bin/codex";
       };
 
       programs.zsh.shellAliases.codex = "$HOME/.local/bin/codex";
     };
 
   nix.enable = false;
-
-  system.stateVersion = 6;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -75,121 +73,126 @@
     };
   };
 
-  system.defaults = {
-    CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys =
-      let
-        off = {
-          enabled = false;
-        };
-        on = {
-          enabled = true;
-        };
-        # [ <key-char> <key-code> <modifier-mask> ]; all of these are disabled.
-        binding = parameters: {
-          enabled = false;
-          value = {
-            inherit parameters;
-            type = "standard";
+  system = {
+    primaryUser = "abhik";
+    stateVersion = 6;
+
+    defaults = {
+      CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys =
+        let
+          off = {
+            enabled = false;
           };
+          on = {
+            enabled = true;
+          };
+          # [ <key-char> <key-code> <modifier-mask> ]; all of these are disabled.
+          binding = parameters: {
+            enabled = false;
+            value = {
+              inherit parameters;
+              type = "standard";
+            };
+          };
+        in
+        {
+          "15" = off; # Mission Control: Application windows
+          "16" = off;
+          "17" = off;
+          "18" = off;
+          "19" = off;
+          "20" = off;
+          "21" = off;
+          "22" = off;
+          "23" = off;
+          "24" = off;
+          "25" = off;
+          "26" = off;
+          "30" = binding [
+            52
+            21
+            1179648
+          ]; # Screenshots
+          "31" = binding [
+            52
+            21
+            1441792
+          ];
+          "60" = binding [
+            32
+            49
+            262144
+          ]; # Select previous/next input source
+          "61" = binding [
+            32
+            49
+            786432
+          ];
+          "64" = binding [
+            32
+            49
+            1048576
+          ]; # Spotlight search (cmd+space) — DISABLED for Raycast
+          "65" = binding [
+            32
+            49
+            1572864
+          ]; # Finder search window (cmd+opt+space) — DISABLED
+          "79" = on; # Move to space left/right etc.
+          "80" = on;
+          "81" = on;
+          "82" = on;
+          "164" = binding [
+            65535
+            65535
+            0
+          ];
         };
-      in
-      {
-        "15" = off; # Mission Control: Application windows
-        "16" = off;
-        "17" = off;
-        "18" = off;
-        "19" = off;
-        "20" = off;
-        "21" = off;
-        "22" = off;
-        "23" = off;
-        "24" = off;
-        "25" = off;
-        "26" = off;
-        "30" = binding [
-          52
-          21
-          1179648
-        ]; # Screenshots
-        "31" = binding [
-          52
-          21
-          1441792
-        ];
-        "60" = binding [
-          32
-          49
-          262144
-        ]; # Select previous/next input source
-        "61" = binding [
-          32
-          49
-          786432
-        ];
-        "64" = binding [
-          32
-          49
-          1048576
-        ]; # Spotlight search (cmd+space) — DISABLED for Raycast
-        "65" = binding [
-          32
-          49
-          1572864
-        ]; # Finder search window (cmd+opt+space) — DISABLED
-        "79" = on; # Move to space left/right etc.
-        "80" = on;
-        "81" = on;
-        "82" = on;
-        "164" = binding [
-          65535
-          65535
-          0
-        ];
+
+      NSGlobalDomain = {
+        AppleInterfaceStyle = "Dark";
+        KeyRepeat = 1;
+        InitialKeyRepeat = 15;
+        AppleShowAllExtensions = true;
+        NSTableViewDefaultSizeMode = 1;
+        "com.apple.swipescrolldirection" = true;
+        "com.apple.trackpad.forceClick" = true;
       };
 
-    NSGlobalDomain = {
-      AppleInterfaceStyle = "Dark";
-      KeyRepeat = 1;
-      InitialKeyRepeat = 15;
-      AppleShowAllExtensions = true;
-      NSTableViewDefaultSizeMode = 1;
-      "com.apple.swipescrolldirection" = true;
-      "com.apple.trackpad.forceClick" = true;
-    };
+      dock = {
+        autohide = true;
+        persistent-apps = [ ];
+        persistent-others = [ ];
+        wvous-br-corner = 14;
+      };
 
-    dock = {
-      autohide = true;
-      persistent-apps = [ ];
-      persistent-others = [ ];
-      wvous-br-corner = 14;
-    };
+      finder = {
+        FXPreferredViewStyle = "clmv";
+        FXRemoveOldTrashItems = true;
+        ShowExternalHardDrivesOnDesktop = true;
+        ShowHardDrivesOnDesktop = false;
+        ShowRemovableMediaOnDesktop = true;
+        FXDefaultSearchScope = "SCcf";
+      };
 
-    finder = {
-      FXPreferredViewStyle = "clmv";
-      FXRemoveOldTrashItems = true;
-      ShowExternalHardDrivesOnDesktop = true;
-      ShowHardDrivesOnDesktop = false;
-      ShowRemovableMediaOnDesktop = true;
-      FXDefaultSearchScope = "SCcf";
-    };
+      screencapture = {
+        location = "~/Documents";
+      };
 
-    screencapture = {
-      location = "~/Documents";
-    };
+      loginwindow = {
+        SHOWFULLNAME = false;
+      };
 
-    loginwindow = {
-      SHOWFULLNAME = false;
-    };
+      WindowManager = {
+        HideDesktop = true;
+        StandardHideWidgets = false;
+      };
 
-    WindowManager = {
-      HideDesktop = true;
-      StandardHideWidgets = false;
-    };
-
-    menuExtraClock = {
-      ShowAMPM = true;
-      ShowDate = 0;
-      ShowDayOfWeek = true;
+      menuExtraClock = {
+        ShowAMPM = true;
+        ShowDate = 0;
+        ShowDayOfWeek = true;
+      };
     };
   };
 

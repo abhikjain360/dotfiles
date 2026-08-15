@@ -6,13 +6,19 @@
   ...
 }:
 
+let
+  dotfiles = "${config.home.homeDirectory}/.config/home-manager";
+  # Platform checks; stdenv.isDarwin/isLinux are deprecated on modern nixpkgs.
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+in
 {
 
   home = {
     sessionVariables = {
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     }
-    // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    // lib.optionalAttrs isDarwin {
       ANDROID_HOME = "${config.home.homeDirectory}/Library/Android/sdk";
     };
 
@@ -46,7 +52,7 @@
         samply
       ]
       # gui apps: managed by brew casks on macos, nix on linux
-      ++ lib.optionals pkgs.stdenv.isLinux [
+      ++ lib.optionals isLinux [
         brave
         discord
         firefox-bin
@@ -57,7 +63,7 @@
         obs-studio
         xournalpp
       ]
-      ++ lib.optionals pkgs.stdenv.isDarwin [
+      ++ lib.optionals isDarwin [
         # for android dev
         jdk17
       ]
@@ -69,7 +75,6 @@
   };
 
   xdg.configFile = {
-    "ghostty".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/ghostty";
+    ghostty.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ghostty";
   };
 }
