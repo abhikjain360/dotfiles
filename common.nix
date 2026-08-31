@@ -134,7 +134,6 @@ in
         coreutils
         en-croissant
         gh
-        koodo-reader
         runpodctl
       ]
       ++ lib.optionals isLinux [
