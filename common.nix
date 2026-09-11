@@ -97,6 +97,8 @@ in
       "$HOME/.nix-profile/bin"
     ]
     ++ lib.optionals isDarwin [
+      # Prefer Home Manager packages when Homebrew provides the same command.
+      "${config.home.profileDirectory}/bin"
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
       "$HOME/.cabal/bin"

@@ -12,9 +12,6 @@ _:
       home.file = {
         ".codex/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/config.toml";
 
-        ".codex/hooks/nix_bash.py".source =
-          config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/hooks/nix_bash.py";
-
         ".local/bin/codex".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/bin/codex";
       };
 
