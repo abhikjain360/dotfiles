@@ -3,7 +3,10 @@ model_reasoning_effort = "medium"
 service_tier = "default"
 allow_login_shell = false
 
-notify = ["/Users/abhik/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+notify = [
+  "/Users/abhik/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+  "turn-ended",
+]
 
 [shell_environment_policy]
 inherit = "all"
@@ -16,21 +19,6 @@ open_external_editor = "ctrl-x"
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 gpt-6-astra = 4
-
-[projects."/Users/abhik"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/coding/llms/clipper"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/coding/llms/ttser"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/coding/webb/blog2"]
-trust_level = "trusted"
-
-[projects."/Users/abhik/startup"]
-trust_level = "trusted"
 
 [desktop]
 followUpQueueMode = "steer"

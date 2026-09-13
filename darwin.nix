@@ -15,6 +15,11 @@ _:
         ".local/bin/codex".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/codex/bin/codex";
       };
 
+      # Only config.toml: alauncher's secrets.toml (API keys) stays a plain local
+      # file beside it, outside this repo.
+      xdg.configFile."alauncher/config.toml".source =
+        config.lib.file.mkOutOfStoreSymlink "${dotfiles}/alauncher/config.toml";
+
       programs.zsh.shellAliases.codex = "$HOME/.local/bin/codex";
     };
 
@@ -129,7 +134,7 @@ _:
             32
             49
             1048576
-          ]; # Spotlight search (cmd+space) — DISABLED for Raycast
+          ]; # Spotlight search (cmd+space) — DISABLED for alauncher
           "65" = binding [
             32
             49
@@ -221,18 +226,17 @@ _:
       "brave-browser"
       "calibre"
       "codex"
+      "chatgpt"
+      "claude"
       "discord"
       "firefox"
       "flameshot"
       "flutter"
       "ghostty"
       "google-chrome"
-      "handy"
       "kimi"
       "monitorcontrol"
-      "moonlight" # Moonlight client — streams games from the laptop's Sunshine host
       "obs"
-      "raycast"
       "scroll-reverser"
       "slack"
       "steam"
