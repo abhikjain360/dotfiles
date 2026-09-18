@@ -55,11 +55,23 @@ max_age = 10000                         # zoxide's _ZO_MAXAGE
 # mode = "silent"                       # silent | compact | fullOutput
 # aliases = ["lock"]
 
-# Picks a pass entry with `choose` and types its password (via its Automator workflow).
+# Lists your pass entries in the launcher; Enter types the entry's password (its first
+# line) into the app you were in. "pass gma" opens the list already filtered.
 [[launcher.commands]]
 title = "pass"
-run = "open ~/Documents/PassChooser.app"
-mode = "silent"
+aliases = ["pass"]
+choices = true
+mode = "type"
+run = '''
+if [ $# -eq 0 ]; then
+  cd "${PASSWORD_STORE_DIR:-$HOME/.password-store}" &&
+    find . -name '*.gpg' | sed 's|^\./||; s|\.gpg$||' | sort |
+    jq -R . | jq -cs '{id: "entry", placeholder: "Pick an entry", items: .}'
+else
+  pw=$(pass show "$2") || exit 1
+  printf '%s\n' "$pw" | head -n1 | jq -R '{final: .}'
+fi
+'''
 
 [calculator]
 enabled = true
