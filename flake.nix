@@ -42,6 +42,11 @@
           ./darwin.nix
           home-manager.darwinModules.home-manager
           {
+            networking = {
+              computerName = "Luminerd’s Laptop";
+              localHostName = "Luminerds-Laptop";
+            };
+
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
