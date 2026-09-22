@@ -8,7 +8,7 @@
 [app]
 launch_at_login = true
 show_menu_bar_icon = false
-log_level = "info"                      # debug | info | error
+log_level = "info" # debug | info | error
 
 [launcher]
 hotkey = "cmd+space"
@@ -37,11 +37,13 @@ extra_path = [
   "/usr/local/bin",
 ]
 # Hide items by title or by path.
-exclude = ["~/.local/bin/pass-choose.sh"]  # copies to the clipboard; the "pass" command below types instead
+exclude = [
+  "~/.local/bin/pass-choose.sh",
+] # copies to the clipboard; the "pass" command below types instead
 
 [launcher.ranking]
-frecency_weight = 1.0                   # 0 turns frecency off
-max_age = 10000                         # zoxide's _ZO_MAXAGE
+frecency_weight = 1.0 # 0 turns frecency off
+max_age = 10000 # zoxide's _ZO_MAXAGE
 
 # Extra exact names. An exact alias match always ranks first; for scripts,
 # text typed after the alias becomes the script's arguments.
@@ -79,23 +81,23 @@ rates_max_age = "12h"
 
 [dictation]
 enabled = true
-hold_key = "right_option"               # hold to dictate; the text is cleaned up by [cleanup]
+hold_key = "right_option" # hold to dictate; the text is cleaned up by [cleanup]
 raw_chord = "right_option+right_shift+m" # pressed while holding: the raw transcript, no LLM
 cancel_key = "escape"
 model = "parakeet-tdt-0.6b-v2"
-unload_after = "5m"                     # "never" keeps the model loaded; reloading takes ~0.15 s
-min_duration = "0.3s"                   # shorter presses are ignored
+unload_after = "5m" # "never" keeps the model loaded; reloading takes ~0.15 s
+min_duration = "0.3s" # shorter presses are ignored
 max_duration = "5m"
-input_device = ""                       # "" = system default, or a device name / UID
+input_device = "" # "" = system default, or a device name / UID
 remove_fillers = true
 filler_words = ["um", "uh", "uhm", "er", "ah", "hmm", "mhm"]
 history_limit = 100
 
 [dictation.insert]
-method = "type"                         # type | paste; text with a newline is always pasted
-type_chunk = 1                          # characters per synthetic key event (max 20)
-type_delay = "0ms"                      # pause between key events
-paste_restore = true                    # put your previous clipboard back after a paste
+method = "type" # type | paste; text with a newline is always pasted
+type_chunk = 1 # characters per synthetic key event (max 20)
+type_delay = "0ms" # pause between key events
+paste_restore = true # put your previous clipboard back after a paste
 paste_restore_delay = "250ms"
 
 # Per-app insert method, by bundle id.
@@ -104,11 +106,11 @@ paste_restore_delay = "250ms"
 
 [cleanup]
 enabled = true
-base_url = "https://api.deepseek.com"   # any OpenAI-compatible /chat/completions endpoint
+base_url = "https://api.deepseek.com" # any OpenAI-compatible /chat/completions endpoint
 model = "deepseek-flash"
-reasoning = "low"                       # sent as reasoning_effort; "" leaves it out
-extra_body = {}                         # merged into the request, for provider-specific options
-timeout = "12s"                         # after this the raw transcript is typed
+reasoning = "none" # sent as reasoning_effort; "" leaves it out
+extra_body = {} # merged into the request, for provider-specific options
+timeout = "12s" # after this the raw transcript is typed
 prompt = """
 Clean up this speech-to-text transcript so it reads exactly as the speaker meant it.
 
@@ -128,12 +130,12 @@ ${output}
 
 [ask]
 enabled = true
-prefixes = ["my lord", "milord"]        # a dictation starting with one of these is a question
-backend = "opencode"                    # opencode | direct (the [cleanup] endpoint, no tools)
-opencode = "opencode"                   # found through PATH and launcher.extra_path
-model = "deepseek/deepseek-flash"       # opencode provider/model; its auth is set up in opencode
-reasoning = "high"                      # opencode --variant
-tools = ["websearch", "webfetch"]       # opencode tools the ask agent may use
+prefixes = ["my lord", "milord"] # a dictation starting with one of these is a question
+backend = "opencode" # opencode | direct (the [cleanup] endpoint, no tools)
+opencode = "opencode" # found through PATH and launcher.extra_path
+model = "deepseek/deepseek-flash" # opencode provider/model; its auth is set up in opencode
+reasoning = "max" # opencode --variant
+tools = ["websearch", "webfetch"] # opencode tools the ask agent may use
 prompt = """
 You answer spoken questions. The question comes from speech-to-text, so it may contain misheard words; interpret it charitably. Answer directly and concisely in plain text, without markdown headings or tables; use a short list only when it helps. Search the web when the answer depends on current or specific facts.
 """
