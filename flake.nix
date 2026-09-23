@@ -27,13 +27,33 @@
     }:
     let
       # Special args every Home Manager entry point shares; each host below
-      # overrides only the flags that differ.
+      # overrides only the flags that differ. Every flag needs a value here: the
+      # module system passes declared args explicitly, so a `x ? default` in a
+      # module is never used.
       hmArgs = {
         isArchLinux = false;
         isServer = false;
         isWork = false;
+        gpgSign = false;
         inherit bookmarks-yazi;
       };
+
+      # Standalone Home Manager hosts: unfree allowed, common.nix first, then
+      # the host's own module.
+      mkHome =
+        {
+          system,
+          args ? { },
+          modules,
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = hmArgs // args;
+          modules = [ ./common.nix ] ++ modules;
+        };
     in
     {
       darwinConfigurations."Luminerds-Laptop" = nix-darwin.lib.darwinSystem {
@@ -85,59 +105,33 @@
       };
 
       homeConfigurations = {
-
-        "abhik@personal" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = hmArgs // {
-            gpgSign = false;
-          };
-          modules = [
-            ./common.nix
-            ./desktop.nix
-          ];
+        "abhik@personal" = mkHome {
+          system = "x86_64-linux";
+          modules = [ ./desktop.nix ];
         };
 
-        "abhik@server" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-linux;
-          extraSpecialArgs = hmArgs // {
+        "abhik@server" = mkHome {
+          system = "aarch64-linux";
+          args = {
             gpgSign = true;
             isServer = true;
           };
-          modules = [
-            ./common.nix
-            ./server.nix
-          ];
+          modules = [ ./server.nix ];
         };
 
-        "abhik@workserver" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = hmArgs // {
-            gpgSign = false;
+        "abhik@workserver" = mkHome {
+          system = "x86_64-linux";
+          args = {
             isArchLinux = true;
             isServer = true;
           };
-          modules = [
-            ./common.nix
-            ./work.nix
-          ];
+          modules = [ ./work.nix ];
         };
 
-        "abhik@runpod" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-          extraSpecialArgs = hmArgs // {
-            gpgSign = false;
-            isServer = true;
-          };
-          modules = [
-            ./common.nix
-            ./runpod.nix
-          ];
+        "abhik@runpod" = mkHome {
+          system = "x86_64-linux";
+          args.isServer = true;
+          modules = [ ./runpod.nix ];
         };
       };
     };

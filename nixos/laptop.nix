@@ -1,8 +1,8 @@
 # Headless NixOS test box: Ryzen 7 4800U + RTX 3050 Ti laptop, run lid-closed and
 # SSH-only as a disposable dry run for the desktop. No desktop environment. The
-# RTX 3050 Ti now has the NVIDIA driver loaded (PRIME offload over the AMD Renoir
-# iGPU) so nvidia-smi/CUDA/NVENC work; the streaming (Steam/gamescope) layer comes
-# later. CLI tooling comes from ./common.nix via the flake.
+# RTX 3050 Ti has the NVIDIA driver loaded (PRIME offload over the AMD Renoir
+# iGPU); Sunshine streams a headless sway session running Steam Big Picture to
+# the Mac (Moonlight). CLI tooling comes from ./common.nix via the flake.
 {
   config,
   pkgs,
@@ -49,7 +49,6 @@ in
     # Keep the GPU initialized without an X server (headless compute/stream).
     nvidiaPersistenced = true;
     powerManagement.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     # Hybrid laptop: PRIME offload. iGPU is the nominal primary (low power);
     # the dGPU spins up on demand (nvidia-smi, or apps launched via the
@@ -183,7 +182,8 @@ in
       swaymsg = lib.getExe' pkgs.sway "swaymsg";
       # Find the LIVE sway IPC socket (a snapshotted SWAYSOCK goes stale if sway
       # restarts) and apply the mode to the headless output.
-      setMode = mode:
+      setMode =
+        mode:
         pkgs.writeShellScript "sunshine-setmode" ''
           for s in "$XDG_RUNTIME_DIR"/sway-ipc.*.sock; do
             ${swaymsg} -s "$s" -t get_version >/dev/null 2>&1 || continue
@@ -198,8 +198,8 @@ in
   # Headless capture session: sway with the userspace headless backend creates a
   # virtual 1080p output with no seat/monitor, pinned to the NVIDIA render node
   # (renderD128) so capture and NVENC stay on one GPU. Once up it imports its
-  # WAYLAND_DISPLAY into the user manager and starts the (NVENC-capable) Sunshine
-  # service. Steam Big Picture gets exec'd here in the next step.
+  # WAYLAND_DISPLAY into the user manager, starts the Sunshine service and execs
+  # Steam Big Picture.
   systemd.user.services.sway-stream = {
     description = "Headless sway session — Sunshine capture surface";
     wantedBy = [ "default.target" ]; # user lingers, so this comes up at boot
@@ -261,7 +261,7 @@ in
       "networkmanager"
       # Streaming: Sunshine runs as this user's service. uinput = create the
       # virtual gamepad/kbd/mouse Moonlight forwards into; video/render = GPU
-      # render-node access for the headless gamescope session (no seat means no
+      # render-node access for the headless sway session (no seat means no
       # automatic device ACLs).
       "uinput"
       "video"
@@ -276,8 +276,6 @@ in
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+Jxw2xXMeEO+1Kud32wQ5Yvd4fw16F3Dzfb14nSOPq abhikjain360@gmail.com"
     ];
-    # Temporary console password; SSH uses the key above. Change after first boot.
-    initialPassword = "nixos";
   };
   security.sudo.wheelNeedsPassword = false;
 

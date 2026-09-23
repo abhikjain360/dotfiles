@@ -412,6 +412,9 @@ in
       upgrade = true;
       cleanup = "zap";
     };
+    taps = [
+      "macos-fuse-t/homebrew-cask"
+    ];
     brews = [
       "autoconf"
       "automake"
@@ -438,6 +441,8 @@ in
       "firefox"
       "flameshot"
       "flutter"
+      "fuse-t"
+      "fuse-t-sshfs"
       "ghostty"
       "google-chrome"
       "kimi"

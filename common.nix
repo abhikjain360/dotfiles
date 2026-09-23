@@ -3,15 +3,12 @@
   pkgs,
   lib,
   isArchLinux,
-  # Headless boxes (server, workserver, runpod) pass true to skip
-  # interactive-host extras like podman. Passed by every host, like isArchLinux.
+  # Headless boxes (server, workserver, runpod): skip interactive-host extras
+  # like podman.
   isServer,
   bookmarks-yazi,
-  # Enable GPG commit/tag signing on this host. Only hosts where the key is
-  # reachable set this true: the Mac (native key) and the laptop (key forwarded
-  # over SSH from the Mac). Keyless hosts pass false so their commits don't fail.
-  # (Passed by every host, like isArchLinux — a module-arg default isn't honored
-  # by the module system when the arg is simply omitted.)
+  # GPG commit/tag signing; true only where the key is reachable (Mac: native
+  # key; laptop: agent forwarded over SSH from the Mac).
   gpgSign,
   ...
 }:
@@ -62,10 +59,9 @@ in
     homeDirectory = if isDarwin then "/Users/abhik" else "/home/abhik";
     stateVersion = "26.05";
 
-    # We track nixos-unstable for nixpkgs and master for Home Manager. After a
-    # release branches, HM master bumps its version tag ahead of unstable
-    # nixpkgs, so their release strings differ even though both are unstable
-    # builds from the same week. The skew is harmless here, so silence the check.
+    # nixpkgs is nixos-unstable, Home Manager is master. After each release
+    # branch-off HM bumps its release string a few weeks before unstable does,
+    # and the check only warns about that skew. Permanent, not a workaround.
     enableNixpkgsReleaseCheck = false;
 
     sessionVariables = {
@@ -101,7 +97,6 @@ in
       "${config.home.profileDirectory}/bin"
       "/opt/homebrew/bin"
       "/opt/homebrew/sbin"
-      "$HOME/.cabal/bin"
       "$HOME/.ghcup/bin"
     ];
 
@@ -242,11 +237,7 @@ in
 
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
-      historySubstringSearch = {
-        enable = true;
-        searchUpKey = "^[[A";
-        searchDownKey = "^[[B";
-      };
+      historySubstringSearch.enable = true;
 
       shellAliases = {
         v = "nvim";
@@ -351,11 +342,9 @@ in
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      # Atuin owns Ctrl-R. Its zsh integration is sourced after fzf's and already
-      # overrides this key, so drop fzf's Ctrl-R history widget to make that
-      # explicit and silence home-manager's conflict warning. fzf keeps Ctrl-T
-      # (files) and Alt-C (cd). To flip ownership to fzf instead, remove this line
-      # and set `programs.atuin.flags = [ "--disable-ctrl-r" ];`.
+      # Atuin owns Ctrl-R. An empty command is HM's supported way to yield it;
+      # without this HM warns about the conflict on every eval (checked
+      # 2026-09). fzf keeps Ctrl-T (files) and Alt-C (cd).
       historyWidget.command = "";
     };
 
@@ -417,10 +406,10 @@ in
     };
   };
 
-  # The default manpages build forces home-manager's options.json
-  # (nixosOptionsDoc), which on current nix emits the "references the store
-  # path ... without a proper context" warning on every eval. Docs are online
-  # instead; delete this line to restore `man home-configuration`.
+  # The manpages build forces HM's options.json derivation, which makes Nix
+  # warn "references the store path ... without a proper context" on every
+  # eval. Still the case with Nix 2.35 + HM 26.11 (checked 2026-09). Docs are
+  # online; delete this line to restore `man home-configuration.nix`.
   manual.manpages.enable = false;
 
   xdg.configFile = {
