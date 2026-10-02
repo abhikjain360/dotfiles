@@ -15,6 +15,11 @@
       url = "github:dedukun/bookmarks.yazi";
       flake = false;
     };
+    sofka = {
+      url = "github:nklmilojevic/sofka";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -23,6 +28,7 @@
       home-manager,
       nix-darwin,
       bookmarks-yazi,
+      sofka,
       ...
     }:
     let
@@ -35,7 +41,7 @@
         isServer = false;
         isWork = false;
         gpgSign = false;
-        inherit bookmarks-yazi;
+        inherit bookmarks-yazi sofka;
       };
 
       # Standalone Home Manager hosts: unfree allowed, common.nix first, then

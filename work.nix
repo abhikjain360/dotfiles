@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  sofka,
   ...
 }:
 
@@ -16,7 +17,7 @@
       })
       glab
       just
-      k9s
+      sofka.packages.${pkgs.stdenv.hostPlatform.system}.sofka
       kubectl
       kubeseal
       (pkgs.callPackage ./pkgs/linear-cli.nix { })

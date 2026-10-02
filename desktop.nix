@@ -3,6 +3,7 @@
   pkgs,
   lib,
   isWork,
+  sofka,
   ...
 }:
 
@@ -69,7 +70,7 @@ in
       ]
       ++ lib.optionals isWork [
         just
-        k9s
+        sofka.packages.${pkgs.stdenv.hostPlatform.system}.sofka
         kubectl
       ];
   };
