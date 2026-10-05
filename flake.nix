@@ -16,7 +16,7 @@
       flake = false;
     };
     sofka = {
-      url = "github:nklmilojevic/sofka";
+      url = "github:nklmilojevic/sofka/v0.29.9";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
