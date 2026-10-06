@@ -75,16 +75,6 @@ in
       ];
   };
 
-  programs.zsh.initContent = lib.optionalString isWork ''
-    claude() {
-      if [[ $PWD/ == $HOME/work/* ]]; then
-        CLAUDE_CONFIG_DIR=$HOME/work/.claude-config $HOME/.local/bin/claude "$@"
-      else
-        command claude "$@"
-      fi
-    }
-  '';
-
   xdg.configFile = {
     ghostty.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/ghostty";
   };

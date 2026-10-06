@@ -105,6 +105,7 @@ in
       [
         bat
         bun
+        (pkgs.callPackage ./pkgs/cl.nix { })
         curl
         difftastic
         dprint
