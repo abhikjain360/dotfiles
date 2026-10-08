@@ -132,6 +132,22 @@ in
     };
   };
 
+  launchd.daemons.nix-gc = {
+    command = "/nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d";
+    serviceConfig = {
+      RunAtLoad = false;
+      StartCalendarInterval = [ { Weekday = 7; Hour = 3; Minute = 15; } ];
+    };
+  };
+
+  launchd.daemons.nix-optimise = {
+    command = "/nix/var/nix/profiles/default/bin/nix-store --optimise";
+    serviceConfig = {
+      RunAtLoad = false;
+      StartCalendarInterval = [ { Weekday = 7; Hour = 4; Minute = 15; } ];
+    };
+  };
+
   system = {
     primaryUser = "abhik";
     stateVersion = 6;
