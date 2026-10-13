@@ -136,7 +136,13 @@ in
     command = "/nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d";
     serviceConfig = {
       RunAtLoad = false;
-      StartCalendarInterval = [ { Weekday = 7; Hour = 3; Minute = 15; } ];
+      StartCalendarInterval = [
+        {
+          Weekday = 7;
+          Hour = 3;
+          Minute = 15;
+        }
+      ];
     };
   };
 
@@ -144,7 +150,13 @@ in
     command = "/nix/var/nix/profiles/default/bin/nix-store --optimise";
     serviceConfig = {
       RunAtLoad = false;
-      StartCalendarInterval = [ { Weekday = 7; Hour = 4; Minute = 15; } ];
+      StartCalendarInterval = [
+        {
+          Weekday = 7;
+          Hour = 4;
+          Minute = 15;
+        }
+      ];
     };
   };
 
@@ -453,7 +465,6 @@ in
       "android-studio"
       "brave-browser"
       "calibre"
-      "codex"
       "chatgpt"
       "claude"
       "discord"
@@ -464,7 +475,7 @@ in
       "fuse-t-sshfs"
       "ghostty"
       "google-chrome"
-      "kimi"
+      "keepassxc"
       "monitorcontrol"
       "obs"
       "scroll-reverser"
