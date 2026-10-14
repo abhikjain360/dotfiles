@@ -464,6 +464,7 @@ in
       "android-platform-tools"
       "android-studio"
       "calibre"
+      "codex"
       "chatgpt"
       "claude"
       "discord"
