@@ -34,6 +34,7 @@ extra_path = [
   "/etc/profiles/per-user/$USER/bin",
   "/run/current-system/sw/bin",
   "~/.nix-profile/bin",
+  "~/.opencode/bin",
   "/usr/local/bin",
 ]
 # Hide items by title or by path.
