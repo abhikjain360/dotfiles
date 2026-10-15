@@ -58,9 +58,10 @@ max_age = 10000 # zoxide's _ZO_MAXAGE
 # mode = "silent"                       # silent | compact | fullOutput
 # aliases = ["lock"]
 
-# Lists your pass entries, then your KeePassXC entries as kp/<group>/<entry>; Enter types
-# the entry's password (its first line) into the app you were in. "pass gma" opens the list
-# already filtered. KeePassXC entries are skipped when the database or Keychain item is missing.
+# Lists your Clipper password entries, then your KeePassXC entries as kp/<group>/<entry>;
+# Enter types the entry's password into the app you were in. Listing needs no Touch ID;
+# Clipper asks for Touch ID when you pick an entry. "pass gma" opens the list already
+# filtered. KeePassXC entries are skipped when the database or Keychain item is missing.
 [[launcher.commands]]
 title = "pass"
 aliases = ["pass"]
@@ -69,6 +70,7 @@ mode = "type"
 run = '''
 db="$HOME/.local/share/keepassxc/work.kdbx"
 keychain_service="keepassxc-work"
+clipper="$HOME/.local/bin/clipper"
 
 keepassxc() {
   security find-generic-password -s "$keychain_service" -w | keepassxc-cli "$@"
@@ -76,16 +78,32 @@ keepassxc() {
 
 if [ $# -eq 0 ]; then
   {
-    (cd "${PASSWORD_STORE_DIR:-$HOME/.password-store}" &&
-      find . -name '*.gpg' | sed 's|^\./||; s|\.gpg$||' | sort)
+    "$clipper" passwords list | jq -r '.[].name' | sort
     [ -f "$db" ] && keepassxc ls -q -R -f "$db" 2>/dev/null |
       grep -v -e '/$' -e '^Recycle Bin/' | sed 's|^|kp/|'
   } | jq -R . | jq -cs '{id: "entry", placeholder: "Pick an entry", items: .}'
 else
   case "$2" in
     kp/*) pw=$(keepassxc show -q -s -a Password "$db" "${2#kp/}") || exit 1 ;;
-    *) pw=$(pass show "$2") || exit 1 ;;
+    *) pw=$("$clipper" passwords get "$2") || exit 1 ;;
   esac
+  printf '%s\n' "$pw" | head -n1 | jq -R '{final: .}'
+fi
+'''
+
+# The old gpg pass store, kept as a backup while Clipper's passwords prove themselves.
+[[launcher.commands]]
+title = "pass (gpg backup)"
+aliases = ["gpass"]
+choices = true
+mode = "type"
+run = '''
+if [ $# -eq 0 ]; then
+  (cd "${PASSWORD_STORE_DIR:-$HOME/.password-store}" &&
+    find . -name '*.gpg' | sed 's|^\./||; s|\.gpg$||' | sort) |
+    jq -R . | jq -cs '{id: "entry", placeholder: "Pick an entry", items: .}'
+else
+  pw=$(pass show "$2") || exit 1
   printf '%s\n' "$pw" | head -n1 | jq -R '{final: .}'
 fi
 '''
