@@ -7,6 +7,7 @@
   # like podman.
   isServer,
   bookmarks-yazi,
+  nixpkgs-atuin,
   # GPG commit/tag signing; true only where the key is reachable (Mac: native
   # key; laptop: agent forwarded over SSH from the Mac).
   gpgSign,
@@ -352,6 +353,7 @@ in
     atuin = {
       enable = true;
       enableZshIntegration = true;
+      package = nixpkgs-atuin.legacyPackages.${pkgs.stdenv.hostPlatform.system}.atuin;
     };
 
     home-manager.enable = true;
