@@ -106,6 +106,7 @@ in
       [
         bat
         bun
+        (pkgs.callPackage ./pkgs/cache-check.nix { })
         (pkgs.callPackage ./pkgs/cl.nix { })
         curl
         difftastic
@@ -280,7 +281,8 @@ in
         zka = "zellij ka";
 
         # update
-        dr = lib.mkIf isDarwin "sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
+        drc = lib.mkIf isDarwin "cache-check \"$HOME/.config/home-manager#darwinConfigurations.Luminerds-Laptop.system\"";
+        dr = lib.mkIf isDarwin "drc && sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
         update_all =
           if isDarwin then
             "dr && rustup update && cargo install-update --all"
