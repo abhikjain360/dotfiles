@@ -34,7 +34,6 @@ extra_path = [
   "/etc/profiles/per-user/$USER/bin",
   "/run/current-system/sw/bin",
   "~/.nix-profile/bin",
-  "~/.opencode/bin",
   "/usr/local/bin",
 ]
 # Hide items by title or by path.
@@ -164,11 +163,10 @@ ${output}
 [ask]
 enabled = true
 prefixes = ["my lord", "milord"] # a dictation starting with one of these is a question
-backend = "opencode" # opencode | direct (the [cleanup] endpoint, no tools)
-opencode = "opencode" # found through PATH and launcher.extra_path
-model = "deepseek/deepseek-flash" # opencode provider/model; its auth is set up in opencode
-reasoning = "max" # opencode --variant
-tools = ["websearch", "webfetch"] # opencode tools the ask agent may use
+base_url = "https://api.deepseek.com/anthropic" # an Anthropic Messages API; uses the [cleanup] API key
+model = "deepseek-flash"
+reasoning = "high" # sent as output_config.effort; "" leaves it out
+web_search = true # the model may search the web, on the provider's side
 prompt = """
 You answer spoken questions. The question comes from speech-to-text, so it may contain misheard words; interpret it charitably. Answer directly and concisely in plain text, without markdown headings or tables; use a short list only when it helps. Search the web when the answer depends on current or specific facts.
 """
