@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-atuin.url = "github:nixos/nixpkgs/6510408d147d8c5e6d76043e899e9251756f6a75";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +25,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-atuin,
       home-manager,
       nix-darwin,
       bookmarks-yazi,
@@ -43,7 +41,7 @@
         isServer = false;
         isWork = false;
         gpgSign = false;
-        inherit bookmarks-yazi sofka nixpkgs-atuin;
+        inherit bookmarks-yazi sofka;
       };
 
       # Standalone Home Manager hosts: unfree allowed, common.nix first, then
