@@ -3,13 +3,14 @@
   lib,
   config,
   sofka,
+  nixpkgs-azure-cli,
   ...
 }:
 
 {
   home = {
     packages = with pkgs; [
-      azure-cli
+      nixpkgs-azure-cli.legacyPackages.${pkgs.stdenv.hostPlatform.system}.azure-cli
       cargo-nextest
       (diesel-cli.override {
         sqliteSupport = false;

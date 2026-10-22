@@ -91,6 +91,12 @@ in
     reattach = true;
   };
 
+  security.pki.caCertificateBlacklist = [
+    "emSign ECC Root CA - G3"
+    "emSign ECC Root CA - C3"
+    "emSign Root CA - C1"
+  ];
+
   services.openssh.enable = true; # Remote Login; launchctl print-disabled system shows com.openssh.sshd enabled
 
   networking = {

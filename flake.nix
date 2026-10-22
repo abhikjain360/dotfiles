@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-azure-cli.url = "github:nixos/nixpkgs/fe13242281a67641c0102cdb1087f0ebe586c7df";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +26,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-azure-cli,
       home-manager,
       nix-darwin,
       bookmarks-yazi,
@@ -41,7 +43,7 @@
         isServer = false;
         isWork = false;
         gpgSign = false;
-        inherit bookmarks-yazi sofka;
+        inherit bookmarks-yazi sofka nixpkgs-azure-cli;
       };
 
       # Standalone Home Manager hosts: unfree allowed, common.nix first, then
