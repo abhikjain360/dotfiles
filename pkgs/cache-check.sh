@@ -1,4 +1,4 @@
-allowed_source_builds=(sofka diesel-cli linear-cli nss-cacert)
+allowed_source_builds=(sofka diesel-cli linear-cli)
 
 if ! plan=$(nix build --dry-run --no-link "$@" 2>&1); then
   printf '%s\n' "$plan" >&2
