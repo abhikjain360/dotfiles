@@ -283,9 +283,9 @@ in
         dr = lib.mkIf isDarwin "drc && sudo darwin-rebuild switch --flake \"$HOME/.config/home-manager#Luminerds-Laptop\"";
         update_all =
           if isDarwin then
-            "dr && rustup update && cargo install-update --all"
+            "sudo determinate-nixd upgrade && dr && rustup update && cargo install-update --all"
           else
-            "rustup update && cargo install-update --all";
+            "{ ! command -v determinate-nixd >/dev/null || sudo determinate-nixd upgrade; } && rustup update && cargo install-update --all";
       }
       # docker daemon control — only meaningful where systemd runs (no
       # systemctl on macOS or inside the runpod container)
