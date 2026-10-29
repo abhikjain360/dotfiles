@@ -12,6 +12,26 @@ let
   # Platform checks; stdenv.isDarwin/isLinux are deprecated on modern nixpkgs.
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
+  xournalppApp = pkgs.runCommand "xournalpp-app" { } ''
+    contents=$out/Applications/Xournal++.app/Contents
+    mkdir -p $contents/MacOS
+    cat > $contents/Info.plist <<EOF
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0"><dict>
+    <key>CFBundleExecutable</key><string>xournalpp</string>
+    <key>CFBundleIdentifier</key><string>com.github.xournalpp.xournalpp</string>
+    <key>CFBundleName</key><string>Xournal++</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    </dict></plist>
+    EOF
+    cat > $contents/MacOS/xournalpp <<EOF
+    #!/bin/bash
+    (sleep 2; /usr/bin/osascript -e 'tell application id "com.github.xournalpp.xournalpp" to activate') &
+    exec ${pkgs.xournalpp}/bin/xournalpp "\$@"
+    EOF
+    chmod +x $contents/MacOS/xournalpp
+  '';
 in
 {
 
@@ -67,25 +87,13 @@ in
       ++ lib.optionals isDarwin [
         # for android dev
         jdk17
+        xournalppApp
       ]
       ++ lib.optionals isWork [
         just
         sofka.packages.${pkgs.stdenv.hostPlatform.system}.sofka
         kubectl
       ];
-
-    file = lib.optionalAttrs isDarwin {
-      ".local/bin/xournalpp.sh" = {
-        executable = true;
-        text = ''
-          #!/bin/bash
-          # @raycast.schemaVersion 1
-          # @raycast.title Xournal++
-          # @raycast.mode silent
-          "${pkgs.xournalpp}/bin/xournalpp" "$@" >/dev/null 2>&1 &
-        '';
-      };
-    };
   };
 
   xdg.configFile = {
