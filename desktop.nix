@@ -45,6 +45,7 @@ in
         sarasa-gothic
         typst
         watch
+        xournalpp
 
         # cargo tools
         cargo-expand
@@ -62,7 +63,6 @@ in
         google-chrome
         mpv
         obs-studio
-        xournalpp
       ]
       ++ lib.optionals isDarwin [
         # for android dev
@@ -73,6 +73,19 @@ in
         sofka.packages.${pkgs.stdenv.hostPlatform.system}.sofka
         kubectl
       ];
+
+    file = lib.optionalAttrs isDarwin {
+      ".local/bin/xournalpp.sh" = {
+        executable = true;
+        text = ''
+          #!/bin/bash
+          # @raycast.schemaVersion 1
+          # @raycast.title Xournal++
+          # @raycast.mode silent
+          "${pkgs.xournalpp}/bin/xournalpp" "$@" >/dev/null 2>&1 &
+        '';
+      };
+    };
   };
 
   xdg.configFile = {

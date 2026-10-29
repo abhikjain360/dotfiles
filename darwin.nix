@@ -483,7 +483,6 @@ in
       "steam"
       "syncthing-app"
       "tailscale-app"
-      "xournal++"
     ];
   };
 }
