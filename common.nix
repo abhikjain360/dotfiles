@@ -7,6 +7,7 @@
   # like podman.
   isServer,
   bookmarks-yazi,
+  nixpkgs-stable,
   # GPG commit/tag signing; true only where the key is reachable (Mac: native
   # key; laptop: agent forwarded over SSH from the Mac).
   gpgSign,
@@ -20,6 +21,8 @@ let
   # Platform checks; stdenv.isDarwin/isLinux are deprecated on modern nixpkgs.
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
+
+  stablePkgs = nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 
   # A clang/cc/clang++/c++ that link with mold by default, so *every* C/C++ build
   # on this user's Linux hosts uses mold — not just Rust (which the cargo config
@@ -106,7 +109,7 @@ in
         bat
         bun
         (pkgs.callPackage ./pkgs/cl.nix { })
-        curl
+        stablePkgs.curl
         difftastic
         dprint
         eza
@@ -119,7 +122,7 @@ in
         lazyjj
         neovim
         nixfmt
-        nodejs_24
+        stablePkgs.nodejs_24
         pkgconf
         ripgrep
         rustup
