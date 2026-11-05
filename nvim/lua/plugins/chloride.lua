@@ -1,7 +1,10 @@
+local dir = vim.fn.expand("~/coding/llms/chloride/editor/nvim")
+
 return {
   {
-    dir = vim.fn.expand("~/coding/llms/chloride/editor/nvim"),
+    dir = dir,
     name = "chloride",
     lazy = false,
+    enabled = vim.fn.isdirectory(dir) == 1,
   },
 }
