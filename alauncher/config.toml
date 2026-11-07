@@ -57,6 +57,40 @@ max_age = 10000 # zoxide's _ZO_MAXAGE
 # mode = "silent"                       # silent | compact | fullOutput
 # aliases = ["lock"]
 
+[[launcher.commands]]
+title = "Toggle volume leveling"
+aliases = ["level", "leveler"]
+mode = "compact"
+run = '''
+if pgrep -xq Leveler; then
+  open -g "leveler://toggle"
+else
+  open -g "leveler://on"
+fi
+sleep 0.5
+if [ "$(defaults read dev.abhik.leveler levelingEnabled 2>/dev/null)" = "1" ]; then
+  echo "Leveling on"
+else
+  echo "Leveling off"
+fi
+'''
+
+# "br" shows the LG's brightness, "br 60" sets it, "br +10" / "br -10" changes it.
+[[launcher.commands]]
+title = "LG brightness"
+aliases = ["br", "brightness"]
+mode = "compact"
+run = '''
+lg="display FA14253D-EEA2-4382-97A8-3E90511516C2"
+case "$1" in
+  "") out=$(m1ddc $lg get luminance) ;;
+  *[!0-9+-]*|?*[+-]*|+|-) echo "Use a number, like 60, +10 or -10"; exit 1 ;;
+  +*|-*) out=$(m1ddc $lg chg luminance "$1") ;;
+  *) out=$(m1ddc $lg set luminance "$1") ;;
+esac || exit 1
+echo "Brightness ${out##* }"
+'''
+
 # Lists your Clipper password entries, then your KeePassXC entries as kp/<group>/<entry>;
 # Enter types the entry's password into the app you were in. Listing needs no Touch ID;
 # Clipper asks for Touch ID when you pick an entry. "pass gma" opens the list already
