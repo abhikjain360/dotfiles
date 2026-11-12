@@ -4,7 +4,6 @@
   lib,
   isWork,
   sofka,
-  nixpkgs-stable,
   ...
 }:
 
@@ -72,7 +71,7 @@ in
         cargo-expand
         cargo-flamegraph
         cargo-nextest
-        nixpkgs-stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.samply
+        samply
       ]
       # gui apps: managed by brew casks on macos, nix on linux
       ++ lib.optionals isLinux [
