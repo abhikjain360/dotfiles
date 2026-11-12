@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-azure-cli.url = "github:nixos/nixpkgs/fe13242281a67641c0102cdb1087f0ebe586c7df";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,7 +17,7 @@
       flake = false;
     };
     sofka = {
-      url = "github:nklmilojevic/sofka/v0.29.9";
+      url = "github:nklmilojevic/sofka/v0.35.1";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -27,7 +26,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-azure-cli,
       nixpkgs-stable,
       home-manager,
       nix-darwin,
@@ -48,7 +46,6 @@
         inherit
           bookmarks-yazi
           sofka
-          nixpkgs-azure-cli
           nixpkgs-stable
           ;
       };
