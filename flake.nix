@@ -20,10 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -33,7 +29,6 @@
       nix-darwin,
       bookmarks-yazi,
       sofka,
-      helium,
       ...
     }:
     let
@@ -49,7 +44,6 @@
         inherit
           bookmarks-yazi
           sofka
-          helium
           ;
       };
 
