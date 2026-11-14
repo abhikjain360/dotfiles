@@ -284,7 +284,8 @@ in
           if isDarwin then
             "sudo determinate-nixd upgrade && dr && rustup update && cargo install-update --all"
           else
-            "{ ! command -v determinate-nixd >/dev/null || sudo determinate-nixd upgrade; } && rustup update && cargo install-update --all";
+            lib.optionalString (!isServer) "bash \"$HOME/.config/home-manager/pkgs/update-helium.sh\" && "
+            + "{ ! command -v determinate-nixd >/dev/null || sudo determinate-nixd upgrade; } && rustup update && cargo install-update --all";
       }
       # docker daemon control — only meaningful where systemd runs (no
       # systemctl on macOS or inside the runpod container)
