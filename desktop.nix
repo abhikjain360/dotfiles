@@ -4,6 +4,7 @@
   lib,
   isWork,
   sofka,
+  helium,
   ...
 }:
 
@@ -79,7 +80,7 @@ in
         firefox-bin
         flameshot
         ghostty
-        google-chrome
+        helium.packages.${pkgs.stdenv.hostPlatform.system}.default
         mpv
         obs-studio
       ]
